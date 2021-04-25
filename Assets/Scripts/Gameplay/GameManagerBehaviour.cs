@@ -20,7 +20,7 @@ public class GameManagerBehaviour : MonoBehaviour
          * If there is no instance, make this the new instance.
          * If there is an instance and it is not this, delete this.
          * 
-         * This is to ensure that there is only every one GameManagerBehaviour in a scene,
+         * This is to ensure that there is only ever one GameManagerBehaviour in a scene,
          *  it is always the oldest one, and that the static variable Instance always refers to it.
          */
         if (!Instance)
@@ -32,6 +32,20 @@ public class GameManagerBehaviour : MonoBehaviour
     public void InvokeOnLevelEnd()
     {
         OnLevelEnd.Invoke();
+    }
+
+    public void GoToNextScene(float delay)
+    {
+        StartCoroutine(GoToNextSceneCoroutine(delay));
+    }
+
+    private IEnumerator GoToNextSceneCoroutine(float delay)
+    {
+        // Wait for the specified duration
+        yield return new WaitForSeconds(delay);
+
+        // Load the next scene
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void RestartScene(float delay = 0)
