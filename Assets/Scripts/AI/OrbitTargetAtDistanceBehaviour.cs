@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class OrbitTargetAtDistanceBehaviour : MonoBehaviour
 {
     [Tooltip("Target to orbit")]
-    [SerializeField] private Transform _target;
+    public Transform Target;
 
     [Tooltip("How many points around the target should this agent use for pathfinding. More points means a more accurate circle.")]
     [Min(3)]
@@ -24,6 +24,25 @@ public class OrbitTargetAtDistanceBehaviour : MonoBehaviour
     private NavMeshAgent _agent;
     private Vector3[] _pathPoints;
     private int _destinationPoint = 0;
+
+    private void OnEnable()
+    {
+        // Prevent the agent from autobraking as it approaches points to make the orbit smoother
+        if (_agent)
+            _agent.autoBraking = false;
+
+        // Calculate orbit points and set destination to the closest one
+        _pathPoints = GetPointsOnCircle();
+        SetDestinationToClosestPoint();
+    }
+
+    private void OnDisable()
+    {
+        // Reenable autobraking for other behaviours
+        _agent.autoBraking = true;
+
+        _agent.ResetPath();
+    }
 
     private void Start()
     {
@@ -49,6 +68,7 @@ public class OrbitTargetAtDistanceBehaviour : MonoBehaviour
         }
     }
 
+    /*
     private void OnDrawGizmos()
     {
         if (_pathPoints == null)
@@ -63,6 +83,7 @@ public class OrbitTargetAtDistanceBehaviour : MonoBehaviour
             Gizmos.DrawWireSphere(_pathPoints[i], 1);
         }
     }
+    */
 
     private void SetDestinationToClosestPoint()
     {
@@ -85,7 +106,6 @@ public class OrbitTargetAtDistanceBehaviour : MonoBehaviour
                 pointIndex = i;
             }
         }
-        Debug.Log(pointIndex);
         _destinationPoint = pointIndex;
     }
 
@@ -117,7 +137,7 @@ public class OrbitTargetAtDistanceBehaviour : MonoBehaviour
             pointArray[i] *= _orbitDistance;
 
             // Offset point to target position
-            pointArray[i] += _target.position;
+            pointArray[i] += Target.position;
 
             angle += angleIncrement;
         }
