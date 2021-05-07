@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEditor;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class OrbitTargetAtDistanceBehaviour : MonoBehaviour
@@ -143,5 +144,33 @@ public class OrbitTargetAtDistanceBehaviour : MonoBehaviour
         }
 
         return pointArray;
+    }
+}
+
+[CustomEditor(typeof(OrbitTargetAtDistanceBehaviour))]
+class OrbitTargetAtDistanceBehaviourEditor : Editor
+{
+    // Whether or not the help text should be shown
+    private bool _showText = true;
+
+    public override void OnInspectorGUI()
+    {
+        // Get reference to script
+        OrbitTargetAtDistanceBehaviour script = target as OrbitTargetAtDistanceBehaviour;
+
+        // Declare help text
+        string helpText = "While this script is enabled, it will use the attached NavMeshAgent to orbit its target at a specified distance.";
+
+        // Display help text
+        _showText = EditorGUILayout.BeginFoldoutHeaderGroup(_showText, "Info");
+        if (_showText)
+        {
+            EditorGUILayout.HelpBox(helpText, MessageType.Info);
+        }
+
+        EditorGUILayout.EndFoldoutHeaderGroup();
+
+        // Display base inspector gui
+        base.OnInspectorGUI();
     }
 }

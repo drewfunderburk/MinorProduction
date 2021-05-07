@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 [RequireComponent(typeof(PursueTargetBehaviour))]
 [RequireComponent(typeof(OrbitTargetAtDistanceBehaviour))]
@@ -37,5 +38,33 @@ public class OrbitEnemyBehaviour : MonoBehaviour
             _pursueBehaviour.enabled = true;
             _orbitBehaviour.enabled = false;
         }
+    }
+}
+
+[CustomEditor(typeof(OrbitEnemyBehaviour))]
+class OrbitEnemyBehaviourEditor : Editor
+{
+    // Whether or not the help text should be shown
+    private bool _showText = true;
+
+    public override void OnInspectorGUI()
+    {
+        // Get reference to script
+        OrbitEnemyBehaviour script = target as OrbitEnemyBehaviour;
+
+        // Declare help text
+        string helpText = "This enemy will use a PursueTargetBehaviour to close the distance to its target before switching to an OrbitTargetAtDistanceBehaviour to orbit.";
+
+        // Display help text
+        _showText = EditorGUILayout.BeginFoldoutHeaderGroup(_showText, "Info");
+        if (_showText)
+        {
+            EditorGUILayout.HelpBox(helpText, MessageType.Info);
+        }
+
+        EditorGUILayout.EndFoldoutHeaderGroup();
+
+        // Display base inspector gui
+        base.OnInspectorGUI();
     }
 }
