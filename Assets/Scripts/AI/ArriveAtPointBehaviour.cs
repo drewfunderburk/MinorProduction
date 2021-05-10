@@ -12,7 +12,7 @@ public class ArriveAtPointBehaviour : MonoBehaviour
     /// <summary>
     /// Position to move to
     /// </summary>
-    public Vector3 Target
+    public Vector3 TargetPosition
     {
         get { return _targetPosition; }
         set
@@ -46,11 +46,37 @@ public class ArriveAtPointBehaviour : MonoBehaviour
         if (_needsPath)
         {
             // Calculate a new path
-            _agent.SetDestination(Target);
+            _agent.SetDestination(TargetPosition);
 
             // A new path is no longer needed
             _needsPath = false;
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (!enabled)
+            return;
+
+        // If the agent has a path
+        if (_agent && _agent.hasPath)
+        {
+            // Draw a line between each of the path corners
+            Gizmos.color = Color.green;
+            Vector3[] path = _agent.path.corners;
+            for (int i = 0; i < path.Length; i++)
+            {
+                if (i == 0)
+                    Gizmos.DrawLine(transform.position, path[i]);
+                else
+                    Gizmos.DrawLine(path[i - 1], path[i]);
+            }
+        }
+
+        // Draw a wire sphere and a label at TargetPosition
+        Handles.Label(TargetPosition, "Target Position");
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(TargetPosition, 0.5f);
     }
 }
 
@@ -79,5 +105,19 @@ class ArriveAtPointBehaviourEditor : Editor
 
         // Display base inspector gui
         base.OnInspectorGUI();
+    }
+
+    private void OnSceneGUI()
+    {
+        ArriveAtPointBehaviour script = target as ArriveAtPointBehaviour;
+
+        if (!script.enabled)
+            return;
+
+        // Create position handle to allow moving TargetPosition in the scene view
+        EditorGUI.BeginChangeCheck();
+        Vector3 newPosition = Handles.PositionHandle(script.TargetPosition, Quaternion.identity);
+        if (EditorGUI.EndChangeCheck())
+            script.TargetPosition = newPosition;
     }
 }
