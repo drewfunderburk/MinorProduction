@@ -69,9 +69,10 @@ public class OrbitTargetAtDistanceBehaviour : MonoBehaviour
         }
     }
 
-    /*
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
+        if (!enabled)
+            return;
         if (_pathPoints == null)
             return;
         if (_pathPoints.Length == 0)
@@ -84,15 +85,16 @@ public class OrbitTargetAtDistanceBehaviour : MonoBehaviour
             Gizmos.DrawWireSphere(_pathPoints[i], 1);
         }
     }
-    */
 
     private void SetDestinationToClosestPoint()
     {
         float shortestDistance = -1;
         int pointIndex = -1;
 
+        // Loop through all path points and determine the point with the shortest distance from the AI
         for (int i = 0; i < _pathPoints.Length; i++)
         {
+            // Set the first point to be the shortest if none has been set yet
             if (shortestDistance == -1)
             {
                 shortestDistance = Vector3.Distance(transform.position, _pathPoints[i]);
@@ -107,6 +109,7 @@ public class OrbitTargetAtDistanceBehaviour : MonoBehaviour
                 pointIndex = i;
             }
         }
+
         _destinationPoint = pointIndex;
     }
 
