@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8896731816641746338}
   - component: {fileID: 8896731816641746343}
   m_Layer: 11
-  m_Name: HomingBullet_Enemy
+  m_Name: HomingBullet_Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -111,7 +111,7 @@ MonoBehaviour:
   _despawnTime: 10
   _collideWith:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 512
   _target: {fileID: 0}
   _steeringForce: 1000
 --- !u!54 &8896731816641746343
