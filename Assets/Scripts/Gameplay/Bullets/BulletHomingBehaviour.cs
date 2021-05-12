@@ -38,4 +38,11 @@ public class BulletHomingBehaviour : BulletBehaviour
         // Clamp velocity to max speed
         _rigidbody.velocity = Vector3.ClampMagnitude(_rigidbody.velocity, Speed);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        // If the collided object's layer is in _collideWith, destroy this object
+        if (((1 << collision.gameObject.layer) & CollideWith) != 0)
+            Destroy(this.gameObject);
+    }
 }
