@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -47,6 +47,15 @@ public class OrbitEnemyBehaviour : EnemyBehaviour
         {
             _pursueBehaviour.enabled = true;
             _orbitBehaviour.enabled = false;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        // If the collided object's layer is in _collideWith
+        if (((1 << collision.gameObject.layer) & CollideWith) != 0)
+        {
+            // Do things to the collided object
         }
     }
 }

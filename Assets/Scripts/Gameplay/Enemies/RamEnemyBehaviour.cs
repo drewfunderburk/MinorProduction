@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -27,6 +27,15 @@ public class RamEnemyBehaviour : EnemyBehaviour
         _agent = GetComponent<NavMeshAgent>();
         _pursueTargetBehaviour = GetComponent<PursueTargetBehaviour>();
         _pursueTargetBehaviour.Target = Target;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        // If the collided object's layer is in _collideWith
+        if (((1 << collision.gameObject.layer) & CollideWith) != 0)
+        {
+            // Do things to the collided object
+        }
     }
 }
 
