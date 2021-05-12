@@ -1,11 +1,11 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
 [RequireComponent(typeof(PursueTargetBehaviour))]
 [RequireComponent(typeof(OrbitTargetAtDistanceBehaviour))]
-public class OrbitEnemyBehaviour : MonoBehaviour
+public class OrbitEnemyBehaviour : EnemyBehaviour
 {
     public Transform Target;
 
@@ -14,6 +14,16 @@ public class OrbitEnemyBehaviour : MonoBehaviour
 
     private PursueTargetBehaviour _pursueBehaviour;
     private OrbitTargetAtDistanceBehaviour _orbitBehaviour;
+
+    public override void TakeDamage(float damage)
+    {
+        // Decrease health
+        Health -= damage;
+
+        // If health <= 0 destroy this object
+        if (Health <= 0)
+            Destroy(this.gameObject);
+    }
 
     private void Start()
     {

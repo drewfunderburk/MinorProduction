@@ -1,16 +1,26 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEditor;
 
 [RequireComponent(typeof(PursueTargetBehaviour))]
-public class RamEnemyBehaviour : MonoBehaviour
+public class RamEnemyBehaviour : EnemyBehaviour
 {
     public Transform Target;
 
     private NavMeshAgent _agent;
     private PursueTargetBehaviour _pursueTargetBehaviour;
+
+    public override void TakeDamage(float damage)
+    {
+        // Decrease health
+        Health -= damage;
+
+        // If health <= 0 destroy this object
+        if (Health <= 0)
+            Destroy(this.gameObject);
+    }
 
     private void Start()
     {
