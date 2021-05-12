@@ -50,6 +50,8 @@ public class PursueTargetBehaviour : MonoBehaviour
     {
         if (!enabled)
             return;
+        if (_agent == null)
+            return;
 
         // If the agent has a path
         if (_agent.hasPath)
