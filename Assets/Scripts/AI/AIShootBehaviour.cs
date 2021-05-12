@@ -6,10 +6,10 @@ using UnityEditor;
 public class AIShootBehaviour : MonoBehaviour
 {
     [Tooltip("Object to spawn as a projectile")]
-    [SerializeField] private GameObject _bulletPrefab;
+    [SerializeField] private GameObject _bulletPrefab = null;
 
     [Tooltip("Where to fire the projectile from")]
-    [SerializeField] private Vector3[] _fireLocations;
+    [SerializeField] private Vector3[] _fireLocations = null;
     public Vector3[] FireLocations { get { return _fireLocations; } }
 
     [Tooltip("Delay in seconds between shots")]
