@@ -36,10 +36,10 @@ public class WarpDriveMovement : MonoBehaviour
 
     public void warpMovement()
     {
-        gameObject.transform.position = new Vector3(Mathf.Lerp(MinMax.x, MinMax.y, (Mathf.Sin(timerX)/2)+0.5f), Mathf.Lerp(MinMax.x/2f, MinMax.y/2f, (Mathf.Sin(timerY) / 2) + 0.5f), 0);
-        //gameObject.transform.rotation = new Quaternion(0, 0, Mathf.Lerp(0, 90, (Mathf.Sin(timerX) / 2) + 0.5f), gameObject.transform.rotation.w);
+        gameObject.transform.position = new Vector3(Mathf.Lerp(MinMax.x, MinMax.y, (Mathf.Sin(timerX)/2) + 0.5f), Mathf.Lerp(MinMax.x/2f, MinMax.y/2f, (Mathf.Sin(timerY + 1) / 2) + 0.5f), 0);
+        gameObject.transform.rotation = new Quaternion(0, 0, Mathf.Lerp(-0.25f, 0.25f, (Mathf.Sin(timerX) / 2) + 0.5f), gameObject.transform.rotation.w);
         timerX += speed * Time.deltaTime;
-        timerY = timerX * 1.25f;
+        timerY = timerX;
     }
 
 }
