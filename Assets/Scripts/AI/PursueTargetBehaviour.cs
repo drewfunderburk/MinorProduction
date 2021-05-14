@@ -21,7 +21,7 @@ public class PursueTargetBehaviour : MonoBehaviour
     private void OnDisable()
     {
         // Reset the path on disabling this script so the agent doesn't keep running after a target when it shouldn't
-        _agent.ResetPath();
+        _agent?.ResetPath();
     }
 
     private void Start()
@@ -36,14 +36,14 @@ public class PursueTargetBehaviour : MonoBehaviour
             return;
 
         // Ensure Target has moved
-        if (Target.position == _previousTargetPosition)
+        if (Target.position == _previousTargetPosition && _agent.hasPath)
             return;
 
         // Update previous target position
         _previousTargetPosition = Target.position;
 
         // Update NavMeshAgent's destination
-        _agent.SetDestination(Target.position);
+        _agent?.SetDestination(Target.position);
     }
 
     private void OnDrawGizmosSelected()

@@ -7,7 +7,16 @@ using UnityEditor;
 [RequireComponent(typeof(OrbitTargetAtDistanceBehaviour))]
 public class OrbitEnemyBehaviour : EnemyBehaviour
 {
-    public Transform Target;
+    public override Transform Target 
+    { 
+        get => base.Target;
+        set
+        {
+            base.Target = value;
+            _pursueBehaviour.Target = base.Target;
+            _orbitBehaviour.Target = base.Target;
+        }
+    }
 
     [Tooltip("Distance at which to switch from Pursue to Orbit")]
     [SerializeField] private float _transitionDistance = 15;
@@ -25,7 +34,7 @@ public class OrbitEnemyBehaviour : EnemyBehaviour
             Destroy(this.gameObject);
     }
 
-    private void Start()
+    private void OnEnable()
     {
         _pursueBehaviour = GetComponent<PursueTargetBehaviour>();
         _orbitBehaviour = GetComponent<OrbitTargetAtDistanceBehaviour>();

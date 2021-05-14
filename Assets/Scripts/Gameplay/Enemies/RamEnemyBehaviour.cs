@@ -7,7 +7,15 @@ using UnityEditor;
 [RequireComponent(typeof(PursueTargetBehaviour))]
 public class RamEnemyBehaviour : EnemyBehaviour
 {
-    public Transform Target;
+    public override Transform Target 
+    { 
+        get => base.Target;
+        set
+        {
+            base.Target = value;
+            _pursueTargetBehaviour.Target = base.Target;
+        }
+    }
 
     private NavMeshAgent _agent;
     private PursueTargetBehaviour _pursueTargetBehaviour;
@@ -22,7 +30,7 @@ public class RamEnemyBehaviour : EnemyBehaviour
             Destroy(this.gameObject);
     }
 
-    private void Start()
+    private void OnEnable()
     {
         _agent = GetComponent<NavMeshAgent>();
         _pursueTargetBehaviour = GetComponent<PursueTargetBehaviour>();
