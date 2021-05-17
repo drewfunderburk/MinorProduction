@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEditor;
 
-[RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(Rigidbody))]
 public class OrbitTargetAtDistanceBehaviour : MonoBehaviour
 {
     [Tooltip("Target to orbit")]
@@ -14,27 +14,27 @@ public class OrbitTargetAtDistanceBehaviour : MonoBehaviour
     [Tooltip("How many points around the target should this agent use for pathfinding. More points means a more accurate circle.")]
     [Min(3)]
     [SerializeField] private int _numberOfPoints = 10;
+    public int NumberOfPoints { get => _numberOfPoints; set => _numberOfPoints = value; }
 
     [Tooltip("The distance at which the agent should orbit.")]
     [SerializeField] private float _orbitDistance = 10;
+    public float OrbitDistance { get => _orbitDistance; set => _orbitDistance = value; }
 
     [Tooltip("How close the agent must come to the points on the circle to be considered \'arrived\'")]
     [SerializeField] private float _pointTolerance = 0.5f;
 
-    public float OrbitDistance { get; set; }
+    [Tooltip("How fast to approach orbit points")]
+    [SerializeField] private float _speed = 1;
+    public float Speed { get => _speed; set => _speed = value; }
 
-    private NavMeshAgent _agent;
+    private Rigidbody _rigidbody;
     private Vector3[] _pathPoints;
     private int _destinationPoint = 0;
 
     private void OnEnable()
     {
-        _agent = GetComponent<NavMeshAgent>();
-
-        // Prevent the agent from autobraking as it approaches points to make the orbit smoother
-        if (_agent)
-            _agent.autoBraking = false;
-
+        _rigidbody = GetComponent<Rigidbody>();
+        _rigidbody.isKinematic = false;
         if (Target)
         {
             // Calculate orbit points and set destination to the closest one
@@ -45,25 +45,26 @@ public class OrbitTargetAtDistanceBehaviour : MonoBehaviour
 
     private void OnDisable()
     {
-        // Reenable autobraking for other behaviours
-        _agent.autoBraking = true;
-
-        _agent?.ResetPath();
+        _rigidbody.isKinematic = true;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (Target == null)
             return;
 
-        // If the remaining distance to the next point is within tolerance 
-        //  and the agent is not currently calculating a path, 
-        //  go to the next point in the orbit
-        if (!_agent.pathPending && _agent.remainingDistance <= _pointTolerance)
-        {
-            _pathPoints = GetPointsOnCircle();
+        _pathPoints = GetPointsOnCircle();
+
+        float distanceToNextPoint = Vector3.Distance(transform.position, _pathPoints[_destinationPoint]);
+        if (distanceToNextPoint <= _pointTolerance)
             IncrementPoint();
-        }
+
+        Vector2 position = new Vector2(transform.position.x, transform.position.z);
+        Vector2 destination = new Vector2(_pathPoints[_destinationPoint].x, _pathPoints[_destinationPoint].z);
+        Vector2 direction2 = (destination - position).normalized;
+        Vector3 direction = new Vector3(direction2.x, 0, direction2.y);
+
+        _rigidbody.velocity = direction * Speed * Time.deltaTime;
     }
 
     private void OnDrawGizmosSelected()
@@ -112,30 +113,27 @@ public class OrbitTargetAtDistanceBehaviour : MonoBehaviour
 
     private void IncrementPoint()
     {
-        // Set the destination to the current point
-        _agent.SetDestination(_pathPoints[_destinationPoint]);
-
         // Increment to the next point in the array, wrapping around to zero
-        _destinationPoint = (_destinationPoint + 1) % _numberOfPoints;
+        _destinationPoint = (_destinationPoint + 1) % NumberOfPoints;
     }
 
     private Vector3[] GetPointsOnCircle()
     {
         // Array to hold points
-        Vector3[] pointArray = new Vector3[_numberOfPoints];
+        Vector3[] pointArray = new Vector3[NumberOfPoints];
 
         // Store angle in radians between each point
-        float angleIncrement = (2 * Mathf.PI) / _numberOfPoints;
+        float angleIncrement = (2 * Mathf.PI) / NumberOfPoints;
         float angle = 0;
 
         // Create points evenly spaced around the object
-        for (int i = 0; i < _numberOfPoints; i++)
+        for (int i = 0; i < NumberOfPoints; i++)
         {
             // Get point on unit circle
             pointArray[i] = new Vector3(Mathf.Sin(angle), 0, Mathf.Cos(angle));
 
             // Scale point up to orbit distance
-            pointArray[i] *= _orbitDistance;
+            pointArray[i] *= OrbitDistance;
 
             // Offset point to target position
             pointArray[i] += Target.position;
