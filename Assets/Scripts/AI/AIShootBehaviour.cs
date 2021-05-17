@@ -11,8 +11,8 @@ public class AIShootBehaviour : MonoBehaviour
 
     [SerializeField] private ProjectileSpawnerBehaviour _spawner = new ProjectileSpawnerBehaviour();
 
-    private void Start()
+    private void Update()
     {
-        
+        _spawner.Fire();
     }
 }
