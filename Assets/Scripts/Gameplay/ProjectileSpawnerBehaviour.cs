@@ -10,7 +10,7 @@ public class ProjectileSpawnerBehaviour
     public Transform[] SpawnPositions { get => _spawnPositions; set => _spawnPositions = value; }
 
     [Tooltip("Projectile to be fired")]
-    [SerializeField] private GameObject _projectilePrefab;
+    [SerializeField] private GameObject _projectilePrefab = null;
     public GameObject ProjectilePrefab { get => _projectilePrefab; set => _projectilePrefab = value; }
 
     [Tooltip("Time in seconds to delay between shots")]
@@ -26,7 +26,7 @@ public class ProjectileSpawnerBehaviour
     public virtual List<GameObject> Fire()
     {
         // Ensure adequate time has passed to fire a shot
-        if (_lastFireTime <= Time.time + FireDelay)
+        if (Time.time <= _lastFireTime + FireDelay)
             return null;
 
         // Update the timer
