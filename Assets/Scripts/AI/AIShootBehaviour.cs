@@ -56,7 +56,7 @@ public class AIShootBehaviour : MonoBehaviour
 
             for (int i = 0; i < FireLocations.Length; i++)
             {
-                GameObject bullet = Instantiate(_bulletPrefab, FireLocations[i], Quaternion.identity);
+                GameObject bullet = Instantiate(_bulletPrefab, FireLocations[i], transform.rotation);
 
                 if (Target != null)
                     bullet.transform.LookAt(Target);
