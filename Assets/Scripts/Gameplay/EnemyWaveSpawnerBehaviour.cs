@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class EnemyWaveSpawnerBehaviour : MonoBehaviour
 {
+    [Tooltip("Should enemies be allowed to spawn?")]
     [SerializeField] private bool _allowSpawning = true;
     public bool AllowSpawning { get => _allowSpawning; set => _allowSpawning = value; }
 
+    [Tooltip("Enemies to spawn")]
     [SerializeField] private GameObject[] _enemyPrefabs = null;
+
+    [Tooltip("Target to pass to enemies")]
     [SerializeField] private Transform _target = null;
 
     [Tooltip("How long to delay between each enemy spawn in a wave")]
@@ -49,7 +53,6 @@ public class EnemyWaveSpawnerBehaviour : MonoBehaviour
     /// </summary>
     /// <param name="index">Which enemy to spawn</param>
     /// <param name="numEnemies">How many to spawn</param>
-    /// <returns></returns>
     private IEnumerator SpawnIndexWave(int index, int numEnemies)
     {
         for (int i = 0; i < numEnemies; i++)
@@ -63,7 +66,6 @@ public class EnemyWaveSpawnerBehaviour : MonoBehaviour
     /// Spawns a wave of random enemies from EnemyPrefabs
     /// </summary>
     /// <param name="numEnemies">How many to spawn</param>
-    /// <returns></returns>
     private IEnumerator SpawnRandomWave(int numEnemies)
     {
         for (int i = 0; i < numEnemies; i++)
