@@ -5,18 +5,45 @@ using UnityEngine.AI;
 using UnityEditor;
 
 [RequireComponent(typeof(PursueTargetBehaviour))]
-public class RamEnemyBehaviour : MonoBehaviour
+public class RamEnemyBehaviour : EnemyBehaviour
 {
-    public Transform Target;
+    public override Transform Target 
+    { 
+        get => base.Target;
+        set
+        {
+            base.Target = value;
+            _pursueTargetBehaviour.Target = base.Target;
+        }
+    }
 
     private NavMeshAgent _agent;
     private PursueTargetBehaviour _pursueTargetBehaviour;
 
-    private void Start()
+    public override void TakeDamage(float damage)
+    {
+        // Decrease health
+        Health -= damage;
+
+        // If health <= 0 destroy this object
+        if (Health <= 0)
+            Destroy(this.gameObject);
+    }
+
+    private void OnEnable()
     {
         _agent = GetComponent<NavMeshAgent>();
         _pursueTargetBehaviour = GetComponent<PursueTargetBehaviour>();
         _pursueTargetBehaviour.Target = Target;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        // If the collided object's layer is in _collideWith
+        if (((1 << collision.gameObject.layer) & CollideWith) != 0)
+        {
+            // Do things to the collided object
+        }
     }
 }
 

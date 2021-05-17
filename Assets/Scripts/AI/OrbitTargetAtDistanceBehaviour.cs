@@ -8,7 +8,8 @@ using UnityEditor;
 public class OrbitTargetAtDistanceBehaviour : MonoBehaviour
 {
     [Tooltip("Target to orbit")]
-    public Transform Target;
+    [SerializeField] private Transform _target;
+    public Transform Target { get => _target; set => _target = value; }
 
     [Tooltip("How many points around the target should this agent use for pathfinding. More points means a more accurate circle.")]
     [Min(3)]
@@ -28,13 +29,18 @@ public class OrbitTargetAtDistanceBehaviour : MonoBehaviour
 
     private void OnEnable()
     {
+        _agent = GetComponent<NavMeshAgent>();
+
         // Prevent the agent from autobraking as it approaches points to make the orbit smoother
         if (_agent)
             _agent.autoBraking = false;
 
-        // Calculate orbit points and set destination to the closest one
-        _pathPoints = GetPointsOnCircle();
-        SetDestinationToClosestPoint();
+        if (Target)
+        {
+            // Calculate orbit points and set destination to the closest one
+            _pathPoints = GetPointsOnCircle();
+            SetDestinationToClosestPoint();
+        }
     }
 
     private void OnDisable()
@@ -42,23 +48,14 @@ public class OrbitTargetAtDistanceBehaviour : MonoBehaviour
         // Reenable autobraking for other behaviours
         _agent.autoBraking = true;
 
-        _agent.ResetPath();
-    }
-
-    private void Start()
-    {
-        _agent = GetComponent<NavMeshAgent>();
-
-        // Prevent the agent from autobraking as it approaches points to make the orbit smoother
-        _agent.autoBraking = false;
-
-        // Calculate orbit points and set destination to the closest one
-        _pathPoints = GetPointsOnCircle();
-        SetDestinationToClosestPoint();
+        _agent?.ResetPath();
     }
 
     private void Update()
     {
+        if (Target == null)
+            return;
+
         // If the remaining distance to the next point is within tolerance 
         //  and the agent is not currently calculating a path, 
         //  go to the next point in the orbit
