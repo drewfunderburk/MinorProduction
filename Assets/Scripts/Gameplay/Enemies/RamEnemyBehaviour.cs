@@ -26,6 +26,12 @@ public class RamEnemyBehaviour : EnemyBehaviour
         _pursueTargetBehaviour = GetComponent<PursueTargetBehaviour>();
         _pursueTargetBehaviour.Target = Target;
     }
+
+    protected override void OnCollisionEnter(Collision collision)
+    {
+        base.OnCollisionEnter(collision);
+        Destroy(this.gameObject);
+    }
 }
 
 [CustomEditor(typeof(RamEnemyBehaviour))]
