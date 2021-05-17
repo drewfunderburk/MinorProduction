@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(PursueTargetBehaviour))]
 [RequireComponent(typeof(OrbitTargetAtDistanceBehaviour))]
 public class OrbitEnemyBehaviour : EnemyBehaviour
@@ -21,16 +23,21 @@ public class OrbitEnemyBehaviour : EnemyBehaviour
     [Tooltip("Distance at which to switch from Pursue to Orbit")]
     [SerializeField] private float _transitionDistance = 15;
 
+    private NavMeshAgent _agent;
     private PursueTargetBehaviour _pursueBehaviour;
     private OrbitTargetAtDistanceBehaviour _orbitBehaviour;
 
     private void OnEnable()
     {
+        _agent = GetComponent<NavMeshAgent>();
         _pursueBehaviour = GetComponent<PursueTargetBehaviour>();
         _orbitBehaviour = GetComponent<OrbitTargetAtDistanceBehaviour>();
 
         _pursueBehaviour.Target = Target;
         _orbitBehaviour.Target = Target;
+
+        // Set orbit speed to be the NavMeshAgent speed for consistency
+        _orbitBehaviour.Speed = _agent.speed * 50;
     }
 
     private void Update()
