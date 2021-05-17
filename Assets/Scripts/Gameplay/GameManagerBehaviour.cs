@@ -9,13 +9,17 @@ public class GameManagerBehaviour : MonoBehaviour
     // Singleton instance of this class
     public static GameManagerBehaviour Instance;
 
+    [Tooltip("The game's current level")]
+    [SerializeField] private int _level = 0;
+    public int Level { get => _level; set => _level = value; }
+
     // Curve for how quickly enemies spawn per level
-    [SerializeField] private AnimationCurve _enemySpawnRate;
-    public AnimationCurve EnemySpawnRate { get => _enemySpawnRate; }
+    [SerializeField] private AnimationCurve _enemySpawnDelay = null;
+    public AnimationCurve EnemySpawnDelay { get => _enemySpawnDelay; }
 
     // Curve for how many enemies spawn per level
-    [SerializeField] private AnimationCurve _enemySpawnCount;
-    public AnimationCurve EnemySpawnCount { get => _enemySpawnCount; set => _enemySpawnCount = value; }
+    [SerializeField] private AnimationCurve _enemySpawnCount = null;
+    public AnimationCurve EnemySpawnCount { get => _enemySpawnCount; }
 
     public UnityEvent OnLevelEnd;
 
@@ -23,7 +27,7 @@ public class GameManagerBehaviour : MonoBehaviour
     public bool IsGameOver { get { return _isGameOver; } }
 
 
-    private void Start()
+    private void Awake()
     {
         /* Singleton
          * 

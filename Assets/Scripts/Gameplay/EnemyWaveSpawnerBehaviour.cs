@@ -14,14 +14,14 @@ public class EnemyWaveSpawnerBehaviour : MonoBehaviour
     [Tooltip("Target to pass to enemies")]
     [SerializeField] private Transform _target = null;
 
-    [Tooltip("How long to delay between each enemy spawn in a wave")]
-    [SerializeField] private float _enemySpawnDelay = 0.2f;
+    // How long between each individual spawn in a wave
+    private float _enemySpawnDelay = 0.5f;
 
-    private List<EnemyBehaviour> _enemies = null;
+    private List<EnemyBehaviour> _enemies = new List<EnemyBehaviour>();
 
     // These will need to be hooked into a difficulty curve
     private int _spawnCount = 5;
-    private int _spawnDelay = 3;
+    private float _spawnDelay = 3;
 
     private float _spawnTimer = 0;
 
@@ -44,6 +44,11 @@ public class EnemyWaveSpawnerBehaviour : MonoBehaviour
     /// </summary>
     private void SpawnRandomEnemy()
     {
+        if (_enemyPrefabs.Length == 1)
+        {
+            SpawnEnemyAtIndex(0);
+            return;
+        }
         int index = Random.Range(0, _enemyPrefabs.Length - 1);
         SpawnEnemyAtIndex(index);
     }
@@ -75,8 +80,23 @@ public class EnemyWaveSpawnerBehaviour : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Evaluate difficulty curves from GameManagerBehaviour and cache them
+    /// </summary>
+    private void EvaluateDifficultyCurves()
+    {
+        int level = GameManagerBehaviour.Instance.Level;
+        AnimationCurve spawnDelayCurve = GameManagerBehaviour.Instance.EnemySpawnDelay;
+        AnimationCurve spawnCountCurve = GameManagerBehaviour.Instance.EnemySpawnCount;
+
+        _spawnDelay = spawnDelayCurve.Evaluate(level);
+        _spawnCount = Mathf.RoundToInt(spawnCountCurve.Evaluate(level));
+    }
+
     private void Start()
     {
+        EvaluateDifficultyCurves();
+
         _spawnTimer = _spawnDelay;
         _enemies = new List<EnemyBehaviour>();
     }
@@ -88,6 +108,8 @@ public class EnemyWaveSpawnerBehaviour : MonoBehaviour
         if (AllowSpawning && _spawnTimer > _spawnDelay)
         {
             _spawnTimer = 0;
+            EvaluateDifficultyCurves();
+            _enemySpawnDelay = (_spawnDelay / _spawnCount) / 2;
             StartCoroutine(SpawnRandomWave(_spawnCount));
         }
     }
