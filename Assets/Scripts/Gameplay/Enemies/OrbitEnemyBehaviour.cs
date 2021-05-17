@@ -24,16 +24,6 @@ public class OrbitEnemyBehaviour : EnemyBehaviour
     private PursueTargetBehaviour _pursueBehaviour;
     private OrbitTargetAtDistanceBehaviour _orbitBehaviour;
 
-    public override void TakeDamage(float damage)
-    {
-        // Decrease health
-        Health -= damage;
-
-        // If health <= 0 destroy this object
-        if (Health <= 0)
-            Destroy(this.gameObject);
-    }
-
     private void OnEnable()
     {
         _pursueBehaviour = GetComponent<PursueTargetBehaviour>();
@@ -56,15 +46,6 @@ public class OrbitEnemyBehaviour : EnemyBehaviour
         {
             _pursueBehaviour.enabled = true;
             _orbitBehaviour.enabled = false;
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        // If the collided object's layer is in _collideWith
-        if (((1 << collision.gameObject.layer) & CollideWith) != 0)
-        {
-            // Do things to the collided object
         }
     }
 }

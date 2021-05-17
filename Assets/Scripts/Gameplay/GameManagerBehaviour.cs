@@ -8,10 +8,20 @@ public class GameManagerBehaviour : MonoBehaviour
 {
     // Singleton instance of this class
     public static GameManagerBehaviour Instance;
+
+    // Curve for how quickly enemies spawn per level
+    [SerializeField] private AnimationCurve _enemySpawnRate;
+    public AnimationCurve EnemySpawnRate { get => _enemySpawnRate; }
+
+    // Curve for how many enemies spawn per level
+    [SerializeField] private AnimationCurve _enemySpawnCount;
+    public AnimationCurve EnemySpawnCount { get => _enemySpawnCount; set => _enemySpawnCount = value; }
+
     public UnityEvent OnLevelEnd;
 
     private bool _isGameOver = false;
     public bool IsGameOver { get { return _isGameOver; } }
+
 
     private void Start()
     {
@@ -29,16 +39,25 @@ public class GameManagerBehaviour : MonoBehaviour
             Destroy(this.gameObject);
     }
 
+    /// <summary>
+    /// Invokes the OnLevelEnd event
+    /// </summary>
     public void InvokeOnLevelEnd()
     {
         OnLevelEnd.Invoke();
     }
 
+    /// <summary>
+    /// Restart's the scene with a delay
+    /// </summary>
     public void RestartScene(float delay = 0)
     {
         StartCoroutine(RestartSceneCoroutine(delay));
     }
 
+    /// <summary>
+    /// Coroutine for scene restarting
+    /// </summary>
     private IEnumerator RestartSceneCoroutine(float delay)
     {
         // Wait however long is specified
@@ -48,6 +67,9 @@ public class GameManagerBehaviour : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    /// <summary>
+    /// Quit application or exit play mode
+    /// </summary>
     public void QuitGame()
     {
 #if UNITY_EDITOR
