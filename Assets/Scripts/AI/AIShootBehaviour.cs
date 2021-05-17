@@ -5,17 +5,43 @@ using UnityEditor;
 
 public class AIShootBehaviour : MonoBehaviour
 {
+    [Tooltip("What to shoot at. Leave null to fire straight ahead.")]
+    [SerializeField] private Transform _target;
+    public Transform Target { get => _target; set => _target = value; }
+
     [Tooltip("Object to spawn as a projectile")]
-    [SerializeField] private GameObject _bulletPrefab;
+    [SerializeField] private GameObject _bulletPrefab = null;
 
     [Tooltip("Where to fire the projectile from")]
-    [SerializeField] private Vector3[] _fireLocations;
-    public Vector3[] FireLocations { get { return _fireLocations; } }
+    [SerializeField] private Vector3[] _fireLocationOffsets = null;
+    public Vector3[] FireLocationOffsets { get { return _fireLocationOffsets; } set { _fireLocationOffsets = value; } }
 
     [Tooltip("Delay in seconds between shots")]
     [SerializeField] private float _fireDelay = 1f;
 
     private float _fireTimer = 0;
+
+    private Vector3[] _fireLocations = null;
+    public Vector3[] FireLocations { get => _fireLocations; private set => _fireLocations = value; }
+
+    public void UpdateFireLocations()
+    {
+        FireLocations = new Vector3[FireLocationOffsets.Length];
+
+        for (int i = 0; i < FireLocations.Length; i++)
+        {
+            // Get relative offset position
+            Vector3 x = transform.right * FireLocationOffsets[i].x;
+            Vector3 y = transform.up * FireLocationOffsets[i].y;
+            Vector3 z = transform.forward * FireLocationOffsets[i].z;
+            FireLocations[i] = x + y + z;
+        }
+    }
+
+    private void Start()
+    {
+        UpdateFireLocations();
+    }
 
     private void Update()
     {
@@ -28,10 +54,12 @@ public class AIShootBehaviour : MonoBehaviour
             // Reset timer
             _fireTimer = 0;
 
-            for (int i = 0; i < _fireLocations.Length; i++)
+            for (int i = 0; i < FireLocations.Length; i++)
             {
-                Vector3 position = (transform.position + transform.forward) + _fireLocations[i];
-                GameObject bullet = Instantiate(_bulletPrefab, position, Quaternion.identity);
+                GameObject bullet = Instantiate(_bulletPrefab, FireLocations[i], Quaternion.identity);
+
+                if (Target != null)
+                    bullet.transform.LookAt(Target);
             }
         }
     }
@@ -40,34 +68,17 @@ public class AIShootBehaviour : MonoBehaviour
     {
         if (!enabled)
             return;
-
-        // Draw wire spheres at each of the Fire Locations
-        for (int i = 0; i < _fireLocations.Length; i++)
-        {
-            Gizmos.color = Color.green;
-            Handles.Label((transform.position + transform.forward) + _fireLocations[i], "Fire location " + i);
-            Gizmos.DrawWireSphere((transform.position + transform.forward) + _fireLocations[i], 0.2f);
-        }
-    }
-}
-
-[CustomEditor(typeof(AIShootBehaviour))]
-public class AIShootBehaviourEditor : Editor
-{
-    private void OnSceneGUI()
-    {
-        AIShootBehaviour script = target as AIShootBehaviour;
-
-        if (!script.enabled)
+        if (FireLocations == null)
             return;
 
-        // Create position handles for each of the Fire Locations to allow them to be moved in the scene view
-        for (int i = 0; i < script.FireLocations.Length; i++)
+        UpdateFireLocations();
+
+        // Draw wire spheres at each of the Fire Locations
+        for (int i = 0; i < FireLocations.Length; i++)
         {
-            EditorGUI.BeginChangeCheck();
-            Vector3 newPosition = Handles.PositionHandle((script.transform.localPosition + script.transform.forward) + script.FireLocations[i], Quaternion.identity);
-            if (EditorGUI.EndChangeCheck())
-                script.FireLocations[i] = (newPosition - script.transform.position - script.transform.forward);
+            Gizmos.color = Color.green;
+            Handles.Label(FireLocations[i], "Fire location " + i);
+            Gizmos.DrawWireSphere(FireLocations[i], 0.2f);
         }
     }
 }

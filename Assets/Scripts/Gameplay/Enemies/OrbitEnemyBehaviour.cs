@@ -5,9 +5,18 @@ using UnityEditor;
 
 [RequireComponent(typeof(PursueTargetBehaviour))]
 [RequireComponent(typeof(OrbitTargetAtDistanceBehaviour))]
-public class OrbitEnemyBehaviour : MonoBehaviour
+public class OrbitEnemyBehaviour : EnemyBehaviour
 {
-    public Transform Target;
+    public override Transform Target 
+    { 
+        get => base.Target;
+        set
+        {
+            base.Target = value;
+            _pursueBehaviour.Target = base.Target;
+            _orbitBehaviour.Target = base.Target;
+        }
+    }
 
     [Tooltip("Distance at which to switch from Pursue to Orbit")]
     [SerializeField] private float _transitionDistance = 15;
@@ -15,7 +24,17 @@ public class OrbitEnemyBehaviour : MonoBehaviour
     private PursueTargetBehaviour _pursueBehaviour;
     private OrbitTargetAtDistanceBehaviour _orbitBehaviour;
 
-    private void Start()
+    public override void TakeDamage(float damage)
+    {
+        // Decrease health
+        Health -= damage;
+
+        // If health <= 0 destroy this object
+        if (Health <= 0)
+            Destroy(this.gameObject);
+    }
+
+    private void OnEnable()
     {
         _pursueBehaviour = GetComponent<PursueTargetBehaviour>();
         _orbitBehaviour = GetComponent<OrbitTargetAtDistanceBehaviour>();
@@ -37,6 +56,15 @@ public class OrbitEnemyBehaviour : MonoBehaviour
         {
             _pursueBehaviour.enabled = true;
             _orbitBehaviour.enabled = false;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        // If the collided object's layer is in _collideWith
+        if (((1 << collision.gameObject.layer) & CollideWith) != 0)
+        {
+            // Do things to the collided object
         }
     }
 }
