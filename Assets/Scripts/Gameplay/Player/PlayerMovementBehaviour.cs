@@ -5,8 +5,9 @@ using UnityEngine;
 public class PlayerMovementBehaviour : CombatActor
 {
     private Rigidbody _rigidbody;
+    private Transform _transform;
     private Vector3 _velocity;
-    [Tooltip("The Speed at Which The Player Reaches the Desired Rotation During Movement")]
+    [Tooltip("The Speed at Which The Player Will Bank")]
     [SerializeField]
     private float _bankingSpeed = 1;
     [Tooltip("The Speed at Which The Player Will Move")]
@@ -15,28 +16,44 @@ public class PlayerMovementBehaviour : CombatActor
     [Tooltip("The Final Rotation the Player Will Reach During Movement in Degrees")]
     [SerializeField]
     private Vector3 _desiredRotation;
-    private Vector3 _currentRotation;
 
     // Start is called before the first frame update
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _currentRotation = _rigidbody.rotation.eulerAngles;
+        _transform = GetComponent<Transform>();
     }
 
     public void Move(Vector3 direction)
     {
         _velocity = direction * _moveSpeed * Time.deltaTime;
-        Vector3 Rotation = Vector3.Lerp(_currentRotation, _desiredRotation, 1 * _bankingSpeed);
 
-        if (direction.x > 0 && _currentRotation.z < _desiredRotation.z)
-            transform.Rotate(-Rotation);
-        else if (direction.x < 0 && _currentRotation.z < _desiredRotation.z)
-            transform.Rotate(Rotation);
+        //variable to hold how much this player will be rotating in this frame
+        float rotateToThisPoint = 0;
 
-
-        _currentRotation = transform.rotation.eulerAngles;
-    }
+        //depending on the input the player has provided, rotate in different directions
+        switch(direction.x)
+        {
+            //If the D key is pressed
+            case 1:
+                //Rotate the player clockwise
+                rotateToThisPoint -= _bankingSpeed;
+                break;
+                //If the A key is pressed
+            case -1:
+                //Rotate the player CounterClockwise
+                rotateToThisPoint += _bankingSpeed;
+                break;
+                //If no key is pressed we should resort back to the default orientation
+            case 0:
+                rotateToThisPoint = 0;
+                break;
+        }
+        //Clamp to make sure the player doesnt rotate too far
+        rotateToThisPoint = Mathf.Clamp(rotateToThisPoint, -_desiredRotation.z, _desiredRotation.z);
+        //Perform the actual rotation scaled by time
+        transform.rotation = new Quaternion(0, 0, Mathf.Lerp(transform.rotation.z, rotateToThisPoint, _bankingSpeed), 1);
+     }
 
     // Update is called once per frame
     void FixedUpdate()
