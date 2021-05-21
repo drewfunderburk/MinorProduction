@@ -43,6 +43,9 @@ public class StrafeBehaviour : MonoBehaviour
         Gizmos.DrawWireSphere(_rightPosition, 0.5f);
     }
 
+    /// <summary>
+    /// Set the left and right strafe positions for this object based on it's z position
+    /// </summary>
     private void SetStrafePositions()
     {
         // Cache camera
@@ -75,6 +78,9 @@ public class StrafeBehaviour : MonoBehaviour
         _rightPosition = rightWorldPosition.position;
     }
 
+    /// <summary>
+    /// Set the destination to the left or right point based on which is closer
+    /// </summary>
     private void SetDestinationToClosestPoint()
     {
         // Get distances
@@ -86,6 +92,9 @@ public class StrafeBehaviour : MonoBehaviour
         _agent.SetDestination(_destination);
     }
 
+    /// <summary>
+    /// Toggles the destination to the other point
+    /// </summary>
     private void ToggleDestinationPosition()
     {
         // If the destination is set to the left position, swap it to right and vice versa
