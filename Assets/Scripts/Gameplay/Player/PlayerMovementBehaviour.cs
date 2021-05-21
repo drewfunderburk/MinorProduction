@@ -7,12 +7,16 @@ public class PlayerMovementBehaviour : CombatActor
     private Rigidbody _rigidbody;
     private Transform _transform;
     private Vector3 _velocity;
+    private ProjectileSpawnerBehaviour _projectileSpawnerBehaviour;
+
     [Tooltip("The Speed at Which The Player Will Bank")]
     [SerializeField]
     private float _bankingSpeed = 1;
+
     [Tooltip("The Speed at Which The Player Will Move")]
     [SerializeField]
     private float _moveSpeed = 1;
+
     [Tooltip("The Final Rotation the Player Will Reach During Movement in Degrees")]
     [SerializeField]
     private Vector3 _desiredRotation;
@@ -54,6 +58,10 @@ public class PlayerMovementBehaviour : CombatActor
         //Perform the actual rotation scaled by time
         transform.rotation = new Quaternion(0, 0, Mathf.Lerp(transform.rotation.z, rotateToThisPoint, _bankingSpeed), 1);
      }
+    public void Shoot()
+    {
+        _projectileSpawnerBehaviour.Fire();
+    }
 
     // Update is called once per frame
     void FixedUpdate()
