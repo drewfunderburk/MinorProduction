@@ -6,7 +6,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(ArriveAtPointBehaviour))]
 [RequireComponent(typeof(AIShootBehaviour))]
 [RequireComponent(typeof(NavMeshAgent))]
-public class StationaryEnemyBehaviour : MonoBehaviour
+public class StationaryEnemyBehaviour : EnemyBehaviour
 {
     enum State
     {
