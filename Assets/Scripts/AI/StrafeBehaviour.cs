@@ -8,7 +8,6 @@ public class StrafeBehaviour : MonoBehaviour
 {
     [SerializeField] private float _straftPadding = 0;
 
-    private float _strafeZValue = 0;
     private Vector3 _leftPosition = new Vector3();
     private Vector3 _rightPosition = new Vector3();
     private Vector3 _destination;
@@ -17,7 +16,6 @@ public class StrafeBehaviour : MonoBehaviour
     private void OnEnable()
     {
         _agent = GetComponent<NavMeshAgent>();
-        _strafeZValue = transform.position.z;
 
         // Don't update the agent's rotation so that it can be controlled by a shoot behaviour
         _agent.updateRotation = false;
@@ -38,9 +36,13 @@ public class StrafeBehaviour : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
+        if (!enabled)
+            return;
+
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(_leftPosition, 0.5f);
         Gizmos.DrawWireSphere(_rightPosition, 0.5f);
+        Gizmos.DrawLine(_leftPosition, _rightPosition);
     }
 
     /// <summary>
@@ -60,8 +62,8 @@ public class StrafeBehaviour : MonoBehaviour
         Vector3 rightPosition = cam.ScreenToWorldPoint(rightScreenPosition);
 
         // Apply Z Position
-        leftPosition.z = _strafeZValue;
-        rightPosition.z = _strafeZValue;
+        leftPosition.z = transform.position.z;
+        rightPosition.z = transform.position.z;
 
         // Apply padding
         leftPosition.x += _straftPadding;
