@@ -7,6 +7,7 @@ public class PlayerMovementBehaviour : CombatActor
     private Rigidbody _rigidbody;
     private Transform _transform;
     private Vector3 _velocity;
+    [SerializeField]
     private ProjectileSpawnerBehaviour _projectileSpawnerBehaviour;
 
     [Tooltip("The Speed at Which The Player Will Bank")]

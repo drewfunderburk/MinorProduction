@@ -27,12 +27,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Shoot"",
-                    ""type"": ""Button"",
+                    ""name"": ""Fire"",
+                    ""type"": ""Value"",
                     ""id"": ""c2e65549-5541-4d81-b2cf-54acd2a1317a"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -93,12 +93,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""6bd3ecb8-193e-4741-a813-548efcc19dc4"",
+                    ""id"": ""9da9d73f-bb18-4073-bee3-f9a168fd1acf"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Shoot"",
+                    ""action"": ""Fire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -110,7 +110,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         // Ship
         m_Ship = asset.FindActionMap("Ship", throwIfNotFound: true);
         m_Ship_Movement = m_Ship.FindAction("Movement", throwIfNotFound: true);
-        m_Ship_Shoot = m_Ship.FindAction("Shoot", throwIfNotFound: true);
+        m_Ship_Fire = m_Ship.FindAction("Fire", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -161,13 +161,13 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Ship;
     private IShipActions m_ShipActionsCallbackInterface;
     private readonly InputAction m_Ship_Movement;
-    private readonly InputAction m_Ship_Shoot;
+    private readonly InputAction m_Ship_Fire;
     public struct ShipActions
     {
         private @PlayerControls m_Wrapper;
         public ShipActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Ship_Movement;
-        public InputAction @Shoot => m_Wrapper.m_Ship_Shoot;
+        public InputAction @Fire => m_Wrapper.m_Ship_Fire;
         public InputActionMap Get() { return m_Wrapper.m_Ship; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -180,9 +180,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Movement.started -= m_Wrapper.m_ShipActionsCallbackInterface.OnMovement;
                 @Movement.performed -= m_Wrapper.m_ShipActionsCallbackInterface.OnMovement;
                 @Movement.canceled -= m_Wrapper.m_ShipActionsCallbackInterface.OnMovement;
-                @Shoot.started -= m_Wrapper.m_ShipActionsCallbackInterface.OnShoot;
-                @Shoot.performed -= m_Wrapper.m_ShipActionsCallbackInterface.OnShoot;
-                @Shoot.canceled -= m_Wrapper.m_ShipActionsCallbackInterface.OnShoot;
+                @Fire.started -= m_Wrapper.m_ShipActionsCallbackInterface.OnFire;
+                @Fire.performed -= m_Wrapper.m_ShipActionsCallbackInterface.OnFire;
+                @Fire.canceled -= m_Wrapper.m_ShipActionsCallbackInterface.OnFire;
             }
             m_Wrapper.m_ShipActionsCallbackInterface = instance;
             if (instance != null)
@@ -190,9 +190,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
-                @Shoot.started += instance.OnShoot;
-                @Shoot.performed += instance.OnShoot;
-                @Shoot.canceled += instance.OnShoot;
+                @Fire.started += instance.OnFire;
+                @Fire.performed += instance.OnFire;
+                @Fire.canceled += instance.OnFire;
             }
         }
     }
@@ -200,6 +200,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     public interface IShipActions
     {
         void OnMovement(InputAction.CallbackContext context);
-        void OnShoot(InputAction.CallbackContext context);
+        void OnFire(InputAction.CallbackContext context);
     }
 }

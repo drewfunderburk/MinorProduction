@@ -7,7 +7,7 @@ public class InputDelegateBehaviour : MonoBehaviour
 {
     private PlayerControls _playerControls;
     private PlayerMovementBehaviour _playerMovement;
-    // Start is called before the first frame update
+
     [SerializeField]
     private ProjectileSpawnerBehaviour _projectileSpawnerBehaviour;
 
@@ -28,7 +28,7 @@ public class InputDelegateBehaviour : MonoBehaviour
     void Start()
     {
         _playerMovement = GetComponent<PlayerMovementBehaviour>();
-        _playerControls.Ship.Shoot.performed += context => _projectileSpawnerBehaviour.Fire();
+        _playerControls.Ship.Fire.performed += context => _projectileSpawnerBehaviour.Fire();
     }
 
     // Update is called once per frame
