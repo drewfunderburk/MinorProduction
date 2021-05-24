@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7287244517507044241}
   - component: {fileID: 7287244517507044246}
   m_Layer: 0
-  m_Name: Stationary_Enemy
+  m_Name: Enemy_Stationary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: c38f0390eb3c63541b9a7b38a4cca10b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
