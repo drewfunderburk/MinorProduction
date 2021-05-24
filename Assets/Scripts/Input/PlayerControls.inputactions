@@ -14,12 +14,12 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Shoot",
-                    "type": "Button",
+                    "name": "Fire",
+                    "type": "Value",
                     "id": "c2e65549-5541-4d81-b2cf-54acd2a1317a",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "Press"
                 }
             ],
             "bindings": [
@@ -80,12 +80,12 @@
                 },
                 {
                     "name": "",
-                    "id": "6bd3ecb8-193e-4741-a813-548efcc19dc4",
+                    "id": "9da9d73f-bb18-4073-bee3-f9a168fd1acf",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Shoot",
+                    "action": "Fire",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

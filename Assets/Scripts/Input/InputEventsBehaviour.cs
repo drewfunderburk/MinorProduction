@@ -16,13 +16,13 @@ public class InputEventsBehaviour : MonoBehaviour
         _movement = GetComponent<PlayerMovementBehaviour>();
     }
 
-    public void OnMove(InputAction.CallbackContext context)
+    public void OnMovement(InputAction.CallbackContext context)
     {
         _movement.Move(context.ReadValue<Vector2>());
+        _projectileSpawnerBehaviour.Fire();
     }
 
-    void OnShoot(InputAction.CallbackContext context)
+    void OnFire(InputAction.CallbackContext context)
     {
-        _projectileSpawnerBehaviour.Fire();
     }
 }

@@ -7,6 +7,7 @@ public class PlayerMovementBehaviour : CombatActor
     private Rigidbody _rigidbody;
     private Transform _transform;
     private Vector3 _velocity;
+    [SerializeField]
     private ProjectileSpawnerBehaviour _projectileSpawnerBehaviour;
 
     [Tooltip("The Speed at Which The Player Will Bank")]
@@ -33,7 +34,7 @@ public class PlayerMovementBehaviour : CombatActor
         _velocity = direction * _moveSpeed * Time.deltaTime;
 
         //variable to hold how much this player will be rotating in this frame
-        float rotateToThisPoint = 0;
+        float rotate = transform.rotation.eulerAngles.z;
 
         //depending on the input the player has provided, rotate in different directions
         switch(direction.x)
@@ -41,22 +42,22 @@ public class PlayerMovementBehaviour : CombatActor
             //If the D key is pressed
             case 1:
                 //Rotate the player clockwise
-                rotateToThisPoint -= _bankingSpeed;
+                rotate -= Time.deltaTime;
                 break;
                 //If the A key is pressed
             case -1:
                 //Rotate the player CounterClockwise
-                rotateToThisPoint += _bankingSpeed;
+                rotate += Time.deltaTime;
                 break;
                 //If no key is pressed we should resort back to the default orientation
             case 0:
-                rotateToThisPoint = 0;
+                rotate = 0;
                 break;
         }
         //Clamp to make sure the player doesnt rotate too far
-        rotateToThisPoint = Mathf.Clamp(rotateToThisPoint, -_desiredRotation.z, _desiredRotation.z);
+        rotate = Mathf.Clamp(rotate, -_desiredRotation.z * (Mathf.PI/180), _desiredRotation.z * (Mathf.PI / 180));
         //Perform the actual rotation scaled by time
-        transform.rotation = new Quaternion(0, 0, Mathf.Lerp(transform.rotation.z, rotateToThisPoint, _bankingSpeed), 1);
+        transform.rotation = new Quaternion(0, 0, Mathf.Lerp(transform.rotation.z, rotate * -direction.x, Time.deltaTime), 1);
      }
     public void Shoot()
     {
