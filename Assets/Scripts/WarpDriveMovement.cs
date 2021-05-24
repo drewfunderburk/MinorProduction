@@ -10,7 +10,9 @@ public class WarpDriveMovement : MonoBehaviour
     public float timerX = 0f;
     public float timerY = 0f;
 
-    public bool isWarp;
+    public bool alwaysActive;
+
+    private bool isWarp;
 
     // Start is called before the first frame update
     void Start()
@@ -21,8 +23,15 @@ public class WarpDriveMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(alwaysActive == true)
+        {
+            gameObject.transform.localPosition = new Vector3(Mathf.Lerp(MinMax.x, MinMax.y, (Mathf.Sin(timerX) / 2) + 0.5f), Mathf.Lerp(MinMax.x / 2f, MinMax.y / 2f, (Mathf.Sin(timerY + 1) / 2) + 0.5f), 0);
+            gameObject.transform.rotation = new Quaternion(0, 0, Mathf.Lerp(-0.15f, 0.15f, (Mathf.Sin(timerX) / 2) + 0.5f), gameObject.transform.rotation.w);
+            timerX += speed * Time.deltaTime;
+            timerY = timerX;
+        }
 
-        if (Input.GetKeyDown("f"))
+        if (Input.GetKeyDown("f") && alwaysActive == false)
         {
             isWarp = !isWarp;
         }
@@ -36,7 +45,7 @@ public class WarpDriveMovement : MonoBehaviour
 
     public void warpMovement()
     {
-        gameObject.transform.position = new Vector3(Mathf.Lerp(MinMax.x, MinMax.y, (Mathf.Sin(timerX)/2) + 0.5f), Mathf.Lerp(MinMax.x/2f, MinMax.y/2f, (Mathf.Sin(timerY + 1) / 2) + 0.5f), 0);
+        gameObject.transform.localPosition = new Vector3(Mathf.Lerp(MinMax.x, MinMax.y, (Mathf.Sin(timerX)/2) + 0.5f), Mathf.Lerp(MinMax.x/2f, MinMax.y/2f, (Mathf.Sin(timerY + 1) / 2) + 0.5f), 0);
         gameObject.transform.rotation = new Quaternion(0, 0, Mathf.Lerp(-0.15f, 0.15f, (Mathf.Sin(timerX) / 2) + 0.5f), gameObject.transform.rotation.w);
         timerX += speed * Time.deltaTime;
         timerY = timerX;

@@ -29,8 +29,10 @@ public class CameraMovement : MonoBehaviour
 
         warpPos = warpCam.transform.position;
         warpRot = warpCam.transform.rotation;
-
-        iniFOV = GetComponent<Camera>().fieldOfView;
+        if (GetComponent<Camera>())
+        {
+            iniFOV = GetComponent<Camera>().fieldOfView;
+        }
 
     }
 
@@ -41,7 +43,7 @@ public class CameraMovement : MonoBehaviour
             activePlanet.GetComponent<RandomizePlanet>().Generate();
         }
 
-        if (Input.GetKeyDown("w"))
+        if (Input.GetKeyDown("f"))
         {
             ToggleWarp();
         }
@@ -72,10 +74,16 @@ public class CameraMovement : MonoBehaviour
             }
         }
 
-        GetComponent<Camera>().fieldOfView = Mathf.SmoothStep(iniFOV, camZoomFOV, lerpTime);
-        transform.position = new Vector3(Mathf.SmoothStep(iniPos.x, warpPos.x, lerpTime), Mathf.SmoothStep(iniPos.y, warpPos.y, lerpTime), Mathf.SmoothStep(iniPos.z, warpPos.z, lerpTime));
-        transform.rotation = new Quaternion(Mathf.SmoothStep(iniRot.x, warpRot.x, lerpTime), Mathf.SmoothStep(iniRot.y, warpRot.y, lerpTime), Mathf.SmoothStep(iniRot.z, warpRot.z, lerpTime), Mathf.SmoothStep(iniRot.w, warpRot.w, lerpTime));
+        if (GetComponent<Camera>())
+        {
+            GetComponent<Camera>().fieldOfView = Mathf.SmoothStep(iniFOV, camZoomFOV, lerpTime);
+        }
 
+        if (lerpTime < 1f || lerpTime > 0)
+        {
+            transform.position = new Vector3(Mathf.SmoothStep(iniPos.x, warpPos.x, lerpTime), Mathf.SmoothStep(iniPos.y, warpPos.y, lerpTime), Mathf.SmoothStep(iniPos.z, warpPos.z, lerpTime));
+            transform.rotation = new Quaternion(Mathf.SmoothStep(iniRot.x, warpRot.x, lerpTime), Mathf.SmoothStep(iniRot.y, warpRot.y, lerpTime), Mathf.SmoothStep(iniRot.z, warpRot.z, lerpTime), Mathf.SmoothStep(iniRot.w, warpRot.w, lerpTime));
+        }
     }
 
     void SpoolUp()
