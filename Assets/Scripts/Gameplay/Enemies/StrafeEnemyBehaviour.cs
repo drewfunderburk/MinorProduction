@@ -36,6 +36,7 @@ public class StrafeEnemyBehaviour : EnemyBehaviour
         _lookAtTarget.enabled = false;
         _arriveBehaviour.enabled = true;
 
+        _lookAtTarget.Target = Target;
         _arriveBehaviour.TargetPosition = GetRandomPositionInView();
     }
 
