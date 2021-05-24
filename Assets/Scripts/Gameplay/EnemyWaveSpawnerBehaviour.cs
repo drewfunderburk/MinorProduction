@@ -49,7 +49,7 @@ public class EnemyWaveSpawnerBehaviour : MonoBehaviour
             SpawnEnemyAtIndex(0);
             return;
         }
-        int index = Random.Range(0, _enemyPrefabs.Length - 1);
+        int index = Random.Range(0, _enemyPrefabs.Length);
         SpawnEnemyAtIndex(index);
     }
 
