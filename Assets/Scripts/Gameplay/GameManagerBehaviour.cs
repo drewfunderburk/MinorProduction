@@ -42,44 +42,4 @@ public class GameManagerBehaviour : MonoBehaviour
         else if (Instance != this)
             Destroy(this.gameObject);
     }
-
-    /// <summary>
-    /// Invokes the OnLevelEnd event
-    /// </summary>
-    public void InvokeOnLevelEnd()
-    {
-        OnLevelEnd.Invoke();
-    }
-
-    /// <summary>
-    /// Restart's the scene with a delay
-    /// </summary>
-    public void RestartScene(float delay = 0)
-    {
-        StartCoroutine(RestartSceneCoroutine(delay));
-    }
-
-    /// <summary>
-    /// Coroutine for scene restarting
-    /// </summary>
-    private IEnumerator RestartSceneCoroutine(float delay)
-    {
-        // Wait however long is specified
-        yield return new WaitForSeconds(delay);
-
-        // Reload the active scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
-    /// <summary>
-    /// Quit application or exit play mode
-    /// </summary>
-    public void QuitGame()
-    {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-         Application.Quit();
-#endif
-    }
 }
