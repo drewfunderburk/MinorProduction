@@ -7,6 +7,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(ArriveAtPointBehaviour))]
 [RequireComponent(typeof(StrafeBehaviour))]
 [RequireComponent(typeof(AIShootBehaviour))]
+[RequireComponent(typeof(LookAtTargetBehaviour))]
 public class StrafeEnemyBehaviour : EnemyBehaviour
 {
     enum State
@@ -19,6 +20,7 @@ public class StrafeEnemyBehaviour : EnemyBehaviour
     private ArriveAtPointBehaviour _arriveBehaviour;
     private StrafeBehaviour _strafeBehaviour;
     private AIShootBehaviour _shootBehaviour;
+    private LookAtTargetBehaviour _lookAtTarget;
     private NavMeshAgent _agent;
 
     private void Start()
@@ -26,12 +28,15 @@ public class StrafeEnemyBehaviour : EnemyBehaviour
         _arriveBehaviour = GetComponent<ArriveAtPointBehaviour>();
         _strafeBehaviour = GetComponent<StrafeBehaviour>();
         _shootBehaviour = GetComponent<AIShootBehaviour>();
+        _lookAtTarget = GetComponent<LookAtTargetBehaviour>();
         _agent = GetComponent<NavMeshAgent>();
 
         _strafeBehaviour.enabled = false;
         _shootBehaviour.enabled = false;
+        _lookAtTarget.enabled = false;
         _arriveBehaviour.enabled = true;
 
+        _lookAtTarget.Target = Target;
         _arriveBehaviour.TargetPosition = GetRandomPositionInView();
     }
 
@@ -45,6 +50,7 @@ public class StrafeEnemyBehaviour : EnemyBehaviour
                 _arriveBehaviour.enabled = false;
                 _shootBehaviour.enabled = true;
                 _strafeBehaviour.enabled = true;
+                _lookAtTarget.enabled = true;
             }
         }
     }

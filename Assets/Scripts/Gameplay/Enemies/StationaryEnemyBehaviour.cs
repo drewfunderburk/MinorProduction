@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(ArriveAtPointBehaviour))]
 [RequireComponent(typeof(AIShootBehaviour))]
+[RequireComponent(typeof(LookAtTargetBehaviour))]
 [RequireComponent(typeof(NavMeshAgent))]
 public class StationaryEnemyBehaviour : EnemyBehaviour
 {
@@ -22,6 +23,7 @@ public class StationaryEnemyBehaviour : EnemyBehaviour
 
     private ArriveAtPointBehaviour _arriveBehaviour;
     private AIShootBehaviour _shootBehaviour;
+    private LookAtTargetBehaviour _lookAtTarget;
     private NavMeshAgent _agent;
 
     private float _newPositionTimer = 0;
@@ -33,8 +35,13 @@ public class StationaryEnemyBehaviour : EnemyBehaviour
     {
         _arriveBehaviour = GetComponent<ArriveAtPointBehaviour>();
         _shootBehaviour = GetComponent<AIShootBehaviour>();
+        _lookAtTarget = GetComponent<LookAtTargetBehaviour>();
         _agent = GetComponent<NavMeshAgent>();
 
+        _shootBehaviour.enabled = false;
+        _lookAtTarget.enabled = false;
+
+        _lookAtTarget.Target = Target;
         _arriveBehaviour.TargetPosition = GetRandomPositionInView();
 
         _newPositionDelay = Random.Range(_newPositionMedianDelay - _delayOffset, _newPositionMedianDelay + _delayOffset);
@@ -58,6 +65,7 @@ public class StationaryEnemyBehaviour : EnemyBehaviour
             _arriveBehaviour.enabled = true;
             _agent.enabled = true;
             _shootBehaviour.enabled = false;
+            _lookAtTarget.enabled = false;
 
             // Set target
             _arriveBehaviour.TargetPosition = GetRandomPositionInView();
@@ -70,6 +78,7 @@ public class StationaryEnemyBehaviour : EnemyBehaviour
             _currentState = State.SHOOT;
             _arriveBehaviour.enabled = false;
             _agent.enabled = false;
+            _lookAtTarget.enabled = true;
             _shootBehaviour.enabled = true;
         }
     }
