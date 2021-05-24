@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Projectile
+  m_Name: ProjectileEnemy
   m_Shader: {fileID: -6465566751694194690, guid: 45629ca71e6d5594cbd36301f2989e62,
     type: 3}
   m_ShaderKeywords: 
@@ -84,7 +84,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_3761E1DD: {r: 0, g: 1.0531378, b: 1.6603774, a: 0}
+    - Color_3761E1DD: {r: 2.1918433, g: 0, b: 2.9960785, a: 0}
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

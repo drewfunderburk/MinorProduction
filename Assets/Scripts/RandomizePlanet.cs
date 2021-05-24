@@ -69,9 +69,9 @@ public class RandomizePlanet : MonoBehaviour
         MatchedColor.g = Mathf.Clamp(1 - GeneratedColor.g, ColorClampMinMax.x, ColorClampMinMax.y);
         MatchedColor.b = Mathf.Clamp(1 - GeneratedColor.b, ColorClampMinMax.x, ColorClampMinMax.y);
 
-        AtmosphereColor.r = Mathf.Clamp(GeneratedColor.r + GeneratedColor.r / 4f, 0, 1);
-        AtmosphereColor.g = Mathf.Clamp(GeneratedColor.g + GeneratedColor.g / 4f, 0, 1);
-        AtmosphereColor.b = Mathf.Clamp(GeneratedColor.b + GeneratedColor.b / 4f, 0, 1);
+        AtmosphereColor.r = Mathf.Clamp(GeneratedColor.r + GeneratedColor.r / 4f, 0, 1) * 2f;
+        AtmosphereColor.g = Mathf.Clamp(GeneratedColor.g + GeneratedColor.g / 4f, 0, 1) * 2f;
+        AtmosphereColor.b = Mathf.Clamp(GeneratedColor.b + GeneratedColor.b / 4f, 0, 1) * 2f;
 
             ChangeSize();
     }
@@ -94,9 +94,9 @@ public class RandomizePlanet : MonoBehaviour
         MatchedColor.g = Mathf.Clamp01(GeneratedColor.g + GeneratedColor.g/2f);
         MatchedColor.b = Mathf.Clamp01(GeneratedColor.b + GeneratedColor.b/2f);
 
-        AtmosphereColor.r = Mathf.Clamp(GeneratedColor.r + GeneratedColor.r / 4f, 0, 1);
-        AtmosphereColor.g = Mathf.Clamp(GeneratedColor.g + GeneratedColor.g / 4f, 0, 1);
-        AtmosphereColor.b = Mathf.Clamp(GeneratedColor.b + GeneratedColor.b / 4f, 0, 1);
+        AtmosphereColor.r = Mathf.Clamp(GeneratedColor.r + GeneratedColor.r / 4f, 0, 1) * 2f;
+        AtmosphereColor.g = Mathf.Clamp(GeneratedColor.g + GeneratedColor.g / 4f, 0, 1) * 2f;
+        AtmosphereColor.b = Mathf.Clamp(GeneratedColor.b + GeneratedColor.b / 4f, 0, 1) * 2f;
             
         ChangeSize();
 
@@ -116,9 +116,9 @@ public class RandomizePlanet : MonoBehaviour
         MatchedColor.g = Mathf.Clamp(Mathf.Sin(1.66f * Mathf.PI * ((degree + 30f) / 360) + 1.53f) + 0.5f, ColorClampMinMax.x, ColorClampMinMax.y);
         MatchedColor.b = Mathf.Clamp(Mathf.Sin(1.66f * Mathf.PI * ((degree + 30f) / 360) + 2.53f) + 0.5f, ColorClampMinMax.x, ColorClampMinMax.y);
 
-        AtmosphereColor.r = Mathf.Clamp(Mathf.Sin(1.66f * Mathf.PI * ((degree - 30f) / 360) + 0.53f) + 0.5f, 0, 1);
-        AtmosphereColor.g = Mathf.Clamp(Mathf.Sin(1.66f * Mathf.PI * ((degree - 30f) / 360) + 1.53f) + 0.5f, 0, 1);
-        AtmosphereColor.b = Mathf.Clamp(Mathf.Sin(1.66f * Mathf.PI * ((degree - 30f) / 360) + 2.53f) + 0.5f, 0, 1);
+        AtmosphereColor.r = Mathf.Clamp(Mathf.Sin(1.66f * Mathf.PI * ((degree - 30f) / 360) + 0.53f) + 0.5f, 0, 1) * 2f;
+        AtmosphereColor.g = Mathf.Clamp(Mathf.Sin(1.66f * Mathf.PI * ((degree - 30f) / 360) + 1.53f) + 0.5f, 0, 1) * 2f;
+        AtmosphereColor.b = Mathf.Clamp(Mathf.Sin(1.66f * Mathf.PI * ((degree - 30f) / 360) + 2.53f) + 0.5f, 0, 1) * 2f;
 
         ChangeSize();
     }
