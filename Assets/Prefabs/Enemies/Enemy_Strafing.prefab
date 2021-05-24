@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2669990292565552546}
   - component: {fileID: 2669990292565552547}
   - component: {fileID: 2669990292565552556}
+  - component: {fileID: 4853863024099094041}
   m_Layer: 0
   m_Name: Enemy_Strafing
   m_TagString: Untagged
@@ -181,6 +182,20 @@ MonoBehaviour:
   _health: 0
   _damage: 0
   _target: {fileID: 0}
+--- !u!114 &4853863024099094041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2669990292565552557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b3287eea1b5cf7479f65e672a6a7f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 0}
+  _rotationSpeed: 1
 --- !u!1 &2960527778302806795
 GameObject:
   m_ObjectHideFlags: 0
