@@ -7,6 +7,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(PursueTargetBehaviour))]
 [RequireComponent(typeof(OrbitTargetAtDistanceBehaviour))]
+[RequireComponent(typeof(AIShootBehaviour))]
 public class OrbitEnemyBehaviour : EnemyBehaviour
 {
     public override Transform Target 
@@ -17,6 +18,7 @@ public class OrbitEnemyBehaviour : EnemyBehaviour
             base.Target = value;
             _pursueBehaviour.Target = base.Target;
             _orbitBehaviour.Target = base.Target;
+            _shootBehaviour.Target = base.Target;
         }
     }
 
@@ -26,12 +28,14 @@ public class OrbitEnemyBehaviour : EnemyBehaviour
     private NavMeshAgent _agent;
     private PursueTargetBehaviour _pursueBehaviour;
     private OrbitTargetAtDistanceBehaviour _orbitBehaviour;
+    private AIShootBehaviour _shootBehaviour;
 
     private void OnEnable()
     {
         _agent = GetComponent<NavMeshAgent>();
         _pursueBehaviour = GetComponent<PursueTargetBehaviour>();
         _orbitBehaviour = GetComponent<OrbitTargetAtDistanceBehaviour>();
+        _shootBehaviour = GetComponent<AIShootBehaviour>();
 
         _pursueBehaviour.Target = Target;
         _orbitBehaviour.Target = Target;
@@ -47,12 +51,14 @@ public class OrbitEnemyBehaviour : EnemyBehaviour
         {
             _pursueBehaviour.enabled = false;
             _orbitBehaviour.enabled = true;
+            _shootBehaviour.enabled = true;
         }
         // Otherwise, pursue towards the target again
         else
         {
             _pursueBehaviour.enabled = true;
             _orbitBehaviour.enabled = false;
+            _shootBehaviour.enabled = false;
         }
     }
 }
