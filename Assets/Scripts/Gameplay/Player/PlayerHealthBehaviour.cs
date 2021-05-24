@@ -2,46 +2,48 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealthBehaviour : MonoBehaviour
+public class PlayerHealthBehaviour : CombatActor
 {
     [Tooltip("The Max Health That The Player Can Have")]
     [SerializeField]
     private float _maxHealth = 1;
-    [Tooltip("The Player's Current Health")]
-    [SerializeField]
-    private float _health = 1;
-    // Update is called once per frame
-    void Update()
+
+    /// <summary>
+    /// Removes damage from Health, if Health <= 0, destroy this game object
+    /// </summary>
+    /// <param name="damage">The amount of health to take from the players health</param>
+    public override void TakeDamage(float damage)
     {
+        Health -= damage;
+        if (Health <= 0)
+            Destroy(this.gameObject);
     }
     /// <summary>
-    /// Subtracts damage from the players health
+    /// Regens health to Health, if health >= maxhealth, cap it.
     /// </summary>
-    /// <param name="damage"></param>
-    public void TakeDamage(float damage)
-    {
-        _health -= damage;
-        if (_health < 0)
-            _health = 0;
-    }
-    /// <summary>
-    /// Adds health to the players health
-    /// </summary>
-    /// <param name="health"></param>
+    /// <param name="health">How much health to add to the players health</param>
     public void RegenHealth(float health)
     {
-        _health += health;
-        if (_health > _maxHealth)
-            _health = _maxHealth;
+        Health += health;
+        if (Health > _maxHealth)
+            Health = _maxHealth;
     }
+    /// <summary>
+    /// Sets the players health to zero, then destroys the player
+    /// </summary>
     public void Kill()
     {
-        _health = 0;
+        Health = 0;
+        Destroy(this.gameObject);
     }
+    /// <summary>
+    /// Hard sets the players health to be a specific float value, if the health >= maxhealth, cap it
+    /// </summary>
+    /// <param name="value"></param>
     public void SetHealth(float value)
     {
-        _health = value;
-        if (_health > _maxHealth)
-            _health = _maxHealth;
+        Health = value;
+        if (Health > _maxHealth)
+            Health = _maxHealth;
     }
 }

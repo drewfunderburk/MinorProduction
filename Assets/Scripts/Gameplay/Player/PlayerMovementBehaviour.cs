@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class PlayerMovementBehaviour : CombatActor
 {
-    private Rigidbody _rigidbody;
-    private Transform _transform;
-    private Vector3 _velocity;
     [SerializeField]
     private ProjectileSpawnerBehaviour _projectileSpawnerBehaviour;
-
-    [Tooltip("The Speed at Which The Player Will Bank")]
-    [SerializeField]
-    private float _bankingSpeed = 1;
 
     [Tooltip("The Speed at Which The Player Will Move")]
     [SerializeField]
@@ -22,11 +15,18 @@ public class PlayerMovementBehaviour : CombatActor
     [SerializeField]
     private Vector3 _desiredRotation;
 
+    private Rigidbody _rigidbody;
+    private Vector3 _velocity;
+
     // Start is called before the first frame update
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _transform = GetComponent<Transform>();
+    }
+    // Update is called once per frame
+    void FixedUpdate()
+    {                                         //swap x and y because player does not move on y axis
+        _rigidbody.MovePosition(transform.position + new Vector3(_velocity.x, _velocity.z, _velocity.y));
     }
 
     public void Move(Vector3 direction)
@@ -64,16 +64,13 @@ public class PlayerMovementBehaviour : CombatActor
         _projectileSpawnerBehaviour.Fire();
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-                                                  //swap x and y because player does not move on y axis
-        _rigidbody.MovePosition(transform.position + new Vector3(_velocity.x,_velocity.z,_velocity.y));
-    }
-
+    /// <summary>
+    /// Removes damage from Health, if Health <= 0, destroy this game object
+    /// </summary>
+    /// <param name="damage">The amount of health to take from the players health</param>
     public override void TakeDamage(float damage)
     {
-        Health -= 1;
+        Health -= damage;
         if (Health <= 0)
             Destroy(this.gameObject);
     }
