@@ -34,7 +34,7 @@ public class GameManagerBehaviour : MonoBehaviour
          * If there is no instance, make this the new instance.
          * If there is an instance and it is not this, delete this.
          * 
-         * This is to ensure that there is only every one GameManagerBehaviour in a scene,
+         * This is to ensure that there is only ever one GameManagerBehaviour in a scene,
          *  it is always the oldest one, and that the static variable Instance always refers to it.
          */
         if (!Instance)
