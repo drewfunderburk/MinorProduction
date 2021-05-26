@@ -8,12 +8,26 @@ public class GameManagerBehaviour : MonoBehaviour
 {
     // Singleton instance of this class
     public static GameManagerBehaviour Instance;
+
+    [Tooltip("The game's current level")]
+    [SerializeField] private int _level = 0;
+    public int Level { get => _level; set => _level = value; }
+
+    // Curve for how quickly enemies spawn per level
+    [SerializeField] private AnimationCurve _enemySpawnDelay = null;
+    public AnimationCurve EnemySpawnDelay { get => _enemySpawnDelay; }
+
+    // Curve for how many enemies spawn per level
+    [SerializeField] private AnimationCurve _enemySpawnCount = null;
+    public AnimationCurve EnemySpawnCount { get => _enemySpawnCount; }
+
     public UnityEvent OnLevelEnd;
 
     private bool _isGameOver = false;
     public bool IsGameOver { get { return _isGameOver; } }
 
-    private void Start()
+
+    private void Awake()
     {
         /* Singleton
          * 
@@ -29,30 +43,25 @@ public class GameManagerBehaviour : MonoBehaviour
             Destroy(this.gameObject);
     }
 
+    /// <summary>
+    /// Invokes the OnLevelEnd event
+    /// </summary>
     public void InvokeOnLevelEnd()
     {
         OnLevelEnd.Invoke();
     }
 
-    public void GoToNextScene(float delay)
-    {
-        StartCoroutine(GoToNextSceneCoroutine(delay));
-    }
-
-    private IEnumerator GoToNextSceneCoroutine(float delay)
-    {
-        // Wait for the specified duration
-        yield return new WaitForSeconds(delay);
-
-        // Load the next scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
-
+    /// <summary>
+    /// Restart's the scene with a delay
+    /// </summary>
     public void RestartScene(float delay = 0)
     {
         StartCoroutine(RestartSceneCoroutine(delay));
     }
 
+    /// <summary>
+    /// Coroutine for scene restarting
+    /// </summary>
     private IEnumerator RestartSceneCoroutine(float delay)
     {
         // Wait however long is specified
@@ -62,6 +71,9 @@ public class GameManagerBehaviour : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    /// <summary>
+    /// Quit application or exit play mode
+    /// </summary>
     public void QuitGame()
     {
 #if UNITY_EDITOR

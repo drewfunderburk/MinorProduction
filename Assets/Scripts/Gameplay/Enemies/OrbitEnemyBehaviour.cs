@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(PursueTargetBehaviour))]
 [RequireComponent(typeof(OrbitTargetAtDistanceBehaviour))]
+[RequireComponent(typeof(AIShootBehaviour))]
+[RequireComponent(typeof(LookAtTargetBehaviour))]
 public class OrbitEnemyBehaviour : EnemyBehaviour
 {
     public override Transform Target 
@@ -15,32 +19,33 @@ public class OrbitEnemyBehaviour : EnemyBehaviour
             base.Target = value;
             _pursueBehaviour.Target = base.Target;
             _orbitBehaviour.Target = base.Target;
+            _shootBehaviour.Target = base.Target;
         }
     }
 
     [Tooltip("Distance at which to switch from Pursue to Orbit")]
     [SerializeField] private float _transitionDistance = 15;
 
+    private NavMeshAgent _agent;
     private PursueTargetBehaviour _pursueBehaviour;
     private OrbitTargetAtDistanceBehaviour _orbitBehaviour;
-
-    public override void TakeDamage(float damage)
-    {
-        // Decrease health
-        Health -= damage;
-
-        // If health <= 0 destroy this object
-        if (Health <= 0)
-            Destroy(this.gameObject);
-    }
+    private AIShootBehaviour _shootBehaviour;
+    private LookAtTargetBehaviour _lookAtTarget;
 
     private void OnEnable()
     {
+        _agent = GetComponent<NavMeshAgent>();
         _pursueBehaviour = GetComponent<PursueTargetBehaviour>();
         _orbitBehaviour = GetComponent<OrbitTargetAtDistanceBehaviour>();
+        _shootBehaviour = GetComponent<AIShootBehaviour>();
+        _lookAtTarget = GetComponent<LookAtTargetBehaviour>();
 
         _pursueBehaviour.Target = Target;
         _orbitBehaviour.Target = Target;
+        _lookAtTarget.Target = Target;
+
+        // Set orbit speed to be the NavMeshAgent speed for consistency
+        _orbitBehaviour.Speed = _agent.speed * 50;
     }
 
     private void Update()
@@ -50,21 +55,16 @@ public class OrbitEnemyBehaviour : EnemyBehaviour
         {
             _pursueBehaviour.enabled = false;
             _orbitBehaviour.enabled = true;
+            _shootBehaviour.enabled = true;
+            _lookAtTarget.enabled = true;
         }
         // Otherwise, pursue towards the target again
         else
         {
             _pursueBehaviour.enabled = true;
             _orbitBehaviour.enabled = false;
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        // If the collided object's layer is in _collideWith
-        if (((1 << collision.gameObject.layer) & CollideWith) != 0)
-        {
-            // Do things to the collided object
+            _shootBehaviour.enabled = false;
+            _lookAtTarget.enabled = false;
         }
     }
 }

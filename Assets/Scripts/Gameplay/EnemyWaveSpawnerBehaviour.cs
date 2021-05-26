@@ -4,20 +4,24 @@ using UnityEngine;
 
 public class EnemyWaveSpawnerBehaviour : MonoBehaviour
 {
+    [Tooltip("Should enemies be allowed to spawn?")]
     [SerializeField] private bool _allowSpawning = true;
     public bool AllowSpawning { get => _allowSpawning; set => _allowSpawning = value; }
 
+    [Tooltip("Enemies to spawn")]
     [SerializeField] private GameObject[] _enemyPrefabs = null;
+
+    [Tooltip("Target to pass to enemies")]
     [SerializeField] private Transform _target = null;
 
-    [Tooltip("How long to delay between each enemy spawn in a wave")]
-    [SerializeField] private float _enemySpawnDelay = 0.2f;
+    // How long between each individual spawn in a wave
+    private float _enemySpawnDelay = 0.5f;
 
-    private List<EnemyBehaviour> _enemies = null;
+    private List<EnemyBehaviour> _enemies = new List<EnemyBehaviour>();
 
     // These will need to be hooked into a difficulty curve
     private int _spawnCount = 5;
-    private int _spawnDelay = 3;
+    private float _spawnDelay = 3;
 
     private float _spawnTimer = 0;
 
@@ -40,7 +44,12 @@ public class EnemyWaveSpawnerBehaviour : MonoBehaviour
     /// </summary>
     private void SpawnRandomEnemy()
     {
-        int index = Random.Range(0, _enemyPrefabs.Length - 1);
+        if (_enemyPrefabs.Length == 1)
+        {
+            SpawnEnemyAtIndex(0);
+            return;
+        }
+        int index = Random.Range(0, _enemyPrefabs.Length);
         SpawnEnemyAtIndex(index);
     }
 
@@ -49,7 +58,6 @@ public class EnemyWaveSpawnerBehaviour : MonoBehaviour
     /// </summary>
     /// <param name="index">Which enemy to spawn</param>
     /// <param name="numEnemies">How many to spawn</param>
-    /// <returns></returns>
     private IEnumerator SpawnIndexWave(int index, int numEnemies)
     {
         for (int i = 0; i < numEnemies; i++)
@@ -63,7 +71,6 @@ public class EnemyWaveSpawnerBehaviour : MonoBehaviour
     /// Spawns a wave of random enemies from EnemyPrefabs
     /// </summary>
     /// <param name="numEnemies">How many to spawn</param>
-    /// <returns></returns>
     private IEnumerator SpawnRandomWave(int numEnemies)
     {
         for (int i = 0; i < numEnemies; i++)
@@ -73,8 +80,23 @@ public class EnemyWaveSpawnerBehaviour : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Evaluate difficulty curves from GameManagerBehaviour and cache them
+    /// </summary>
+    private void EvaluateDifficultyCurves()
+    {
+        int level = GameManagerBehaviour.Instance.Level;
+        AnimationCurve spawnDelayCurve = GameManagerBehaviour.Instance.EnemySpawnDelay;
+        AnimationCurve spawnCountCurve = GameManagerBehaviour.Instance.EnemySpawnCount;
+
+        _spawnDelay = spawnDelayCurve.Evaluate(level);
+        _spawnCount = Mathf.RoundToInt(spawnCountCurve.Evaluate(level));
+    }
+
     private void Start()
     {
+        EvaluateDifficultyCurves();
+
         _spawnTimer = _spawnDelay;
         _enemies = new List<EnemyBehaviour>();
     }
@@ -86,6 +108,8 @@ public class EnemyWaveSpawnerBehaviour : MonoBehaviour
         if (AllowSpawning && _spawnTimer > _spawnDelay)
         {
             _spawnTimer = 0;
+            EvaluateDifficultyCurves();
+            _enemySpawnDelay = (_spawnDelay / _spawnCount) / 2;
             StartCoroutine(SpawnRandomWave(_spawnCount));
         }
     }

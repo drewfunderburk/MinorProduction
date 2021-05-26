@@ -20,16 +20,6 @@ public class RamEnemyBehaviour : EnemyBehaviour
     private NavMeshAgent _agent;
     private PursueTargetBehaviour _pursueTargetBehaviour;
 
-    public override void TakeDamage(float damage)
-    {
-        // Decrease health
-        Health -= damage;
-
-        // If health <= 0 destroy this object
-        if (Health <= 0)
-            Destroy(this.gameObject);
-    }
-
     private void OnEnable()
     {
         _agent = GetComponent<NavMeshAgent>();
@@ -37,13 +27,10 @@ public class RamEnemyBehaviour : EnemyBehaviour
         _pursueTargetBehaviour.Target = Target;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    protected override void OnCollisionEnter(Collision collision)
     {
-        // If the collided object's layer is in _collideWith
-        if (((1 << collision.gameObject.layer) & CollideWith) != 0)
-        {
-            // Do things to the collided object
-        }
+        base.OnCollisionEnter(collision);
+        Destroy(this.gameObject);
     }
 }
 
