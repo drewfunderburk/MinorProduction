@@ -6,12 +6,11 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(Canvas))]
 public class MenuBehaviour : MonoBehaviour
 {
-    private Canvas _menu;
-    public Canvas Menu { get => _menu; protected set => _menu = value; }
+    public Canvas Menu { get; protected set; }
 
-    private void Awake()
+    protected virtual void Awake()
     {
-        _menu = GetComponent<Canvas>();
+        Menu = GetComponent<Canvas>();
     }
 
     /// <summary>
