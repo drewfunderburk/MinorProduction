@@ -12,9 +12,9 @@ public class CameraMovement : MonoBehaviour
     private float iniFOV;
     private bool isWarping = false;
 
-    public float camZoomFOV = 30f;
+    public float enRouteFOV = 30f;
     public float lerpSpeed = 1f;
-    public Transform warpCam;
+    public Transform Cam;
     public ParticleSystem[] warpEffect;
     public ParticleSystem spoolUpParticle;
 
@@ -27,11 +27,11 @@ public class CameraMovement : MonoBehaviour
         iniPos = gameObject.transform.position;
         iniRot = gameObject.transform.rotation;
 
-        warpPos = warpCam.transform.position;
-        warpRot = warpCam.transform.rotation;
-        if (GetComponent<Camera>())
+        warpPos = Cam.transform.position;
+        warpRot = Cam.transform.rotation;
+        if (GetComponentInChildren<Camera>())
         {
-            iniFOV = GetComponent<Camera>().fieldOfView;
+            iniFOV = GetComponentInChildren<Camera>().fieldOfView;
         }
 
     }
@@ -40,7 +40,7 @@ public class CameraMovement : MonoBehaviour
     {
         if(lerpTime >= 1f)
         {
-            activePlanet.GetComponent<RandomizePlanet>().Generate();
+            activePlanet.GetComponent<PlanetBehavior>().Generate();
         }
 
         if (Input.GetKeyDown("f"))
@@ -74,9 +74,9 @@ public class CameraMovement : MonoBehaviour
             }
         }
 
-        if (GetComponent<Camera>())
+        if (GetComponentInChildren<Camera>())
         {
-            GetComponent<Camera>().fieldOfView = Mathf.SmoothStep(iniFOV, camZoomFOV, lerpTime);
+            GetComponentInChildren<Camera>().fieldOfView = Mathf.SmoothStep(iniFOV, enRouteFOV, lerpTime);
         }
 
         if (lerpTime < 1f || lerpTime > 0)
