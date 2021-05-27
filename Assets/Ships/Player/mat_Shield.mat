@@ -62,8 +62,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - ShieldHealth: 1
-    - ShieldVisibility: 1
-    - Vector1_22CA5732: 1
+    - ShieldVisibility: 0
+    - Vector1_22CA5732: 1.08
+    - Vector1_556D793F: 0.77
     - Vector1_8D2213C5: 20
     - _AlphaClip: 0
     - _Blend: 0
@@ -89,7 +90,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - Color_6005F520: {r: 0.7735849, g: 0.15690638, b: 0.19801824, a: 1}
-    - Color_619B74C3: {r: 0, g: 1.0991555, b: 2.6701574, a: 1}
+    - Color_619B74C3: {r: 0, g: 0.87625784, b: 2.1185474, a: 1}
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

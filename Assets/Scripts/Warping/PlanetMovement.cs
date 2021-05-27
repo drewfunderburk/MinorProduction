@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlanetMovement : MonoBehaviour
 {
     public Vector3 farPos;
+    public Vector3 nearPos;
+    public float farScale;
+    public float nearScale = 2f;
     [Range(0, 1)] public float travelTime;
     public Vector3 startPos;
     public Vector3 endPos;
@@ -30,7 +33,8 @@ public class PlanetMovement : MonoBehaviour
 
     public void planetEnRoute()
     {
-        gameObject.transform.position = new Vector3(Mathf.SmoothStep(farPos.x, startPos.x, travelTime), Mathf.SmoothStep(farPos.y, startPos.y, travelTime), Mathf.SmoothStep(farPos.z, startPos.z, travelTime));
+        gameObject.transform.position = new Vector3(Mathf.SmoothStep(farPos.x, nearPos.x, travelTime), Mathf.SmoothStep(farPos.y, nearPos.y, travelTime), Mathf.SmoothStep(farPos.z, nearPos.z, travelTime));
+        gameObject.transform.localScale = new Vector3(Mathf.SmoothStep(farScale, nearScale, travelTime), Mathf.SmoothStep(farScale, nearScale, travelTime), Mathf.SmoothStep(farScale, nearScale, travelTime));
     }
 
 }
