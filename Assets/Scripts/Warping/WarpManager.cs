@@ -22,6 +22,7 @@ public class WarpManager : MonoBehaviour
 
     public bool planetSelect;
     public bool isWarping;
+    private bool LEVEL_START;
     private float iniWarpTimer;
     public float warpTimerNormalized = 0f;
 
@@ -41,15 +42,14 @@ public class WarpManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.GetKeyDown("f") && planetSelect == false && isWarping == false)
+        if (LEVEL_START == false)
         {
             planetSelect = true;
             DifficultPlanet.GetComponent<PlanetBehavior>().Generate();
             EasyPlanet.GetComponent<PlanetBehavior>().Generate();
-
-
+            LEVEL_START = true;
         }
+
         if(planetSelect == true)
         {
             PlanetSelect();
@@ -67,6 +67,8 @@ public class WarpManager : MonoBehaviour
 
         warpTimer = iniWarpTimer;
         BlackouPlane.transform.position = new Vector3(0, BlackoutPlane_PS_height, 0);
+        DifficultPlanet.transform.position = DifficultPlanet_trans.position;
+        EasyPlanet.transform.position = EasyPlanet_trans.position;
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -99,6 +101,7 @@ public class WarpManager : MonoBehaviour
             warpTimer += 1f * Time.deltaTime;
             warpTimerNormalized = Mathf.InverseLerp(0f , 5f , warpTimer);
         }
+        else { EndWarp(); warpTimerNormalized = 0f; warpTimer = 0f; }
 
         PlanetGroup.GetComponent<PlanetMovement>().planetEnRoute(warpTimerNormalized);
         planetSelect = false;
@@ -110,5 +113,21 @@ public class WarpManager : MonoBehaviour
         PlanetToHide.transform.position = new Vector3(0,0,-25000);
 
     }
+
+    public void EndWarp()
+    {
+        if (warpTimerNormalized < 1f)
+        {
+            warpTimer += 1f * Time.deltaTime;
+            warpTimerNormalized = Mathf.InverseLerp(0f, 5f, warpTimer);
+        }
+        else { PlanetSelect(); }
+
+        isWarping = false;
+        CameraGroup.GetComponent<CameraMovement>().ToggleWarp();
+        PlanetGroup.GetComponent<PlanetMovement>().planetActive(warpTimerNormalized);
+
+    }
+
 
 }

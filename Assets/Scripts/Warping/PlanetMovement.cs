@@ -37,4 +37,9 @@ public class PlanetMovement : MonoBehaviour
         gameObject.transform.localScale = new Vector3(Mathf.SmoothStep(farScale, nearScale, travelTime), Mathf.SmoothStep(farScale, nearScale, travelTime), Mathf.SmoothStep(farScale, nearScale, travelTime));
     }
 
+    public void planetActive(float levelTime)
+    {
+        gameObject.transform.position = new Vector3(Mathf.SmoothStep(startPos.x, endPos.x, levelTime), Mathf.SmoothStep(startPos.y, endPos.y, levelTime), Mathf.SmoothStep(startPos.z, endPos.z, levelTime));
+    }
+
 }

@@ -80,7 +80,6 @@ public class CameraMovement : MonoBehaviour
     {
         isWarping = !isWarping;
         if (isWarping == true) { SpoolUp(); }
-        Debug.Log("cam moved");
     }
 
     void SpoolUp()
