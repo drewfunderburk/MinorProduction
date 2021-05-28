@@ -5,6 +5,8 @@ using UnityEditor.ShaderGraph;
 
 public class PlanetBehavior : MonoBehaviour
 {
+    public GameObject warpManager;
+
     public Color GeneratedColor;
     public Color MatchedColor;
     public Color AtmosphereColor;
@@ -19,6 +21,9 @@ public class PlanetBehavior : MonoBehaviour
     public GameObject planet;
     public GameObject atmo;
 
+    public bool IsDifficultPlanet;
+    public bool IsEasyPlanet;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,23 +32,21 @@ public class PlanetBehavior : MonoBehaviour
         generatedSize = iniSize;
     }
 
+
     // Update is called once per frame
     void Update()
     {
+        planetSelectMode = warpManager.GetComponent<WarpManager>().planetSelect;
 
-        int int_planetSelectMode;
         if (planetSelectMode == true)
         {
-            int_planetSelectMode = 1;
             gameObject.transform.localScale = new Vector3(f_planetSelectMode_scale, f_planetSelectMode_scale, f_planetSelectMode_scale);
         }
         else {
 
-            int_planetSelectMode = 0;
             gameObject.transform.localScale = new Vector3(generatedSize, generatedSize, generatedSize);
         }
 
-        planet.GetComponent<Renderer>().material.SetInt("NoTexture", int_planetSelectMode);
         planet.GetComponent<Renderer>().material.SetColor("OceanColor", GeneratedColor);
         planet.GetComponent<Renderer>().material.SetColor("LandColor", MatchedColor);
         planet.GetComponent<Renderer>().material.SetColor("AtmoColor", AtmosphereColor);

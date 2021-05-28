@@ -8,7 +8,7 @@ public class PlanetMovement : MonoBehaviour
     public Vector3 nearPos;
     public float farScale;
     public float nearScale = 2f;
-    [Range(0, 1)] public float travelTime;
+    //[Range(0, 1)] public float travelTime;
     public Vector3 startPos;
     public Vector3 endPos;
     [Range(0, 1)] public float planetPosition;
@@ -28,10 +28,10 @@ public class PlanetMovement : MonoBehaviour
         {
             gameObject.transform.position = new Vector3(Mathf.SmoothStep(startPos.x, endPos.x, planetPosition), Mathf.SmoothStep(startPos.y, endPos.y, planetPosition), Mathf.SmoothStep(startPos.z, endPos.z, planetPosition));
         }
-        else { planetEnRoute(); }
+        //else { planetEnRoute(); }
     }
 
-    public void planetEnRoute()
+    public void planetEnRoute(float travelTime)
     {
         gameObject.transform.position = new Vector3(Mathf.SmoothStep(farPos.x, nearPos.x, travelTime), Mathf.SmoothStep(farPos.y, nearPos.y, travelTime), Mathf.SmoothStep(farPos.z, nearPos.z, travelTime));
         gameObject.transform.localScale = new Vector3(Mathf.SmoothStep(farScale, nearScale, travelTime), Mathf.SmoothStep(farScale, nearScale, travelTime), Mathf.SmoothStep(farScale, nearScale, travelTime));

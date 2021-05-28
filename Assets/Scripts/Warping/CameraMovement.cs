@@ -18,8 +18,6 @@ public class CameraMovement : MonoBehaviour
     public ParticleSystem[] warpEffect;
     public ParticleSystem spoolUpParticle;
 
-    //PLANET TEST
-    public GameObject activePlanet;
 
 
     void Start()
@@ -38,15 +36,7 @@ public class CameraMovement : MonoBehaviour
 
     void Update()
     {
-        if(lerpTime >= 1f)
-        {
-            activePlanet.GetComponent<PlanetBehavior>().Generate();
-        }
 
-        if (Input.GetKeyDown("f"))
-        {
-            ToggleWarp();
-        }
 
         if (isWarping == true)
         {
@@ -86,6 +76,13 @@ public class CameraMovement : MonoBehaviour
         }
     }
 
+    public void ToggleWarp()
+    {
+        isWarping = !isWarping;
+        if (isWarping == true) { SpoolUp(); }
+        Debug.Log("cam moved");
+    }
+
     void SpoolUp()
     {
         if (!spoolUpParticle.isPlaying)
@@ -94,10 +91,5 @@ public class CameraMovement : MonoBehaviour
         }
     }
 
-    void ToggleWarp()
-    {
-        isWarping = !isWarping;
-        if(isWarping == true) { SpoolUp(); }
-    }
 
 }

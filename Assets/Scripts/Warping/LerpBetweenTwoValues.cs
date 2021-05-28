@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LerpBetweenTwoValues : MonoBehaviour
 {
+    public GameObject WarpManager;
+
     public Vector2 MinMax;
     public float speed;
 
@@ -31,6 +33,12 @@ public class LerpBetweenTwoValues : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (WarpManager.GetComponent<WarpManager>().isWarping)
+        {
+            isWarp = true;
+        }
+        else { isWarp = false; }
+
         if(alwaysActive == true)
         {
             if (position)
@@ -45,11 +53,7 @@ public class LerpBetweenTwoValues : MonoBehaviour
             timerX += speed * Time.deltaTime;
         }
 
-        if (Input.GetKeyDown("f") && alwaysActive == false)
-        {
-            isWarp = !isWarp;
-        }
-
+        
         if(isWarp == true)
         {
             warpMovement();
