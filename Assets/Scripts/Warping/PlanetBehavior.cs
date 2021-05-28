@@ -16,13 +16,15 @@ public class PlanetBehavior : MonoBehaviour
     public bool planetSelectMode = false;
     
     private float iniSize;
-    private float generatedSize;
+    public float generatedSize;
 
     public GameObject planet;
     public GameObject atmo;
 
     public bool IsDifficultPlanet;
     public bool IsEasyPlanet;
+
+    private bool NewSizeApplied = false;
 
     // Start is called before the first frame update
     void Start()
@@ -36,15 +38,18 @@ public class PlanetBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        planetSelectMode = warpManager.GetComponent<WarpManager>().planetSelect;
+        planetSelectMode = warpManager.GetComponent<WarpManager>().inPlanetSelect;
 
         if (planetSelectMode == true)
         {
-            gameObject.transform.localScale = new Vector3(f_planetSelectMode_scale, f_planetSelectMode_scale, f_planetSelectMode_scale);
+            gameObject.transform.localScale = new Vector3(f_planetSelectMode_scale * generatedSize, f_planetSelectMode_scale * generatedSize, f_planetSelectMode_scale * generatedSize);
         }
         else {
-
-            gameObject.transform.localScale = new Vector3(generatedSize, generatedSize, generatedSize);
+            if (NewSizeApplied == false)
+            {
+                gameObject.transform.localScale = new Vector3(generatedSize, generatedSize, generatedSize);
+                NewSizeApplied = true;
+            }
         }
 
         planet.GetComponent<Renderer>().material.SetColor("OceanColor", GeneratedColor);
@@ -128,26 +133,48 @@ public class PlanetBehavior : MonoBehaviour
 
     void ChangeSize()
     {
-        generatedSize = Random.Range(iniSize * 0.7f, iniSize);
+        generatedSize = Random.Range(0.5f, 1.25f);
     }
 
     public void Generate()
     {
+        NewSizeApplied = false;
+
         int colorSelect = Random.Range(1, 3);
 
-        if(colorSelect == 1)
+        if (IsDifficultPlanet)
         {
-            Complimentary();
+            if (colorSelect == 1)
+            {
+                Complimentary();
+            }
+
+            if (colorSelect == 2)
+            {
+                OffsetColor();
+            }
+
+            if (colorSelect == 3)
+            {
+                Analagous();
+            }
         }
-        
-        if (colorSelect == 2)
+        else 
         {
-            OffsetColor();
-        }
-        
-        if (colorSelect == 3)
-        {
-            Analagous();
+            if (colorSelect == 3)
+            {
+                Complimentary();
+            }
+
+            if (colorSelect == 2)
+            {
+                OffsetColor();
+            }
+
+            if (colorSelect == 1)
+            {
+                Analagous();
+            }
         }
 
     }

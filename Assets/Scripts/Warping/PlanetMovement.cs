@@ -24,11 +24,7 @@ public class PlanetMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (levelStatus == true)
-        {
-            gameObject.transform.position = new Vector3(Mathf.SmoothStep(startPos.x, endPos.x, planetPosition), Mathf.SmoothStep(startPos.y, endPos.y, planetPosition), Mathf.SmoothStep(startPos.z, endPos.z, planetPosition));
-        }
-        //else { planetEnRoute(); }
+
     }
 
     public void planetEnRoute(float travelTime)

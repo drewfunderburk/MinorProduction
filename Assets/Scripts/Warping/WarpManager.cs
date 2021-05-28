@@ -11,8 +11,9 @@ public class WarpManager : MonoBehaviour
     public GameObject PlayerShip;
     public GameObject CameraGroup;
 
-    public Transform CurrentPlanet;
+    public Transform ActivePlanet_Offset;
     public float BlackoutPlane_PS_height;
+    public float LevelTime = 10f;
 
     private Transform DifficultPlanet_trans;
     private Transform EasyPlanet_trans;
@@ -20,9 +21,11 @@ public class WarpManager : MonoBehaviour
 
     public float warpTimer = 5f;
 
-    public bool planetSelect;
+    public bool inPlanetSelect = true;
     public bool isWarping;
-    private bool LEVEL_START;
+    public bool inLevel;
+
+    private bool GENERATE_NEW_PLANETS = true;
     private float iniWarpTimer;
     public float warpTimerNormalized = 0f;
 
@@ -42,26 +45,36 @@ public class WarpManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (LEVEL_START == false)
+        if (GENERATE_NEW_PLANETS == true)
         {
-            planetSelect = true;
             DifficultPlanet.GetComponent<PlanetBehavior>().Generate();
             EasyPlanet.GetComponent<PlanetBehavior>().Generate();
-            LEVEL_START = true;
+            GENERATE_NEW_PLANETS = false;
+            inPlanetSelect = true;
         }
 
-        if(planetSelect == true)
+        if(inPlanetSelect == true && inLevel == false && isWarping == false)
         {
             PlanetSelect();
+            Debug.Log("PlanetSelect");
         }
 
-        if(isWarping == true)
+        if (inPlanetSelect == false && inLevel == false && isWarping == true)
         {
             BeginWarp();
+            Debug.Log("BeginWarp");
         }
 
-    }
+        if (inPlanetSelect == false && inLevel == true && isWarping == false)
+        {
+            EndWarp();
+            Debug.Log("EndWarp");
+        }
 
+        
+
+    }
+    //<---------------------------------------------------<<<PLANET SELECT>>>--------------------------------------------------------------------------->
     public void PlanetSelect()
     {
 
@@ -72,62 +85,79 @@ public class WarpManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (PlayerShip.transform.position.z >= 0)
-            {
-                SelectedPlanet = DifficultPlanet;
-                PlanetToHide = EasyPlanet;
-                isWarping = true;
-                warpTimerNormalized = 0f;
-                warpTimer = 0f;
-                CameraGroup.GetComponent<CameraMovement>().ToggleWarp();
-            }
-            else
-            {
-                SelectedPlanet = EasyPlanet; PlanetToHide = DifficultPlanet;
-                isWarping = true;
-                warpTimerNormalized = 0f;
-                warpTimer = 0f;
-                CameraGroup.GetComponent<CameraMovement>().ToggleWarp();
-            }
+            inPlanetSelect = false;
+            isWarping = true;
+            inLevel = false;
+            warpTimerNormalized = 0f;
+            warpTimer = 0f;
+            CameraGroup.GetComponent<CameraMovement>().ToggleWarp();
+        }
 
+        if (PlayerShip.transform.position.z >= 0)
+        {
+                
+            SelectedPlanet = DifficultPlanet;
+            PlanetToHide = EasyPlanet;
+        }
+        else 
+        {
+            SelectedPlanet = EasyPlanet; PlanetToHide = DifficultPlanet;
         }
     }
+    //>--------------------------------------------------->>PLANET SELECT<<<---------------------------------------------------------------------------<
 
+    //<---------------------------------------------------<<<BEGIN WARP>>>--------------------------------------------------------------------------->
     public void BeginWarp()
     {
-
-        if(warpTimerNormalized < 1f)
+        if (warpTimerNormalized < 1f)
         {
             warpTimer += 1f * Time.deltaTime;
             warpTimerNormalized = Mathf.InverseLerp(0f , 5f , warpTimer);
         }
-        else { EndWarp(); warpTimerNormalized = 0f; warpTimer = 0f; }
-
-        PlanetGroup.GetComponent<PlanetMovement>().planetEnRoute(warpTimerNormalized);
-        planetSelect = false;
+        else
+        {
+            inPlanetSelect = false;
+            isWarping = false;
+            inLevel = true;
+            warpTimerNormalized = 0f; 
+            warpTimer = 0f;
+            CameraGroup.GetComponent<CameraMovement>().ToggleWarp();
+        }
+        if (warpTimerNormalized > 0)
+        {
+            PlanetGroup.GetComponent<PlanetMovement>().planetEnRoute(warpTimerNormalized);
+        }
         BlackouPlane.transform.position = new Vector3(0, BlackoutPlane_ini_height,0);
 
-        SelectedPlanet.transform.position = CurrentPlanet.position;
-        SelectedPlanet.transform.rotation = CurrentPlanet.rotation;
-        SelectedPlanet.transform.localScale = CurrentPlanet.localScale;
+        SelectedPlanet.transform.localPosition = ActivePlanet_Offset.transform.localPosition;
+        SelectedPlanet.transform.localRotation = ActivePlanet_Offset.localRotation;
+        SelectedPlanet.transform.localScale = ActivePlanet_Offset.localScale * SelectedPlanet.GetComponent<PlanetBehavior>().generatedSize;
         PlanetToHide.transform.position = new Vector3(0,0,-25000);
 
     }
+    //>--------------------------------------------------->>END BEGINWARP<<<---------------------------------------------------------------------------<
 
+    //<---------------------------------------------------<<<BEGIN ENDWARP>>>--------------------------------------------------------------------------->
     public void EndWarp()
     {
         if (warpTimerNormalized < 1f)
         {
             warpTimer += 1f * Time.deltaTime;
-            warpTimerNormalized = Mathf.InverseLerp(0f, 5f, warpTimer);
+            warpTimerNormalized = Mathf.InverseLerp(0f, LevelTime, warpTimer);
         }
-        else { PlanetSelect(); }
+        else 
+        {
+            inPlanetSelect = false;
+            isWarping = false;
+            inLevel = false; 
+            GENERATE_NEW_PLANETS = true;
+        
+        }
 
-        isWarping = false;
-        CameraGroup.GetComponent<CameraMovement>().ToggleWarp();
         PlanetGroup.GetComponent<PlanetMovement>().planetActive(warpTimerNormalized);
+        PlanetGroup.GetComponent<PlanetMovement>().levelStatus = true;
 
     }
-
+    //>--------------------------------------------------->>END ENDWARP<<<---------------------------------------------------------------------------<
 
 }
