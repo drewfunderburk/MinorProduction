@@ -19,11 +19,14 @@ public class EnemyWaveSpawnerBehaviour : MonoBehaviour
 
     private List<EnemyBehaviour> _enemies = new List<EnemyBehaviour>();
 
-    // These will need to be hooked into a difficulty curve
+
     private int _spawnCount = 5;
     private float _spawnDelay = 3;
+    private float _delayBetweenWaveGroups = 3;
+    private float _wavesInGroup = 1;
 
     private float _spawnTimer = 0;
+    private int _waveNumber = 0;
 
     /// <summary>
     /// Spawns an enemy from EnemyPrefabs at a given index
@@ -37,6 +40,15 @@ public class EnemyWaveSpawnerBehaviour : MonoBehaviour
             enemyBehaviour.Target = _target;
 
         _enemies.Add(enemyBehaviour);
+    }
+
+    /// <summary>
+    /// Selects a random index and spawns a wave of that enemy
+    /// </summary>
+    private void SpawnRandomIndexWave()
+    {
+        int index = Random.Range(0, _enemyPrefabs.Length);
+        StartCoroutine(SpawnIndexWave(index, _spawnCount));
     }
 
     /// <summary>
@@ -63,6 +75,7 @@ public class EnemyWaveSpawnerBehaviour : MonoBehaviour
         for (int i = 0; i < numEnemies; i++)
         {
             SpawnEnemyAtIndex(index);
+            _waveNumber++;
             yield return new WaitForSeconds(_enemySpawnDelay);
         }
     }
@@ -76,6 +89,7 @@ public class EnemyWaveSpawnerBehaviour : MonoBehaviour
         for (int i = 0; i < numEnemies; i++)
         {
             SpawnRandomEnemy();
+            _waveNumber++;
             yield return new WaitForSeconds(_enemySpawnDelay);
         }
     }
@@ -88,9 +102,13 @@ public class EnemyWaveSpawnerBehaviour : MonoBehaviour
         int level = GameManagerBehaviour.Instance.Level;
         AnimationCurve spawnDelayCurve = GameManagerBehaviour.Instance.EnemySpawnDelay;
         AnimationCurve spawnCountCurve = GameManagerBehaviour.Instance.EnemySpawnCount;
+        AnimationCurve delayBetweenWaveGroups = GameManagerBehaviour.Instance.DelayBetweenWaveGroups;
+        AnimationCurve wavesInGroup = GameManagerBehaviour.Instance.WavesInGroup;
 
         _spawnDelay = spawnDelayCurve.Evaluate(level);
         _spawnCount = Mathf.RoundToInt(spawnCountCurve.Evaluate(level));
+        _delayBetweenWaveGroups = delayBetweenWaveGroups.Evaluate(level);
+        _wavesInGroup = Mathf.RoundToInt(wavesInGroup.Evaluate(level));
     }
 
     private void Start()
@@ -110,7 +128,7 @@ public class EnemyWaveSpawnerBehaviour : MonoBehaviour
             _spawnTimer = 0;
             EvaluateDifficultyCurves();
             _enemySpawnDelay = (_spawnDelay / _spawnCount) / 2;
-            StartCoroutine(SpawnRandomWave(_spawnCount));
+            SpawnRandomIndexWave();
         }
     }
 }

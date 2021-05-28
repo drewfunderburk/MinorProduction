@@ -21,11 +21,16 @@ public class GameManagerBehaviour : MonoBehaviour
     [SerializeField] private AnimationCurve _enemySpawnCount = null;
     public AnimationCurve EnemySpawnCount { get => _enemySpawnCount; }
 
-    public UnityEvent OnLevelEnd;
+    // Curve for how long to wait between groups of waves
+    [SerializeField] private AnimationCurve _delayBetweenWaveGroups = null;
+    public AnimationCurve DelayBetweenWaveGroups { get => _delayBetweenWaveGroups; }
+
+    // Curves for how many waves are in a group
+    [SerializeField] private AnimationCurve _wavesInGroup = null;
+    public AnimationCurve WavesInGroup { get => _wavesInGroup; }
 
     private bool _isGameOver = false;
     public bool IsGameOver { get { return _isGameOver; } }
-
 
     private void Awake()
     {
