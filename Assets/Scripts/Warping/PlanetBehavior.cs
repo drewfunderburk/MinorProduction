@@ -25,6 +25,7 @@ public class PlanetBehavior : MonoBehaviour
     public bool IsEasyPlanet;
 
     private bool NewSizeApplied = false;
+    private float PlanetSelectMode_f;
 
     // Start is called before the first frame update
     void Start()
@@ -43,8 +44,12 @@ public class PlanetBehavior : MonoBehaviour
         if (planetSelectMode == true)
         {
             gameObject.transform.localScale = new Vector3(f_planetSelectMode_scale * generatedSize, f_planetSelectMode_scale * generatedSize, f_planetSelectMode_scale * generatedSize);
+            PlanetSelectMode_f = 1f;
         }
-        else {
+        else 
+        {
+            PlanetSelectMode_f = 0f;
+
             if (NewSizeApplied == false)
             {
                 gameObject.transform.localScale = new Vector3(generatedSize, generatedSize, generatedSize);
@@ -52,6 +57,7 @@ public class PlanetBehavior : MonoBehaviour
             }
         }
 
+        planet.GetComponent<Renderer>().material.SetFloat("PlanetSelectMode", PlanetSelectMode_f);
         planet.GetComponent<Renderer>().material.SetColor("OceanColor", GeneratedColor);
         planet.GetComponent<Renderer>().material.SetColor("LandColor", MatchedColor);
         planet.GetComponent<Renderer>().material.SetColor("AtmoColor", AtmosphereColor);

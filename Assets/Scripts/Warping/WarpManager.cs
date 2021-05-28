@@ -93,7 +93,7 @@ public class WarpManager : MonoBehaviour
             CameraGroup.GetComponent<CameraMovement>().ToggleWarp();
         }
 
-        if (PlayerShip.transform.position.z >= 0)
+        if (PlayerShip.transform.position.x >= 0)
         {
                 
             SelectedPlanet = DifficultPlanet;

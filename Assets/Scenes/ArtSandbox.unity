@@ -28878,7 +28878,7 @@ MonoBehaviour:
   ActivePlanet_Offset: {fileID: 1122678360}
   BlackoutPlane_PS_height: -70
   LevelTime: 20
-  warpTimer: 6
+  warpTimer: 10
   inPlanetSelect: 0
   isWarping: 0
   inLevel: 0
@@ -39236,15 +39236,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1015858600}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -128.4, y: -33, z: 40}
+  m_LocalRotation: {x: -0.38268343, y: 0.92387956, z: -0, w: 0}
+  m_LocalPosition: {x: 128.4, y: -33, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 32052567675624107}
   - {fileID: 1691543758}
   m_Father: {fileID: 645575442}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: -45}
 --- !u!114 &1015858603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72875,7 +72875,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1833653641}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -128.4, y: -32.999996, z: -40}
+  m_LocalPosition: {x: -128.4, y: -32.999996, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 687962072}
