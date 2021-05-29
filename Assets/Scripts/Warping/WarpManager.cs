@@ -7,16 +7,15 @@ public class WarpManager : MonoBehaviour
     public GameObject PlanetGroup;
     public GameObject DifficultPlanet;
     public GameObject EasyPlanet;
-    public GameObject BlackouPlane;
+    public GameObject BlackoutPlane;
     public GameObject PlayerShip;
     public GameObject CameraGroup;
 
     public Transform ActivePlanet_Offset;
-    public float BlackoutPlane_PS_height;
     public float LevelTime = 10f;
 
-    private Transform DifficultPlanet_trans;
-    private Transform EasyPlanet_trans;
+    private Vector3 DifficultPlanet_pos;
+    private Vector3 EasyPlanet_pos;
     private float BlackoutPlane_ini_height;
 
     public float warpTimer = 5f;
@@ -35,14 +34,13 @@ public class WarpManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DifficultPlanet_trans = DifficultPlanet.transform;
-        EasyPlanet_trans = EasyPlanet.transform;
-        BlackoutPlane_ini_height = BlackouPlane.transform.position.y;
+        DifficultPlanet_pos = DifficultPlanet.transform.position;
+        EasyPlanet_pos = EasyPlanet.transform.position;
         iniWarpTimer = warpTimer;
         
     }
 
-    // Update is called once per frame
+    //<---------------------------------------------------<<< UPDATE >>>--------------------------------------------------------------------------->
     void Update()
     {
         if (GENERATE_NEW_PLANETS == true)
@@ -74,14 +72,15 @@ public class WarpManager : MonoBehaviour
         
 
     }
-    //<---------------------------------------------------<<<PLANET SELECT>>>--------------------------------------------------------------------------->
+    //>--------------------------------------------------->>UPDATE<<<---------------------------------------------------------------------------<
+
+    //<---------------------------------------------------<<< PLANET SELECT >>>--------------------------------------------------------------------------->
     public void PlanetSelect()
     {
 
         warpTimer = iniWarpTimer;
-        BlackouPlane.transform.position = new Vector3(0, BlackoutPlane_PS_height, 0);
-        DifficultPlanet.transform.position = DifficultPlanet_trans.position;
-        EasyPlanet.transform.position = EasyPlanet_trans.position;
+        DifficultPlanet.transform.position = DifficultPlanet_pos;
+        EasyPlanet.transform.position = EasyPlanet_pos;
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -98,15 +97,20 @@ public class WarpManager : MonoBehaviour
                 
             SelectedPlanet = DifficultPlanet;
             PlanetToHide = EasyPlanet;
+            SelectedPlanet.GetComponentInChildren<Renderer>().material.SetFloat("IsSelected", 1f);
+            PlanetToHide.GetComponentInChildren<Renderer>().material.SetFloat("IsSelected", 0f);
         }
         else 
         {
-            SelectedPlanet = EasyPlanet; PlanetToHide = DifficultPlanet;
+            SelectedPlanet = EasyPlanet; 
+            PlanetToHide = DifficultPlanet;
+            SelectedPlanet.GetComponentInChildren<Renderer>().material.SetFloat("IsSelected", 1f);
+            PlanetToHide.GetComponentInChildren<Renderer>().material.SetFloat("IsSelected", 0f);
         }
     }
     //>--------------------------------------------------->>PLANET SELECT<<<---------------------------------------------------------------------------<
 
-    //<---------------------------------------------------<<<BEGIN WARP>>>--------------------------------------------------------------------------->
+    //<---------------------------------------------------<<< BEGIN WARP >>>--------------------------------------------------------------------------->
     public void BeginWarp()
     {
         if (warpTimerNormalized < 1f)
@@ -122,12 +126,13 @@ public class WarpManager : MonoBehaviour
             warpTimerNormalized = 0f; 
             warpTimer = 0f;
             CameraGroup.GetComponent<CameraMovement>().ToggleWarp();
+            PlanetGroup.GetComponent<PlanetMovement>().levelStatus = true;
+
         }
         if (warpTimerNormalized > 0)
         {
             PlanetGroup.GetComponent<PlanetMovement>().planetEnRoute(warpTimerNormalized);
         }
-        BlackouPlane.transform.position = new Vector3(0, BlackoutPlane_ini_height,0);
 
         SelectedPlanet.transform.localPosition = ActivePlanet_Offset.transform.localPosition;
         SelectedPlanet.transform.localRotation = ActivePlanet_Offset.localRotation;
@@ -135,11 +140,12 @@ public class WarpManager : MonoBehaviour
         PlanetToHide.transform.position = new Vector3(0,0,-25000);
 
     }
-    //>--------------------------------------------------->>END BEGINWARP<<<---------------------------------------------------------------------------<
+    //>--------------------------------------------------->>>BEGIN WARP<<<---------------------------------------------------------------------------<
 
-    //<---------------------------------------------------<<<BEGIN ENDWARP>>>--------------------------------------------------------------------------->
+    //<---------------------------------------------------<<< END WARP >>>--------------------------------------------------------------------------->
     public void EndWarp()
     {
+        //This is the level timer
         if (warpTimerNormalized < 1f)
         {
             warpTimer += 1f * Time.deltaTime;
@@ -151,13 +157,16 @@ public class WarpManager : MonoBehaviour
             isWarping = false;
             inLevel = false; 
             GENERATE_NEW_PLANETS = true;
-        
+            PlanetGroup.GetComponent<PlanetMovement>().levelStatus = false;
+            PlanetGroup.GetComponent<PlanetMovement>().planetActive(0f);
+            PlanetGroup.GetComponent<PlanetMovement>().planetEnRoute(0f);
+            DifficultPlanet.transform.localPosition = DifficultPlanet_pos;
+            EasyPlanet.transform.localPosition = EasyPlanet_pos;
         }
 
         PlanetGroup.GetComponent<PlanetMovement>().planetActive(warpTimerNormalized);
-        PlanetGroup.GetComponent<PlanetMovement>().levelStatus = true;
 
     }
-    //>--------------------------------------------------->>END ENDWARP<<<---------------------------------------------------------------------------<
+    //>--------------------------------------------------->>ENDWARP<<<---------------------------------------------------------------------------<
 
 }
