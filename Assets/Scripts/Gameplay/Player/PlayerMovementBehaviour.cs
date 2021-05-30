@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovementBehaviour : CombatActor
+public class PlayerMovementBehaviour : MonoBehaviour
 {
-    [SerializeField]
-    private ProjectileSpawnerBehaviour _projectileSpawnerBehaviour;
-
     [Tooltip("The Speed at Which The Player Will Move")]
     [SerializeField]
     private float _moveSpeed = 1;
@@ -59,26 +56,4 @@ public class PlayerMovementBehaviour : CombatActor
         //Perform the actual rotation scaled by time
         transform.rotation = new Quaternion(0, 0, Mathf.Lerp(transform.rotation.z, rotate * -direction.x, Time.deltaTime), 1);
      }
-    public void Shoot()
-    {
-        _projectileSpawnerBehaviour.Fire();
-    }
-
-    /// <summary>
-    /// Removes damage from Health, if Health <= 0, destroy this game object
-    /// </summary>
-    /// <param name="damage">The amount of health to take from the players health</param>
-    public override void TakeDamage(float damage)
-    {
-        Health -= damage;
-        if (Health <= 0)
-            Destroy(this.gameObject);
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        CombatActor actor = collision.gameObject.GetComponent<CombatActor>();
-
-        if (actor)
-            actor.TakeDamage(Damage);
-    }
 }
