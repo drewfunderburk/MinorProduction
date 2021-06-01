@@ -49,6 +49,7 @@ public class WarpManager : MonoBehaviour
             EasyPlanet.GetComponent<PlanetBehavior>().Generate();
             GENERATE_NEW_PLANETS = false;
             inPlanetSelect = true;
+            BlackoutPlane.SetActive(true);
         }
 
         if(inPlanetSelect == true && inLevel == false && isWarping == false)
@@ -90,6 +91,8 @@ public class WarpManager : MonoBehaviour
             warpTimerNormalized = 0f;
             warpTimer = 0f;
             CameraGroup.GetComponent<CameraMovement>().ToggleWarp();
+            BlackoutPlane.SetActive(false);
+
         }
 
         if (PlayerShip.transform.position.x >= 0)
@@ -116,7 +119,7 @@ public class WarpManager : MonoBehaviour
         if (warpTimerNormalized < 1f)
         {
             warpTimer += 1f * Time.deltaTime;
-            warpTimerNormalized = Mathf.InverseLerp(0f , 5f , warpTimer);
+            warpTimerNormalized = Mathf.InverseLerp(0f , iniWarpTimer , warpTimer);
         }
         else
         {
@@ -168,5 +171,4 @@ public class WarpManager : MonoBehaviour
 
     }
     //>--------------------------------------------------->>ENDWARP<<<---------------------------------------------------------------------------<
-
 }

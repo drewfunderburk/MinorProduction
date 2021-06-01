@@ -139,7 +139,7 @@ public class PlanetBehavior : MonoBehaviour
 
     void ChangeSize()
     {
-        generatedSize = Random.Range(0.5f, 1.25f);
+        generatedSize = Random.Range(1f, 1.25f);
     }
 
     public void Generate()

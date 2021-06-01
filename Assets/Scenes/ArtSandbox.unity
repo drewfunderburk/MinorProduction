@@ -149,8 +149,8 @@ Transform:
   m_LocalPosition: {x: 1.85, y: 3.19, z: -26.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6575659689907921264}
-  m_RootOrder: 0
+  m_Father: {fileID: 320457858}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 16.17}
 --- !u!1 &167900551
 GameObject:
@@ -9533,7 +9533,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 201370153}
   m_LocalRotation: {x: 1, y: -0, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 33495}
+  m_LocalPosition: {x: 0, y: 0, z: 58934.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1321595855}
@@ -18951,7 +18951,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 246606454}
   m_LocalRotation: {x: 1, y: -0, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 33960}
+  m_LocalPosition: {x: 0, y: 0, z: 59399.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1321595855}
@@ -19004,7 +19004,7 @@ ParticleSystemRenderer:
   m_MaxParticleSize: 0.5
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
-  m_LengthScale: 3
+  m_LengthScale: 20
   m_SortingFudge: 0
   m_NormalDirection: 1
   m_ShadowBias: 0
@@ -19158,7 +19158,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 20000
-      minScalar: 1000
+      minScalar: 100
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -19273,7 +19273,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 100
+      scalar: 50
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -19854,7 +19854,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 100
+      scalar: 400
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -28459,6 +28459,7 @@ GameObject:
   m_Component:
   - component: {fileID: 320457858}
   - component: {fileID: 320457859}
+  - component: {fileID: 320457860}
   m_Layer: 0
   m_Name: PlayerShip_group
   m_TagString: Untagged
@@ -28482,8 +28483,9 @@ Transform:
   - {fileID: 1191172305}
   - {fileID: 859718365}
   - {fileID: 1148072951}
+  - {fileID: 137556261}
   m_Father: {fileID: 6575659689907921264}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &320457859
 MonoBehaviour:
@@ -28492,7 +28494,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 320457857}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 618b0e3f6c65dd247a4a016150006c57, type: 3}
   m_Name: 
@@ -28502,6 +28504,25 @@ MonoBehaviour:
   m_MoveSpeed: 100
   m_MoveSpeedIncrement: 2.5
   m_Turbo: 2
+--- !u!114 &320457860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320457857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8d7c63e119cac84d961cdfd152f4e69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WarpManager: {fileID: 463394129}
+  MinMax: {x: -2, y: 1}
+  speed: 3
+  timerX: 0
+  alwaysActive: 0
+  position: 1
+  rotation: 1
 --- !u!1 &338916175
 GameObject:
   m_ObjectHideFlags: 0
@@ -28598,12 +28619,12 @@ GameObject:
   - component: {fileID: 346250219}
   - component: {fileID: 346250218}
   m_Layer: 8
-  m_Name: BlackoutPlane_mesh (1)
+  m_Name: PlanetSelectPlane_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &346250217
 Transform:
   m_ObjectHideFlags: 0
@@ -28612,8 +28633,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 346250216}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -830, z: 0}
-  m_LocalScale: {x: 360.19, y: 360.19, z: 360.19}
+  m_LocalPosition: {x: 0, y: -115, z: 0}
+  m_LocalScale: {x: 91.63429, y: 40.0578, z: 50.76926}
   m_Children: []
   m_Father: {fileID: 463394130}
   m_RootOrder: 1
@@ -28952,12 +28973,12 @@ MonoBehaviour:
   PlanetGroup: {fileID: 645575441}
   DifficultPlanet: {fileID: 1015858600}
   EasyPlanet: {fileID: 1833653641}
-  BlackoutPlane: {fileID: 0}
+  BlackoutPlane: {fileID: 346250216}
   PlayerShip: {fileID: 320457857}
   CameraGroup: {fileID: 909421873}
   ActivePlanet_Offset: {fileID: 1122678360}
-  LevelTime: 12
-  warpTimer: 6
+  LevelTime: 20
+  warpTimer: 5
   inPlanetSelect: 0
   isWarping: 0
   inLevel: 0
@@ -34571,13 +34592,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a817f85767aab047b90f9b31fa434a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  warpPos: {x: 0, y: 0, z: 0}
   enRouteFOV: 50
   lerpSpeed: 1.5
   enRouteTransform: {fileID: 137556261}
   warpEffect:
-  - {fileID: 201370156}
-  - {fileID: 1762185123}
-  - {fileID: 246606457}
+  - {fileID: 1762185120}
+  - {fileID: 201370153}
+  - {fileID: 246606454}
   spoolUpParticle: {fileID: 630339375}
 --- !u!4 &909421875
 Transform:
@@ -34592,7 +34614,7 @@ Transform:
   m_Children:
   - {fileID: 1687258585}
   m_Father: {fileID: 6575659689907921264}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 80, y: 0, z: 0}
 --- !u!1 &922465827
 GameObject:
@@ -34618,7 +34640,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 922465827}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -100, y: -30000, z: 723}
+  m_LocalPosition: {x: 5000, y: -30000, z: 723}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 555803295}
@@ -39316,7 +39338,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1015858600}
   m_LocalRotation: {x: -0.38268343, y: 0.92387956, z: -0, w: 0}
-  m_LocalPosition: {x: 128.4, y: -33, z: 0}
+  m_LocalPosition: {x: 100, y: -33, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 32052567675624107}
@@ -67929,7 +67951,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.5
-  far clip plane: 50000
+  far clip plane: 70000
   field of view: 50
   orthographic: 0
   orthographic size: 5
@@ -68177,7 +68199,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1762185120}
   m_LocalRotation: {x: 1, y: -0, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 144.1}
+  m_LocalPosition: {x: 0, y: 0, z: 25584}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1321595855}
@@ -72954,7 +72976,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1833653641}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -128.4, y: -32.999996, z: 0}
+  m_LocalPosition: {x: -100, y: -32.999996, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 687962072}
@@ -78522,7 +78544,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 137556261}
   - {fileID: 320457858}
   - {fileID: 909421875}
   m_Father: {fileID: 0}
@@ -78546,6 +78567,7 @@ GameObject:
   - component: {fileID: 2745622479369018182}
   - component: {fileID: 8441681333240326079}
   - component: {fileID: 7861656018135536484}
+  - component: {fileID: 7861656018135536485}
   m_Layer: 0
   m_Name: Player_group
   m_TagString: Untagged
@@ -78560,7 +78582,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7861656018135536483}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8d7c63e119cac84d961cdfd152f4e69, type: 3}
   m_Name: 
@@ -78572,6 +78594,23 @@ MonoBehaviour:
   alwaysActive: 0
   position: 1
   rotation: 1
+--- !u!114 &7861656018135536485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7861656018135536483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618b0e3f6c65dd247a4a016150006c57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LookSpeedController: 100
+  m_LookSpeedMouse: 0
+  m_MoveSpeed: 100
+  m_MoveSpeedIncrement: 2.5
+  m_Turbo: 2
 --- !u!1001 &8211612556943761532
 PrefabInstance:
   m_ObjectHideFlags: 0

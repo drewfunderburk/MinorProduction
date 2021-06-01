@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     private Vector3 iniPos;
-    private Vector3 warpPos;
+    public Vector3 warpPos;
     private Quaternion iniRot;
     private Quaternion warpRot;
     private float lerpTime = 0f;
@@ -15,7 +15,7 @@ public class CameraMovement : MonoBehaviour
     public float enRouteFOV = 30f;
     public float lerpSpeed = 1f;
     public Transform enRouteTransform;
-    public ParticleSystem[] warpEffect;
+    public GameObject[] warpEffect;
     public ParticleSystem spoolUpParticle;
 
 
@@ -25,8 +25,6 @@ public class CameraMovement : MonoBehaviour
         iniPos = gameObject.transform.position;
         iniRot = gameObject.transform.rotation;
 
-        warpPos = enRouteTransform.transform.position;
-        warpRot = enRouteTransform.transform.rotation;
         if (GetComponentInChildren<Camera>())
         {
             iniFOV = GetComponentInChildren<Camera>().fieldOfView;
@@ -37,16 +35,16 @@ public class CameraMovement : MonoBehaviour
     void Update()
     {
 
-
         if (isWarping == true)
         {
             Mathf.Clamp01(lerpTime = (lerpTime < 1f ? lerpTime + Time.deltaTime * lerpSpeed : 1f));
 
-            foreach (ParticleSystem particle in warpEffect)
+            foreach (GameObject particle in warpEffect)
             {
-                if (!particle.isPlaying)
+                if (!particle.GetComponent<ParticleSystem>().isPlaying)
                 {
-                    particle.Play();
+                    particle.SetActive(true);
+                    particle.GetComponent<ParticleSystem>().Play();
                 }
             }
 
@@ -55,11 +53,15 @@ public class CameraMovement : MonoBehaviour
         {
             Mathf.Clamp01(lerpTime = (lerpTime > 0f ? lerpTime - Time.deltaTime * lerpSpeed :  0f));
 
-            foreach (ParticleSystem particle in warpEffect)
+            warpPos = enRouteTransform.transform.position;
+            warpRot = enRouteTransform.transform.rotation;
+
+            foreach (GameObject particle in warpEffect)
             {
-                if (particle.isPlaying)
+                if (particle.GetComponent<ParticleSystem>().isPlaying)
                 {
-                    particle.Stop();
+                    particle.GetComponent<ParticleSystem>().Stop();
+                    particle.SetActive(false);
                 }
             }
         }
