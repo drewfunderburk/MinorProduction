@@ -8,12 +8,18 @@ public abstract class EnemyBehaviour : CombatActor
     [SerializeField] private Transform _target;
     public virtual Transform Target { get => _target; set => _target = value; }
 
+    [SerializeField] private int _scoreValue = 10;
+    public int ScoreValue { get => _scoreValue; }
+
 
     public override void TakeDamage(float damage)
     {
         Health -= damage;
         if (Health <= 0)
+        {
+            GameManagerBehaviour.Instance.IncreaseScore(_scoreValue);
             Destroy(this.gameObject);
+        }
     }
 
     protected virtual void OnCollisionEnter(Collision collision)
