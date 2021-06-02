@@ -9,28 +9,33 @@ public class GameManagerBehaviour : MonoBehaviour
     // Singleton instance of this class
     public static GameManagerBehaviour Instance;
 
+    [Tooltip("The maximum level allowed")]
+    [SerializeField] private int _maxLevel = 20;
+    public int MaxLevel { get => _maxLevel; }
+
     [Tooltip("The game's current level")]
     [SerializeField] private int _level = 0;
     public int Level { get => _level; set => _level = value; }
 
-    // Curve for how quickly enemies spawn per level
-    [SerializeField] private AnimationCurve _enemySpawnDelay = null;
-    public AnimationCurve EnemySpawnDelay { get => _enemySpawnDelay; }
+    // Difficulty curves
+    [SerializeField] private DifficultyCurvesScriptableObject _difficultyCurves = null;
 
-    // Curve for how many enemies spawn per level
-    [SerializeField] private AnimationCurve _enemySpawnCount = null;
-    public AnimationCurve EnemySpawnCount { get => _enemySpawnCount; }
+    // Curve getters. Returns value at current level
+    public float EnemySpawnDelay
+    { get { return _difficultyCurves.EnemySpawnDelay.Evaluate((float)_level / _maxLevel); } }
 
-    // Curve for how long to wait between groups of waves
-    [SerializeField] private AnimationCurve _delayBetweenWaveGroups = null;
-    public AnimationCurve DelayBetweenWaveGroups { get => _delayBetweenWaveGroups; }
+    public int EnemySpawnCount
+    { get { return Mathf.RoundToInt(_difficultyCurves.EnemySpawnCount.Evaluate((float)_level / _maxLevel)); } }
 
-    // Curves for how many waves are in a group
-    [SerializeField] private AnimationCurve _wavesInGroup = null;
-    public AnimationCurve WavesInGroup { get => _wavesInGroup; }
+    public float DelayBetweenWaveGroups
+    { get { return _difficultyCurves.DelayBetweenWaveGroups.Evaluate((float)_level / _maxLevel); } }
+
+    public int WavesInGroup
+    { get { return Mathf.RoundToInt(_difficultyCurves.WavesInGroup.Evaluate((float)_level / _maxLevel)); } }
 
     private bool _isGameOver = false;
     public bool IsGameOver { get { return _isGameOver; } }
+
 
     private void Awake()
     {
@@ -46,5 +51,8 @@ public class GameManagerBehaviour : MonoBehaviour
             Instance = this;
         else if (Instance != this)
             Destroy(this.gameObject);
+
+        // Clamp level to bounds
+        _level = Mathf.Clamp(_level, 0, _maxLevel);
     }
 }

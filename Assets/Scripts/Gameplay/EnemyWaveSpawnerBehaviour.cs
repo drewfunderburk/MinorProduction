@@ -99,16 +99,10 @@ public class EnemyWaveSpawnerBehaviour : MonoBehaviour
     /// </summary>
     private void EvaluateDifficultyCurves()
     {
-        int level = GameManagerBehaviour.Instance.Level;
-        AnimationCurve spawnDelayCurve = GameManagerBehaviour.Instance.EnemySpawnDelay;
-        AnimationCurve spawnCountCurve = GameManagerBehaviour.Instance.EnemySpawnCount;
-        AnimationCurve delayBetweenWaveGroups = GameManagerBehaviour.Instance.DelayBetweenWaveGroups;
-        AnimationCurve wavesInGroup = GameManagerBehaviour.Instance.WavesInGroup;
-
-        _spawnDelay = spawnDelayCurve.Evaluate(level);
-        _spawnCount = Mathf.RoundToInt(spawnCountCurve.Evaluate(level));
-        _delayBetweenWaveGroups = delayBetweenWaveGroups.Evaluate(level);
-        _wavesInGroup = Mathf.RoundToInt(wavesInGroup.Evaluate(level));
+        _spawnDelay = GameManagerBehaviour.Instance.EnemySpawnDelay;
+        _spawnCount = GameManagerBehaviour.Instance.EnemySpawnCount;
+        _delayBetweenWaveGroups = GameManagerBehaviour.Instance.DelayBetweenWaveGroups;
+        _wavesInGroup = GameManagerBehaviour.Instance.WavesInGroup;
     }
 
     private void Start()
