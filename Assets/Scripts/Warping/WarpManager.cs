@@ -28,7 +28,8 @@ public class WarpManager : MonoBehaviour
 
     private bool GENERATE_NEW_PLANETS = true;
     private float iniWarpTimer;
-    public float warpTimerNormalized = 0f;
+    private float warpTimerNormalized = 0f;
+    public int warpCounter = 0;
 
     public GameObject SelectedPlanet = null;
     public GameObject PlanetToHide = null;
@@ -41,12 +42,16 @@ public class WarpManager : MonoBehaviour
         DifficultPlanet_rot = DifficultPlanet.transform.rotation;
         EasyPlanet_rot = EasyPlanet.transform.rotation;
         iniWarpTimer = warpTimer;
-        
+
+        GameManagerBehaviour.Instance.NumberOfWarps = 0;
     }
 
     //<---------------------------------------------------<<< UPDATE >>>--------------------------------------------------------------------------->
     void Update()
     {
+
+        GameManagerBehaviour.Instance.NumberOfWarps = warpCounter;
+
         if (GENERATE_NEW_PLANETS == true)
         {
             DifficultPlanet.GetComponent<PlanetBehavior>().Generate();
@@ -136,6 +141,7 @@ public class WarpManager : MonoBehaviour
             warpTimer = 0f;
             CameraGroup.GetComponent<CameraMovement>().ToggleWarp();
             PlanetGroup.GetComponent<PlanetMovement>().levelStatus = true;
+            warpCounter += 1;
 
         }
         if (warpTimerNormalized > 0)
