@@ -33,6 +33,13 @@ public class GameManagerBehaviour : MonoBehaviour
     public int WavesInGroup
     { get { return Mathf.RoundToInt(_difficultyCurves.WavesInGroup.Evaluate((float)_level / _maxLevel)); } }
 
+    [SerializeField] private int _score = 0;
+    public int Score { get => _score; }
+
+    [Tooltip("Number of times the player has warped to a new planet")]
+    [SerializeField] private int _numberOfWarps = 0;
+    public int NumberOfWarps { get => _numberOfWarps; set => _numberOfWarps = value; }
+
     private bool _isGameOver = false;
     public bool IsGameOver { get { return _isGameOver; } }
 
@@ -54,5 +61,10 @@ public class GameManagerBehaviour : MonoBehaviour
 
         // Clamp level to bounds
         _level = Mathf.Clamp(_level, 0, _maxLevel);
+    }
+
+    public void IncreaseScore(int score)
+    {
+        _score += score;
     }
 }
