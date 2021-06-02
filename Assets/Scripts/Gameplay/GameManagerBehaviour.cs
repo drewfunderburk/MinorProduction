@@ -33,6 +33,9 @@ public class GameManagerBehaviour : MonoBehaviour
     public int WavesInGroup
     { get { return Mathf.RoundToInt(_difficultyCurves.WavesInGroup.Evaluate((float)_level / _maxLevel)); } }
 
+    [SerializeField] private int _score = 0;
+    public int Score { get => _score; }
+
     private bool _isGameOver = false;
     public bool IsGameOver { get { return _isGameOver; } }
 
@@ -54,5 +57,10 @@ public class GameManagerBehaviour : MonoBehaviour
 
         // Clamp level to bounds
         _level = Mathf.Clamp(_level, 0, _maxLevel);
+    }
+
+    public void IncreaseScore(int score)
+    {
+        _score += score;
     }
 }
