@@ -35,12 +35,14 @@ class DifficultyCurvesScriptableObjectEditor : Editor
         PursueTargetBehaviour script = target as PursueTargetBehaviour;
 
         // Declare help text
-        string helpText = "Curves should remain within a value and time of 0 - 1. Exceeding may cause undesired behavior.";
+        string infoText = "Time = scale between 0 and max level\nValue = desired value at that time";
+        string helpText = "Curves should remain within a time of 0 - 1. Exceeding may cause undesired behavior. Set value at points to actual desired value";
 
         // Display help text
         _showText = EditorGUILayout.BeginFoldoutHeaderGroup(_showText, "Info");
         if (_showText)
         {
+            EditorGUILayout.HelpBox(infoText, MessageType.Info);
             EditorGUILayout.HelpBox(helpText, MessageType.Warning);
         }
 
