@@ -11,7 +11,7 @@ public class PlayerShootBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _gun = GetComponent<ProjectileSpawnerBehaviour>();
+        _gun = new ProjectileSpawnerBehaviour();
     }
     public void Fire(InputActionPhase context)
     {
