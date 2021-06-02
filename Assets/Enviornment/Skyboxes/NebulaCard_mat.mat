@@ -59,10 +59,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - HueShift: 0
-    - Vector1_312E7D9A: 0.81
-    - Vector1_B77125A8: 2
+    - Vector1_312E7D9A: 1
+    - Vector1_B77125A8: 1
     - Vector1_C7A269D8: 0
-    - Vector1_C9BD72CC: 0.12
+    - Vector1_C9BD72CC: 0.1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1

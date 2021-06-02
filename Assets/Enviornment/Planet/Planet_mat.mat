@@ -104,6 +104,7 @@ Material:
     - Ocean_Blue: 1
     - Ocean_Green: 0.25
     - Ocean_Red: 0
+    - PlanetSelectMode: 0
     - Vector1_424E8243: 1
     - Vector1_A7D57F9E: 5000
     - Vector1_AB4D1358: 0.5
@@ -159,7 +160,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - AtmoColor: {r: 0, g: 0.66260576, b: 1, a: 1}
+    - AtmoColor: {r: 0, g: 0.662745, b: 1, a: 1}
     - Color_A2B50177: {r: 1, g: 0.907141, b: 0.48584902, a: 1}
     - LandColor: {r: 0.15403442, g: 0.745283, b: 0, a: 1}
     - OceanColor: {r: 0.6431373, g: 0.101960786, b: 0, a: 1}
