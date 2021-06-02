@@ -16,6 +16,8 @@ public class WarpManager : MonoBehaviour
 
     private Vector3 DifficultPlanet_pos;
     private Vector3 EasyPlanet_pos;
+    private Quaternion DifficultPlanet_rot;
+    private Quaternion EasyPlanet_rot;
     private float BlackoutPlane_ini_height;
 
     public float warpTimer = 5f;
@@ -36,6 +38,8 @@ public class WarpManager : MonoBehaviour
     {
         DifficultPlanet_pos = DifficultPlanet.transform.position;
         EasyPlanet_pos = EasyPlanet.transform.position;
+        DifficultPlanet_rot = DifficultPlanet.transform.rotation;
+        EasyPlanet_rot = EasyPlanet.transform.rotation;
         iniWarpTimer = warpTimer;
         
     }
@@ -82,6 +86,8 @@ public class WarpManager : MonoBehaviour
         warpTimer = iniWarpTimer;
         DifficultPlanet.transform.position = DifficultPlanet_pos;
         EasyPlanet.transform.position = EasyPlanet_pos;
+        DifficultPlanet.transform.rotation = DifficultPlanet_rot;
+        EasyPlanet.transform.rotation = EasyPlanet_rot;
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -163,8 +169,6 @@ public class WarpManager : MonoBehaviour
             PlanetGroup.GetComponent<PlanetMovement>().levelStatus = false;
             PlanetGroup.GetComponent<PlanetMovement>().planetActive(0f);
             PlanetGroup.GetComponent<PlanetMovement>().planetEnRoute(0f);
-            DifficultPlanet.transform.localPosition = DifficultPlanet_pos;
-            EasyPlanet.transform.localPosition = EasyPlanet_pos;
         }
 
         PlanetGroup.GetComponent<PlanetMovement>().planetActive(warpTimerNormalized);
