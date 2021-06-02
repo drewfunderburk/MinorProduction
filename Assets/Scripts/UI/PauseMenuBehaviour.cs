@@ -5,8 +5,6 @@ using UnityEngine.InputSystem;
 
 public class PauseMenuBehaviour : MenuBehaviour
 {
-    private PlayerControls _controls;
-
     private bool _isPaused = false;
 
     /// <summary>
