@@ -29,7 +29,7 @@ public class PauseMenuBehaviour : MenuBehaviour
         _isPaused = false;
     }
 
-    public void TogglePause(InputAction.CallbackContext context)
+    public void TogglePause()
     {
         if (_isPaused)
             UnPauseGame();
@@ -37,21 +37,15 @@ public class PauseMenuBehaviour : MenuBehaviour
             PauseGame();
     }
 
-    private void OnEnable()
-    {
-        _controls.Enable();
-    }
-
-    private void OnDisable()
-    {
-        _controls.Disable();
-    }
-
     protected override void Awake()
     {
         base.Awake();
-        _controls = new PlayerControls();
-        _controls.Ship.Pause.started += TogglePause;
         Menu.enabled = false;
+    }
+
+    private void Update()
+    {
+        if (Input.GetButtonDown("Cancel"))
+            TogglePause();
     }
 }
