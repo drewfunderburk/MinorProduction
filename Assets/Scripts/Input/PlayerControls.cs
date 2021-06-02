@@ -32,15 +32,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""id"": ""c2e65549-5541-4d81-b2cf-54acd2a1317a"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": ""Press""
-                },
-                {
-                    ""name"": ""Pause"",
-                    ""type"": ""Button"",
-                    ""id"": ""48ce0f4e-e116-4bdc-a84d-e515fac51eed"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press""
+                    ""interactions"": ""Hold(pressPoint=0.5)""
                 }
             ],
             ""bindings"": [
