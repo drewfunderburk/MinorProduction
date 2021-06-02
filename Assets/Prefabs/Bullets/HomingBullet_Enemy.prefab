@@ -90,7 +90,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8896731816641746365}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -111,7 +111,7 @@ MonoBehaviour:
   _despawnTime: 10
   _collideWith:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1280
   _target: {fileID: 0}
   _steeringForce: 1000
 --- !u!54 &8896731816641746343

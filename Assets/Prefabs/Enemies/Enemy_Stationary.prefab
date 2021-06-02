@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6568648977489384878}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ProjectileSpawnPositions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3586007268781011246}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpawnPosition1
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 7287244517507044241}
   - component: {fileID: 7287244517507044246}
   - component: {fileID: 5081129619842093335}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy_Stationary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,6 +229,7 @@ MonoBehaviour:
   _health: 0
   _damage: 0
   _target: {fileID: 0}
+  _scoreValue: 10
   _newPositionMedianDelay: 7
   _delayOffset: 3
 --- !u!114 &5081129619842093335
