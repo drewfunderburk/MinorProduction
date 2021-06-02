@@ -7,7 +7,12 @@ public class PlayerHealthBehaviour : CombatActor
     [Tooltip("The Max Health That The Player Can Have")]
     [SerializeField]
     private float _maxHealth = 1;
+    private Rigidbody _rigidbody;
 
+    public void Start()
+    {
+        _rigidbody = GetComponent<Rigidbody>();
+    }
     /// <summary>
     /// Removes damage from Health, if Health <= 0, destroy this game object
     /// </summary>
@@ -16,7 +21,7 @@ public class PlayerHealthBehaviour : CombatActor
     {
         Health -= damage;
         if (Health <= 0)
-            Destroy(this.gameObject);
+            _rigidbody.useGravity = true;
     }
     /// <summary>
     /// Regens health to Health, if health >= maxhealth, cap it.
@@ -34,7 +39,7 @@ public class PlayerHealthBehaviour : CombatActor
     public void Kill()
     {
         Health = 0;
-        Destroy(this.gameObject);
+        _rigidbody.useGravity = true;
     }
     /// <summary>
     /// Hard sets the players health to be a specific float value, if the health >= maxhealth, cap it
@@ -45,5 +50,14 @@ public class PlayerHealthBehaviour : CombatActor
         Health = value;
         if (Health > _maxHealth)
             Health = _maxHealth;
+        else if (Health <= 0)
+            Kill();
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        CombatActor actor = collision.gameObject.GetComponent<CombatActor>();
+
+        if (actor)
+            actor.TakeDamage(Damage);
     }
 }
