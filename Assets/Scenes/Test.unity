@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxLevel: 20
-  _level: 1
+  _level: 4
   _difficultyCurves: {fileID: 11400000, guid: 7468cbe28a336a4489319e4bdf9384dd, type: 2}
 --- !u!4 &85764202
 Transform:

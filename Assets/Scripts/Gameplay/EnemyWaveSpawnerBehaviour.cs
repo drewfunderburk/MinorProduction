@@ -72,10 +72,10 @@ public class EnemyWaveSpawnerBehaviour : MonoBehaviour
     /// <param name="numEnemies">How many to spawn</param>
     private IEnumerator SpawnIndexWave(int index, int numEnemies)
     {
+        _waveNumber++;
         for (int i = 0; i < numEnemies; i++)
         {
             SpawnEnemyAtIndex(index);
-            _waveNumber++;
             yield return new WaitForSeconds(_enemySpawnDelay);
         }
     }
@@ -86,10 +86,10 @@ public class EnemyWaveSpawnerBehaviour : MonoBehaviour
     /// <param name="numEnemies">How many to spawn</param>
     private IEnumerator SpawnRandomWave(int numEnemies)
     {
+        _waveNumber++;
         for (int i = 0; i < numEnemies; i++)
         {
             SpawnRandomEnemy();
-            _waveNumber++;
             yield return new WaitForSeconds(_enemySpawnDelay);
         }
     }
@@ -121,7 +121,12 @@ public class EnemyWaveSpawnerBehaviour : MonoBehaviour
         {
             _spawnTimer = 0;
             EvaluateDifficultyCurves();
-            _enemySpawnDelay = (_spawnDelay / _spawnCount) / 2;
+
+            // If _waveNumber is nonzero and a multiple of _wavesInGroup, increase delay
+            if (_waveNumber != 0 && _waveNumber % (_wavesInGroup - 1) == 0)
+                _spawnTimer -= _delayBetweenWaveGroups;
+
+            _enemySpawnDelay = (_spawnDelay / _spawnCount) / 4;
             SpawnRandomIndexWave();
         }
     }
