@@ -10,7 +10,7 @@ public class FireDelayPowerUpBehaviour : MonoBehaviour, IPowerUp
         MULTIPLICATIVE
     }
 
-    [Tooltip("How to apply the fire delay change. Additive to simply add or subtract the value, Multiplicative to multiply the current fire rate by the value")]
+    [Tooltip("How to apply the fire delay change. Additive to simply add or subtract the value, Multiplicative to multiply the current fire delay by the value")]
     [SerializeField] private ChangeType _changeType = ChangeType.MULTIPLICATIVE;
     [SerializeField] private float _fireDelayChange = 0.5f;
 
