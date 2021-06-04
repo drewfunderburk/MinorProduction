@@ -50,3 +50,4 @@ MonoBehaviour:
   - {fileID: 7287244517507044247, guid: 6e325fd6c1481c54bbcf509e8f4f0df0, type: 3}
   - {fileID: 2669990292565552557, guid: 5baddbef3b2afed419b84e06242f0c7f, type: 3}
   _target: {fileID: 0}
+  _spawnWidth: 30

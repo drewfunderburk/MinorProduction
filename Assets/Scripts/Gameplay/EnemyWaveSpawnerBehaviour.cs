@@ -14,12 +14,15 @@ public class EnemyWaveSpawnerBehaviour : MonoBehaviour
     [Tooltip("Target to pass to enemies")]
     [SerializeField] private Transform _target = null;
 
+    [Tooltip("Width of spawn area")]
+    [SerializeField] private float _spawnWidth = 100;
+
     // How long between each individual spawn in a wave
     private float _enemySpawnDelay = 0.5f;
 
     private List<EnemyBehaviour> _enemies = new List<EnemyBehaviour>();
 
-
+    // Default values for difficulty curves
     private int _spawnCount = 5;
     private float _spawnDelay = 3;
     private float _delayBetweenWaveGroups = 3;
@@ -27,13 +30,22 @@ public class EnemyWaveSpawnerBehaviour : MonoBehaviour
 
     private float _spawnTimer = 0;
     private int _waveNumber = 0;
+    private Vector3 _spawnLocation = new Vector3();
+
+    /// <summary>
+    /// Choose a random x between -spawnWidth and spawnWidth. Set spawnLocation to that point with the same y and z as this object
+    /// </summary>
+    private void RandomizeSpawnLocation()
+    {
+        _spawnLocation = new Vector3(Random.Range(-_spawnWidth, _spawnWidth), transform.position.y, transform.position.z);
+    }
 
     /// <summary>
     /// Spawns an enemy from EnemyPrefabs at a given index
     /// </summary>
     private void SpawnEnemyAtIndex(int index)
     {
-        GameObject enemy = Instantiate(_enemyPrefabs[index], transform.position, Quaternion.identity);
+        GameObject enemy = Instantiate(_enemyPrefabs[index], _spawnLocation, Quaternion.identity);
 
         EnemyBehaviour enemyBehaviour = enemy.GetComponent<EnemyBehaviour>();
         if (enemyBehaviour)
@@ -48,6 +60,7 @@ public class EnemyWaveSpawnerBehaviour : MonoBehaviour
     private void SpawnRandomIndexWave()
     {
         int index = Random.Range(0, _enemyPrefabs.Length);
+        RandomizeSpawnLocation();
         StartCoroutine(SpawnIndexWave(index, _spawnCount));
     }
 
@@ -129,5 +142,14 @@ public class EnemyWaveSpawnerBehaviour : MonoBehaviour
             _enemySpawnDelay = (_spawnDelay / _spawnCount) / 4;
             SpawnRandomIndexWave();
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        // Draw spawn width 
+        Gizmos.color = Color.green;
+        Vector3 start = new Vector3(-_spawnWidth, transform.position.y, transform.position.z);
+        Vector3 end = new Vector3(_spawnWidth, transform.position.y, transform.position.z);
+        Gizmos.DrawLine(start, end);
     }
 }
