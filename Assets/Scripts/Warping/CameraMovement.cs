@@ -41,7 +41,9 @@ public class CameraMovement : MonoBehaviour
 
             foreach (GameObject particle in warpEffect)
             {
-                if (!particle.GetComponent<ParticleSystem>().isPlaying)
+                particle.SetActive(true);
+
+                if (particle.GetComponent<ParticleSystem>() && !particle.GetComponent<ParticleSystem>().isPlaying)
                 {
                     particle.SetActive(true);
                     particle.GetComponent<ParticleSystem>().Play();
@@ -58,7 +60,9 @@ public class CameraMovement : MonoBehaviour
 
             foreach (GameObject particle in warpEffect)
             {
-                if (particle.GetComponent<ParticleSystem>().isPlaying)
+                particle.SetActive(false);
+
+                if (particle.GetComponent<ParticleSystem>() && particle.GetComponent<ParticleSystem>().isPlaying)
                 {
                     particle.GetComponent<ParticleSystem>().Stop();
                     particle.SetActive(false);

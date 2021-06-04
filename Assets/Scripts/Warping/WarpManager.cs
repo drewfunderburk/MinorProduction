@@ -2,39 +2,52 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class WarpManager : MonoBehaviour
 {
+    [Tooltip("Requires PlanetMovement")]
     public GameObject PlanetGroup;
+    [Tooltip("Requires PlanetBehavior")]
     public GameObject DifficultPlanet;
+    [Tooltip("Requires PlanetBehavior")]
     public GameObject EasyPlanet;
-    public GameObject BlackoutPlane;
-    public GameObject PlayerShip;
+    [Tooltip("Requires CameraMovement")]
     public GameObject CameraGroup;
+    public GameObject PlanetSelectInterface;
+    public GameObject PlayerShip;
 
     public Transform ActivePlanet_Offset;
+    
+    // Duration of the level in seconds
     public float LevelTime = 10f;
 
+    // Initial planet transforms 
     private Vector3 DifficultPlanet_pos;
     private Vector3 EasyPlanet_pos;
     private Quaternion DifficultPlanet_rot;
     private Quaternion EasyPlanet_rot;
-    private float BlackoutPlane_ini_height;
 
+    // Duration of the warp in seconds
     public float warpTimer = 5f;
 
     public bool inPlanetSelect = true;
-    public bool isWarping;
-    public bool inLevel;
+    public bool isWarping = false;
+    public bool inLevel = false;
 
     private bool GENERATE_NEW_PLANETS = true;
+    
     private float iniWarpTimer;
+    
+    // Used for reference to the state of LevelTime and warpTimer (0-1 value)
     private float warpTimerNormalized = 0f;
+    
+    // Number of warps
     public int warpCounter = 0;
 
     public GameObject SelectedPlanet = null;
     public GameObject PlanetToHide = null;
 
-    // Start is called before the first frame update
     void Start()
     {
         DifficultPlanet_pos = DifficultPlanet.transform.position;
@@ -58,7 +71,7 @@ public class WarpManager : MonoBehaviour
             EasyPlanet.GetComponent<PlanetBehavior>().Generate();
             GENERATE_NEW_PLANETS = false;
             inPlanetSelect = true;
-            BlackoutPlane.SetActive(true);
+            PlanetSelectInterface.SetActive(true);
         }
 
         if(inPlanetSelect == true && inLevel == false && isWarping == false)
@@ -102,7 +115,7 @@ public class WarpManager : MonoBehaviour
             warpTimerNormalized = 0f;
             warpTimer = 0f;
             CameraGroup.GetComponent<CameraMovement>().ToggleWarp();
-            BlackoutPlane.SetActive(false);
+            PlanetSelectInterface.SetActive(false);
 
         }
 
