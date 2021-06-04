@@ -78,6 +78,7 @@ GameObject:
   - component: {fileID: 7287244517507044241}
   - component: {fileID: 7287244517507044246}
   - component: {fileID: 5081129619842093335}
+  - component: {fileID: 757324257377986723}
   m_Layer: 9
   m_Name: Enemy_Stationary
   m_TagString: Untagged
@@ -208,12 +209,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
-  _spawner:
-    _spawnPositions:
-    - {fileID: 3586007268781011246}
-    _projectilePrefab: {fileID: 7752027011446696218, guid: 7e73afc5ad969f74ebd38113cd58007f,
-      type: 3}
-    _fireDelay: 1
 --- !u!114 &7287244517507044246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,3 +241,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
   _rotationSpeed: 1
+--- !u!114 &757324257377986723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7287244517507044247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f46e83dd3ff0bb44aadfb73b24cedf89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawnPositions:
+  - {fileID: 3586007268781011246}
+  _projectilePrefab: {fileID: 7752027011446696218, guid: 7e73afc5ad969f74ebd38113cd58007f,
+    type: 3}
+  _fireDelay: 1
