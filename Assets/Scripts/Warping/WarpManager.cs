@@ -16,7 +16,7 @@ public class WarpManager : MonoBehaviour
     public GameObject CameraGroup;
     public GameObject PlanetSelectInterface;
     public GameObject PlayerShip;
-
+    public GameObject[] PlanetUI;
     public Transform ActivePlanet_Offset;
     
     // Duration of the level in seconds
@@ -36,7 +36,8 @@ public class WarpManager : MonoBehaviour
     public bool inLevel = false;
 
     private bool GENERATE_NEW_PLANETS = true;
-    
+    private bool GameStarted = false;
+
     private float iniWarpTimer;
     
     // Used for reference to the state of LevelTime and warpTimer (0-1 value)
@@ -65,6 +66,7 @@ public class WarpManager : MonoBehaviour
 
         GameManagerBehaviour.Instance.NumberOfWarps = warpCounter;
 
+
         if (GENERATE_NEW_PLANETS == true)
         {
             DifficultPlanet.GetComponent<PlanetBehavior>().Generate();
@@ -77,19 +79,19 @@ public class WarpManager : MonoBehaviour
         if(inPlanetSelect == true && inLevel == false && isWarping == false)
         {
             PlanetSelect();
-            Debug.Log("PlanetSelect");
+            Debug.Log("Planet Select");
         }
 
         if (inPlanetSelect == false && inLevel == false && isWarping == true)
         {
             BeginWarp();
-            Debug.Log("BeginWarp");
+            Debug.Log("Warping");
         }
 
         if (inPlanetSelect == false && inLevel == true && isWarping == false)
         {
             EndWarp();
-            Debug.Log("EndWarp");
+            Debug.Log("In Level");
         }
 
         
@@ -100,7 +102,7 @@ public class WarpManager : MonoBehaviour
     //<---------------------------------------------------<<< PLANET SELECT >>>--------------------------------------------------------------------------->
     public void PlanetSelect()
     {
-
+        
         warpTimer = iniWarpTimer;
         DifficultPlanet.transform.position = DifficultPlanet_pos;
         EasyPlanet.transform.position = EasyPlanet_pos;
@@ -116,7 +118,16 @@ public class WarpManager : MonoBehaviour
             warpTimer = 0f;
             CameraGroup.GetComponent<CameraMovement>().ToggleWarp();
             PlanetSelectInterface.SetActive(false);
+            GameStarted = true;
 
+            //Swaps out initial UI groups for repair and danger UI groups after the first warp
+            if (GameStarted)
+            {
+                foreach (GameObject UIGroup in PlanetUI)
+                {
+                    UIGroup.SetActive(!UIGroup.activeSelf);
+                }
+            }
         }
 
         if (PlayerShip.transform.position.x >= 0)
@@ -140,6 +151,7 @@ public class WarpManager : MonoBehaviour
     //<---------------------------------------------------<<< BEGIN WARP >>>--------------------------------------------------------------------------->
     public void BeginWarp()
     {
+
         if (warpTimerNormalized < 1f)
         {
             warpTimer += 1f * Time.deltaTime;

@@ -34,14 +34,12 @@ public class PlanetMovement : MonoBehaviour
         gameObject.transform.position = new Vector3(Mathf.SmoothStep(farPos.x, nearPos.x, travelTime), Mathf.SmoothStep(farPos.y, nearPos.y, travelTime), Mathf.SmoothStep(farPos.z, nearPos.z, travelTime));
         gameObject.transform.localScale = new Vector3(Mathf.SmoothStep(farScale, nearScale, travelTime), Mathf.SmoothStep(farScale, nearScale, travelTime), Mathf.SmoothStep(farScale, nearScale, travelTime));
         isEnRoute = true;
-        Debug.Log("En Route");
     }
 
     public void planetActive(float levelTime)
     {
         gameObject.transform.position = new Vector3(Mathf.SmoothStep(startPos.x, endPos.x, levelTime), Mathf.SmoothStep(startPos.y, endPos.y, levelTime), Mathf.SmoothStep(startPos.z, endPos.z, levelTime));
         isEnRoute = false;
-        Debug.Log("Level Active");
     }
 
 }
