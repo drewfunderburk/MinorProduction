@@ -8,6 +8,8 @@ public class InputDelegateBehaviour : MonoBehaviour
     private PlayerControls _playerControls;
     private PlayerMovementBehaviour _playerMovement;
     private PlayerShootBehaviour _playerShootBehaviour;
+
+    [SerializeField]
     private ProjectileSpawnerBehaviour _projectileSpawnerBehaviour;
 
     private void Awake()
@@ -36,7 +38,5 @@ public class InputDelegateBehaviour : MonoBehaviour
     {
         //calls the players movement behaviour's move function using read values as input
         _playerMovement.Move(_playerControls.Ship.Movement.ReadValue<Vector2>());
-        //calls the shoot behaviours fire using the action phase of Fire
-        _playerShootBehaviour.Fire(_playerControls.Ship.Fire.phase);
     }
 }
