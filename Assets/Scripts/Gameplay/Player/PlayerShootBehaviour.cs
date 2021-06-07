@@ -5,13 +5,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerShootBehaviour : MonoBehaviour
 {
-    [SerializeField]
     private ProjectileSpawnerBehaviour _gun;
 
     // Start is called before the first frame update
     void Start()
     {
-        _gun = new ProjectileSpawnerBehaviour();
+        _gun = GetComponent<ProjectileSpawnerBehaviour>();
     }
     public void Fire(InputActionPhase context)
     {

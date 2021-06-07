@@ -17,10 +17,9 @@ public class BulletStraightBehaviour : BulletBehaviour
         Destroy(this.gameObject, DespawnTime);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collider)
     {
-        // If the collided object's layer is in _collideWith, destroy this object
-        if (((1 << collision.gameObject.layer) & CollideWith) != 0)
-            Destroy(this.gameObject);
+        // Destroy this object on collision
+        Destroy(this.gameObject);
     }
 }

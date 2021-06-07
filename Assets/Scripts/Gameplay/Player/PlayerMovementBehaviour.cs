@@ -7,6 +7,7 @@ public class PlayerMovementBehaviour : MonoBehaviour
     [Tooltip("The Speed at Which The Player Will Move")]
     [SerializeField]
     private float _moveSpeed = 1;
+    public float MoveSpeed { get => _moveSpeed; set => _moveSpeed = value; }
 
     [Tooltip("The Final Rotation the Player Will Reach During Movement in Degrees")]
     [SerializeField]
@@ -14,6 +15,7 @@ public class PlayerMovementBehaviour : MonoBehaviour
 
     private Rigidbody _rigidbody;
     private Vector3 _velocity;
+
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +30,7 @@ public class PlayerMovementBehaviour : MonoBehaviour
 
     public void Move(Vector3 direction)
     {
-        _velocity = direction * _moveSpeed * Time.deltaTime;
+        _velocity = direction * MoveSpeed * Time.deltaTime;
 
         //variable to hold how much this player will be rotating in this frame
         float rotate = transform.rotation.eulerAngles.z;

@@ -7,7 +7,10 @@ public class PlayerHealthBehaviour : CombatActor
     [Tooltip("The Max Health That The Player Can Have")]
     [SerializeField]
     private float _maxHealth = 1;
+    public float MaxHealth { get => _maxHealth; }
+
     private Rigidbody _rigidbody;
+
 
     public void Start()
     {
@@ -30,8 +33,8 @@ public class PlayerHealthBehaviour : CombatActor
     public void RegenHealth(float health)
     {
         Health += health;
-        if (Health > _maxHealth)
-            Health = _maxHealth;
+        if (Health > MaxHealth)
+            Health = MaxHealth;
     }
     /// <summary>
     /// Sets the players health to zero, then destroys the player
@@ -48,8 +51,8 @@ public class PlayerHealthBehaviour : CombatActor
     public void SetHealth(float value)
     {
         Health = value;
-        if (Health > _maxHealth)
-            Health = _maxHealth;
+        if (Health > MaxHealth)
+            Health = MaxHealth;
         else if (Health <= 0)
             Kill();
     }

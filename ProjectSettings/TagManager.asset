@@ -13,11 +13,11 @@ TagManager:
   - UI
   - 
   - 
-  - LOCKED
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - Player Projectile
+  - Enemy Projectile
+  - Power Up
   - 
   - 
   - 

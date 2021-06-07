@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class ProjectileSpawnerBehaviour
+public class ProjectileSpawnerBehaviour : MonoBehaviour
 {
     [Tooltip("Positions to fire projectiles from")]
     [SerializeField] private Transform[] _spawnPositions = null;
