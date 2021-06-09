@@ -52,7 +52,7 @@ public class CameraMovementBehaviour : MonoBehaviour
 
         // Init timer
         float timer = 0;
-        Debug.Log(fromPosition + " | " + toPosition);
+        
         // Give a timeout condition to avoid infinite loops
         while (timer <= _transitionDuration)
         {
