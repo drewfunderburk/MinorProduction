@@ -58,6 +58,9 @@ public class GameManagerBehaviour : MonoBehaviour
 
     public bool IsGameOver { get { return _isGameOver; } }
 
+    /// <summary>
+    /// Game's current state. Changing this will invoke OnEnter and OnExit events for the state left and the state entered
+    /// </summary>
     public GameStates GameState
     {
         get => _gameState;
