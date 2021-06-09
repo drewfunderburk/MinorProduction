@@ -7,7 +7,6 @@ public class InputDelegateBehaviour : MonoBehaviour
 {
     private PlayerControls _playerControls;
     private PlayerMovementBehaviour _playerMovement;
-    private PlayerShootBehaviour _playerShootBehaviour;
 
     [SerializeField]
     private ProjectileSpawnerBehaviour _projectileSpawnerBehaviour;
@@ -29,7 +28,6 @@ public class InputDelegateBehaviour : MonoBehaviour
     void Start()
     {
         _playerMovement = GetComponent<PlayerMovementBehaviour>();
-        _playerShootBehaviour = GetComponent<PlayerShootBehaviour>();
         _playerControls.Ship.Fire.performed += context => _projectileSpawnerBehaviour.Fire();
     }
 
@@ -38,5 +36,7 @@ public class InputDelegateBehaviour : MonoBehaviour
     {
         //calls the players movement behaviour's move function using read values as input
         _playerMovement.Move(_playerControls.Ship.Movement.ReadValue<Vector2>());
+        if (_playerControls.Ship.Fire.phase == InputActionPhase.Performed)
+            _projectileSpawnerBehaviour.Fire();
     }
 }

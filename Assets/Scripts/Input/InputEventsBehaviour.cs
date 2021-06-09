@@ -7,8 +7,9 @@ using UnityEngine.InputSystem;
 public class InputEventsBehaviour : MonoBehaviour
 {
     private PlayerMovementBehaviour _movement;
+
     [SerializeField]
-    private ProjectileSpawnerBehaviour _gun;
+    private ProjectileSpawnerBehaviour _projectileSpawnerBehaviour;
 
     // Start is called before the first frame update
     void Start()
@@ -21,8 +22,8 @@ public class InputEventsBehaviour : MonoBehaviour
         _movement.Move(context.ReadValue<Vector2>());
     }
 
-    void OnFire(InputAction.CallbackContext context)
+    void OnFire(InputActionPhase phase)
     {
-        _gun.Fire();
+        _projectileSpawnerBehaviour.Fire();
     }
 }

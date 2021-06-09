@@ -7,26 +7,29 @@ public class PlayerMovementBehaviour : MonoBehaviour
     [Tooltip("The Speed at Which The Player Will Move")]
     [SerializeField]
     private float _moveSpeed = 1;
+    [SerializeField]
+    [Tooltip("Min X Position that the player will go to")]
+    private float _minPosX = 0;
+
+    [SerializeField]
+    [Tooltip("Max X Position that the player will go to")]
+    private float _maxPosX = 0;
+
+    [SerializeField]
+    [Tooltip("Min Z Position that the player will go to")]
+    private float _minPosZ = 0;
+
+    [SerializeField]
+    [Tooltip("Max Z Position that the player will go to")]
+    private float _maxPosZ = 0;
 
     [Tooltip("The Final Rotation the Player Will Reach During Movement in Degrees")]
     [SerializeField]
     private Vector3 _desiredRotation;
-    
-    [SerializeField]
-    [Tooltip("Min X Position that the player will go to")]
-    private float _minPosX;
 
+    [Tooltip("The Speed at which the player will reach maximum banking")]
     [SerializeField]
-    [Tooltip("Max X Position that the player will go to")]
-    private float _maxPosX;
-
-    [SerializeField]
-    [Tooltip("Min Z Position that the player will go to")]
-    private float _minPosZ;
-
-    [SerializeField]
-    [Tooltip("Max Z Position that the player will go to")]
-    private float _maxPosZ;
+    private float _bankingSpeed = 1;
 
     private Rigidbody _rigidbody;
     private Vector3 _velocity;
@@ -60,27 +63,6 @@ public class PlayerMovementBehaviour : MonoBehaviour
         //swap x and y because player does not move on y axis
         _rigidbody.MovePosition(transform.position + new Vector3(_velocity.x, _velocity.z, _velocity.y));
 
-        /*//Basic Cap The Player Within A Field to prevent the player from leaving the screen
-        //Check to see if the players X Position is less than the minimum playing fields X Position
-        if (transform.position.x < _playingField.x)
-        {
-            _rigidbody.MovePosition(new Vector3(_playingField.x, transform.position.y, transform.position.z));
-        }
-        //Check to see if the players X Position is greater than the maximum playing fields X Position
-        else if (transform.position.x > _playingField.y)
-        {
-            _rigidbody.MovePosition(new Vector3(_playingField.y, transform.position.y, transform.position.z));
-        }
-        //Check to see if the players Z Position is less than the minimum playing fields Z Position
-        if (transform.position.z < _playingField.z)
-        {
-            _rigidbody.MovePosition(new Vector3(transform.position.x, transform.position.y, _playingField.z));
-        }
-        //Check to see if the players Z Position is greater than the maximum playing fields Z Position
-        else if (transform.position.z > _playingField.w)
-        {
-            _rigidbody.MovePosition(new Vector3(transform.position.x, transform.position.y, _playingField.w));
-        }*/
     }
 
     public void Move(Vector3 direction)
@@ -111,6 +93,6 @@ public class PlayerMovementBehaviour : MonoBehaviour
         //Clamp to make sure the player doesnt rotate too far
         rotate = Mathf.Clamp(rotate, -_desiredRotation.z * (Mathf.PI/180), _desiredRotation.z * (Mathf.PI / 180));
         //Perform the actual rotation scaled by time
-        transform.rotation = new Quaternion(0, 0, Mathf.Lerp(transform.rotation.z, rotate * -direction.x, Time.deltaTime), 1);
+        transform.rotation = new Quaternion(0, 0, Mathf.Lerp(transform.rotation.z, rotate * -direction.x, Time.deltaTime * _bankingSpeed), 1);
      }
 }
