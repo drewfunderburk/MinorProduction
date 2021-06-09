@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2096425602526848627
+--- !u!1 &1953046195226844430
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2096425602526848625}
-  - component: {fileID: 2096425602526848624}
+  - component: {fileID: 1953046195226844428}
+  - component: {fileID: 1953046195226844431}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2096425602526848625
+--- !u!4 &1953046195226844428
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2096425602526848627}
+  m_GameObject: {fileID: 1953046195226844430}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,40 +31,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2096425602526848624
+--- !u!114 &1953046195226844431
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2096425602526848627}
+  m_GameObject: {fileID: 1953046195226844430}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5b90e49410a6ff4aa9a2e97e62e1a0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnLevelEnd:
+  _gameState: 0
+  _maxLevel: 20
+  _level: 1
+  _difficultyCurves: {fileID: 11400000, guid: 7468cbe28a336a4489319e4bdf9384dd, type: 2}
+  _score: 0
+  _numberOfWarps: 0
+  _levelDuration: 30
+  OnEnterPlanetSelect:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2096425602526848624}
-        m_MethodName: RestartScene
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 1
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: FadeOut
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  OnExitPlanetSelect:
+    m_PersistentCalls:
+      m_Calls: []
+  OnWarpEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnWarpExit:
+    m_PersistentCalls:
+      m_Calls: []
