@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlanetSelectionScreenBehaviour : MonoBehaviour
 {
+    [SerializeField] private bool _showDebugGizmos = true;
     [SerializeField] private RandomizePlanetBehaviour _easyPlanet;
     [SerializeField] private RandomizePlanetBehaviour _hardPlanet;
     [SerializeField] private PlayerMovementBehaviour _player;
@@ -39,14 +40,30 @@ public class PlanetSelectionScreenBehaviour : MonoBehaviour
         }
     }
 
+    private void OnDrawGizmosSelected()
+    {
+        if (!_showDebugGizmos)
+            return;
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(_easyPlanet.transform.position, _selectionRadius);
+        Gizmos.DrawWireSphere(_hardPlanet.transform.position, _selectionRadius);
+    }
+
     /// <summary>
     /// Finds which planet is within selectionRadius and selects it
     /// </summary>
     private void FindSelectedPlanet()
     {
+        // Store planets position as if on the same y as player
+        Vector3 easyPlanet = _easyPlanet.transform.position;
+        easyPlanet.y = _player.transform.position.y;
+        Vector3 hardPlanet = _hardPlanet.transform.position;
+        hardPlanet.y = _player.transform.position.y;
+
         // Get distances to planets
-        float distanceToEasyPlanet = Vector3.Distance(_player.transform.position, _easyPlanet.transform.position);
-        float distanceToHardPlanet = Vector3.Distance(_player.transform.position, _hardPlanet.transform.position);
+        float distanceToEasyPlanet = Vector3.Distance(_player.transform.position, easyPlanet);
+        float distanceToHardPlanet = Vector3.Distance(_player.transform.position, hardPlanet);
 
         // Find which planet should be selected, if any
         if (distanceToEasyPlanet < _selectionRadius)
