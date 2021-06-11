@@ -57,6 +57,7 @@ public class GameManagerBehaviour : MonoBehaviour
     public UnityEvent OnWarpEnter;
     public UnityEvent OnWarpExit;
 
+    private float _levelTimer = 0;
     private float _warpTimer = 0;
 
     #region PROPERTIES
@@ -143,9 +144,43 @@ public class GameManagerBehaviour : MonoBehaviour
 
         // Clamp level to bounds
         _level = Mathf.Clamp(_level, 0, _maxLevel);
+    }
 
-        // Add warp timer to OnWarpEnter event
-        OnWarpEnter.AddListener(() => StartCoroutine(WarpTimer()));
+    private void Update()
+    {
+        switch (_gameState)
+        {
+            case GameStates.GAME:
+                // Increment level timer
+                _levelTimer += Time.deltaTime;
+
+                // If level timer exceeds duration
+                if (_levelTimer > _levelDuration)
+                {
+                    // Reset level timer
+                    _levelTimer = 0;
+
+                    // Progress to planet select
+                    _gameState = GameStates.PLANET_SELECT;
+                }
+                break;
+            case GameStates.PLANET_SELECT:
+                break;
+            case GameStates.WARP:
+                // Increment warp timer
+                _warpTimer += Time.deltaTime;
+
+                // If warp timer exceeds duration
+                if (_warpTimer > _warpDuration)
+                {
+                    // Reset warp timer
+                    _warpTimer = 0;
+
+                    // Progress to game
+                    _gameState = GameStates.GAME;
+                }
+                break;
+        }
     }
 
     /// <summary>
@@ -171,25 +206,5 @@ public class GameManagerBehaviour : MonoBehaviour
     public void IncreaseLevelHard()
     {
         _level += _hardPlanetLevelIncrease;
-    }
-
-    /// <summary>
-    /// Coroutine for handling the warp timer
-    /// </summary>
-    private IEnumerator WarpTimer()
-    {
-        // While timer has not reached duration
-        while(_warpTimer <= _warpDuration)
-        {
-            // Increment timer
-            _warpTimer += Time.deltaTime;
-
-            // Wait for next frame
-            yield return null;
-        }
-
-        // Set gamestate to GAME and fire events
-        if (GameState != GameStates.GAME)
-            GameState = GameStates.GAME;
     }
 }
