@@ -153532,7 +153532,7 @@ MonoBehaviour:
   - {fileID: 1584822002}
   _projectilePrefab: {fileID: 7752027011446696218, guid: d7d57f52abccb0248a0b29b305a8fed4,
     type: 3}
-  _fireDelay: 0.3
+  _fireDelay: 0.2
 --- !u!114 &7861656018135536485
 MonoBehaviour:
   m_ObjectHideFlags: 0
