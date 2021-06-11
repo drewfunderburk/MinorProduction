@@ -12,9 +12,6 @@ public class RandomizePlanetBehaviour : MonoBehaviour
     [SerializeField] private Vector2 _colorClampMinMax;
     [SerializeField] private float _planetSelectModeScale;
 
-    [SerializeField] private bool _planetSelectMode = false;
-    public bool PlanetSelectMode { get => _planetSelectMode; set => _planetSelectMode = value; }
-
     private bool _selected = false;
     public bool Selected { get => _selected; set => _selected = value; }
 
@@ -37,14 +34,14 @@ public class RandomizePlanetBehaviour : MonoBehaviour
     private void Update()
     {
         // If we are currently in planet select
-        if (PlanetSelectMode)
+        if (GameManagerBehaviour.Instance.GameState == GameManagerBehaviour.GameStates.PLANET_SELECT)
         {
             // If this planet is selected, scale it to _planetSelectModeScale
             if (Selected)
-                transform.localScale = new Vector3() * _planetSelectModeScale;
+                transform.localScale = Vector3.one * _planetSelectModeScale;
             // Otherwise, scale it to _generatedSize
             else
-                transform.localScale = new Vector3() * _generatedSize;
+                transform.localScale = Vector3.one * _generatedSize;
         }
 
         // Set planet and atmosphere materials
