@@ -16,6 +16,10 @@ public class PlanetSelectionScreenBehaviour : MonoBehaviour
 
     private void Update()
     {
+        // Don't bother with anything if we aren't in planet select
+        if (GameManagerBehaviour.Instance.GameState != GameManagerBehaviour.GameStates.PLANET_SELECT)
+            return;
+
         // Check if we're close enough to a planet to select it
         FindSelectedPlanet();
 
