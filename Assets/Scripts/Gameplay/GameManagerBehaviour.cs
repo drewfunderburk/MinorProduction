@@ -70,7 +70,6 @@ public class GameManagerBehaviour : MonoBehaviour
 
         set
         {
-            Debug.Log("GameState");
             // Call exit events
             switch (_gameState)
             {
