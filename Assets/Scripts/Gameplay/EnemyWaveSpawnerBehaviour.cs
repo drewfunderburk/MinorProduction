@@ -17,6 +17,9 @@ public class EnemyWaveSpawnerBehaviour : MonoBehaviour
     [Tooltip("Width of spawn area")]
     [SerializeField] private float _spawnWidth = 100;
 
+    [Tooltip("Percentage of the wave over which to spawn enemies")]
+    [SerializeField] [Range(0, 1)] private float _waveSpawnPercentage = 0.5f;
+
     // How long between each individual spawn in a wave
     private float _enemySpawnDelay = 0.5f;
 
@@ -54,7 +57,7 @@ public class EnemyWaveSpawnerBehaviour : MonoBehaviour
             if (_waveNumber != 0 && _waveNumber % (_wavesInGroup - 1) == 0)
                 _spawnTimer -= _delayBetweenWaveGroups;
 
-            _enemySpawnDelay = (_spawnDelay / _spawnCount) / 4;
+            _enemySpawnDelay = (_spawnDelay / _spawnCount) * _waveSpawnPercentage;
             SpawnRandomIndexWave();
         }
     }

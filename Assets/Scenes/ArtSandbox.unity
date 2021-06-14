@@ -93347,6 +93347,16 @@ PrefabInstance:
       propertyPath: _target
       value: 
       objectReference: {fileID: 6575659689907921264}
+    - target: {fileID: 4640464177100752514, guid: 1dfaa824e55312244b1bbfc3a0489b9c,
+        type: 3}
+      propertyPath: _enemySpawnDelay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640464177100752514, guid: 1dfaa824e55312244b1bbfc3a0489b9c,
+        type: 3}
+      propertyPath: _waveSpawnPercentage
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4640464177100752515, guid: 1dfaa824e55312244b1bbfc3a0489b9c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -93360,7 +93370,7 @@ PrefabInstance:
     - target: {fileID: 4640464177100752515, guid: 1dfaa824e55312244b1bbfc3a0489b9c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 192
+      value: 159.8
       objectReference: {fileID: 0}
     - target: {fileID: 4640464177100752515, guid: 1dfaa824e55312244b1bbfc3a0489b9c,
         type: 3}
