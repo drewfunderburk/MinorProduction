@@ -15,10 +15,11 @@ public abstract class EnemyBehaviour : CombatActor
     public override void TakeDamage(float damage)
     {
         Health -= damage;
+        Debug.Log(Health);
         if (Health <= 0)
         {
             GameManagerBehaviour.Instance.IncreaseScore(_scoreValue);
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 
