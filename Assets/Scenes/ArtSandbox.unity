@@ -29624,7 +29624,7 @@ PrefabInstance:
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
       propertyPath: OnGameEnter.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
@@ -29639,7 +29639,7 @@ PrefabInstance:
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
       propertyPath: OnWarpEnter.m_PersistentCalls.m_Calls.Array.size
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
@@ -29649,7 +29649,7 @@ PrefabInstance:
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
       propertyPath: OnGameExit.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
@@ -29804,7 +29804,7 @@ PrefabInstance:
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
       propertyPath: OnWarpEnter.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
@@ -29815,16 +29815,16 @@ PrefabInstance:
         type: 3}
       propertyPath: OnWarpEnter.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 201370156}
+      objectReference: {fileID: 1687258583}
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
       propertyPath: OnWarpEnter.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 630339375}
+      objectReference: {fileID: 7861656018135536487}
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
       propertyPath: OnWarpEnter.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: Play
+      value: TransitionToWarp
       objectReference: {fileID: 0}
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
@@ -29834,7 +29834,7 @@ PrefabInstance:
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
       propertyPath: OnWarpEnter.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: Play
+      value: set_enabled
       objectReference: {fileID: 0}
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
@@ -29929,7 +29929,7 @@ PrefabInstance:
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
       propertyPath: OnWarpEnter.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
@@ -29940,11 +29940,11 @@ PrefabInstance:
         type: 3}
       propertyPath: OnWarpEnter.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
-      objectReference: {fileID: 1687258583}
+      objectReference: {fileID: 7861656018135536485}
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
       propertyPath: OnWarpEnter.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
-      value: TransitionToWarp
+      value: set_enabled
       objectReference: {fileID: 0}
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
@@ -29980,11 +29980,11 @@ PrefabInstance:
         type: 3}
       propertyPath: OnGameExit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 7861656018135536485}
+      objectReference: {fileID: 417879237}
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
       propertyPath: OnGameExit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: set_enabled
+      value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
@@ -29994,7 +29994,7 @@ PrefabInstance:
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
       propertyPath: OnGameExit.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
@@ -30005,11 +30005,11 @@ PrefabInstance:
         type: 3}
       propertyPath: OnGameExit.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 7861656018135536485}
+      objectReference: {fileID: 417879238}
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
       propertyPath: OnGameExit.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: set_enabled
+      value: ClearEnemies
       objectReference: {fileID: 0}
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
@@ -30020,11 +30020,11 @@ PrefabInstance:
         type: 3}
       propertyPath: OnGameEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 7861656018135536485}
+      objectReference: {fileID: 417879237}
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
       propertyPath: OnGameEnter.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: set_enabled
+      value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
@@ -30069,7 +30069,7 @@ PrefabInstance:
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
       propertyPath: OnWarpEnter.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
@@ -30080,11 +30080,11 @@ PrefabInstance:
         type: 3}
       propertyPath: OnWarpEnter.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
-      objectReference: {fileID: 7861656018135536487}
+      objectReference: {fileID: 1321595856}
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
       propertyPath: OnWarpEnter.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
-      value: set_enabled
+      value: StartParticles
       objectReference: {fileID: 0}
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
@@ -30181,8 +30181,36 @@ PrefabInstance:
       propertyPath: _level
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
+        type: 3}
+      propertyPath: OnGameExit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
+        type: 3}
+      propertyPath: _warpDuration
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3297125efbb69d4fa15bf7919b05c3c, type: 3}
+--- !u!1 &417879237 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4640464177100752517, guid: 1dfaa824e55312244b1bbfc3a0489b9c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1059164803}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &417879238 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4640464177100752514, guid: 1dfaa824e55312244b1bbfc3a0489b9c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1059164803}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417879237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6388d68c0b871a9499c7445222ab2fb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &418847898
 GameObject:
   m_ObjectHideFlags: 0
@@ -78832,7 +78860,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 901693805}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.98, y: 8.14, z: -24.3}
+  m_LocalPosition: {x: 7.66, y: 6.91, z: -24.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 320457858}
@@ -127049,6 +127077,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1321595855}
+  - component: {fileID: 1321595856}
   m_Layer: 0
   m_Name: WarpParticles
   m_TagString: Untagged
@@ -127073,6 +127102,19 @@ Transform:
   m_Father: {fileID: 463394130}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1321595856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321595854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6ad4ff449545c248b7b65f9ba1926b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _particleStartDelay: 1
 --- !u!1 &1401230918
 GameObject:
   m_ObjectHideFlags: 0
