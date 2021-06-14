@@ -44,6 +44,9 @@ public class GameManagerBehaviour : MonoBehaviour
     [Tooltip("Level duration in seconds")]
     [SerializeField] private float _levelDuration = 30;
 
+    [Tooltip("Duration of warp animation")]
+    [SerializeField] private float _warpDuration = 5;
+
 
     // Events
     [Space]
@@ -54,10 +57,10 @@ public class GameManagerBehaviour : MonoBehaviour
     public UnityEvent OnWarpEnter;
     public UnityEvent OnWarpExit;
 
-    private bool _isGameOver = false;
+    private float _levelTimer = 0;
+    private float _warpTimer = 0;
 
-    public bool IsGameOver { get { return _isGameOver; } }
-
+    #region PROPERTIES
     /// <summary>
     /// Game's current state. Changing this will invoke OnEnter and OnExit events for the state left and the state entered
     /// </summary>
@@ -120,6 +123,9 @@ public class GameManagerBehaviour : MonoBehaviour
     public float LevelDuration { get => _levelDuration; set => _levelDuration = value; }
     public int EasyPlanetLevelIncrease { get => _easyPlanetLevelIncrease; set => _easyPlanetLevelIncrease = value; }
     public int HardPlanetLevelIncrease { get => _hardPlanetLevelIncrease; set => _hardPlanetLevelIncrease = value; }
+    public float WarpDuration { get => _warpDuration; set => _warpDuration = value; }
+
+    #endregion
 
     private void Awake()
     {
@@ -140,16 +146,63 @@ public class GameManagerBehaviour : MonoBehaviour
         _level = Mathf.Clamp(_level, 0, _maxLevel);
     }
 
-    public void IncreaseScore(int score)
+    private void Update()
     {
-        _score += score;
+        switch (_gameState)
+        {
+            case GameStates.GAME:
+                // Increment level timer
+                _levelTimer += Time.deltaTime;
+
+                // If level timer exceeds duration
+                if (_levelTimer > _levelDuration)
+                {
+                    // Reset level timer
+                    _levelTimer = 0;
+
+                    // Progress to planet select
+                    _gameState = GameStates.PLANET_SELECT;
+                }
+                break;
+            case GameStates.PLANET_SELECT:
+                break;
+            case GameStates.WARP:
+                // Increment warp timer
+                _warpTimer += Time.deltaTime;
+
+                // If warp timer exceeds duration
+                if (_warpTimer > _warpDuration)
+                {
+                    // Reset warp timer
+                    _warpTimer = 0;
+
+                    // Progress to game
+                    _gameState = GameStates.GAME;
+                }
+                break;
+        }
     }
 
+    /// <summary>
+    /// Increases the score by the given value
+    /// </summary>
+    public void IncreaseScore(int score)
+    {
+        if (score > 0)
+            _score += score;
+    }
+
+    /// <summary>
+    /// Increase the level by _easyPlanetLevelIncrease
+    /// </summary>
     public void IncreaseLevelEasy()
     {
         _level += _easyPlanetLevelIncrease;
     }
 
+    /// <summary>
+    /// Increase the level by _hardPlanetLevelIncrease
+    /// </summary>
     public void IncreaseLevelHard()
     {
         _level += _hardPlanetLevelIncrease;

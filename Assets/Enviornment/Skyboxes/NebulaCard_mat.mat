@@ -12,7 +12,7 @@ Material:
     type: 3}
   m_ShaderKeywords: _EMISSION _RECEIVE_SHADOWS_OFF
   m_LightmapFlags: 2
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -22,11 +22,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_5EA44C8E:
-        m_Texture: {fileID: 2800000, guid: 315248c664c032a4bba86be6afe7961b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 41dd8e1c031542d4c955b743d1390945, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_5FE0ADF:
-        m_Texture: {fileID: 2800000, guid: 315248c664c032a4bba86be6afe7961b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 41dd8e1c031542d4c955b743d1390945, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -59,9 +59,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - HueShift: 0
-    - Vector1_312E7D9A: 0.13
-    - Vector1_B77125A8: 1
-    - Vector1_C7A269D8: 0.5
+    - Vector1_312E7D9A: 1
+    - Vector1_B77125A8: 2
+    - Vector1_C7A269D8: 0
+    - Vector1_C9BD72CC: 0.19
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -84,6 +85,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 0
     m_Colors:
+    - Vector2_F31A5B03: {r: 0, g: 0, b: 0, a: 0}
+    - Vector3_83B8174D: {r: 5.92, g: 0, b: -6.33, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 0.043137256}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 1.3113191, g: 1.015588, b: 2.2196357, a: 1}

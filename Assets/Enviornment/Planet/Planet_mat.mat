@@ -12,7 +12,7 @@ Material:
     type: 3}
   m_ShaderKeywords: _NORMALMAP _RECEIVE_SHADOWS_OFF
   m_LightmapFlags: 6
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -25,7 +25,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_A38C4462:
-        m_Texture: {fileID: 2800000, guid: 7092ade8cc57dad459037b8e2008463e, type: 3}
+        m_Texture: {fileID: 2800000, guid: d427371af599bc34b9a2a16a9aa90697, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_BCF3F1AC:
@@ -88,19 +88,26 @@ Material:
         m_Texture: {fileID: 10309, guid: 0000000000000000f000000000000000, type: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_80F7D44C_Out_0:
+        m_Texture: {fileID: 2800000, guid: 8f1d58f87a334044ab75c99f339102d8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Triplanar_A38A3EE4_Texture_1:
         m_Texture: {fileID: 2800000, guid: 842be64edd2dcb545856975adf26e086, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - IsSelected: 0
     - Land_Blue: 0
     - Land_Green: 1
     - Land_Red: 0
     - Ocean_Blue: 1
     - Ocean_Green: 0.25
     - Ocean_Red: 0
+    - PlanetSelectMode: 0
     - Vector1_424E8243: 1
     - Vector1_A7D57F9E: 5000
+    - Vector1_AB4D1358: 0.5
     - Vector1_CA41401D: 0.2
     - Vector1_F22BBF80: 0
     - _AlphaClip: 0
@@ -153,7 +160,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - AtmoColor: {r: 0, g: 0.66260576, b: 1, a: 1}
+    - AtmoColor: {r: 0, g: 0.662745, b: 1, a: 1}
     - Color_A2B50177: {r: 1, g: 0.907141, b: 0.48584902, a: 1}
     - LandColor: {r: 0.15403442, g: 0.745283, b: 0, a: 1}
     - OceanColor: {r: 0.6431373, g: 0.101960786, b: 0, a: 1}

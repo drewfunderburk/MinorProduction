@@ -79,6 +79,10 @@ public class PlanetSelectionScreenBehaviour : MonoBehaviour
             _easyPlanet.Selected = false;
         }
         else
+        {
             _selectedPlanet = null;
+            _hardPlanet.Selected = false;
+            _easyPlanet.Selected = false;
+        }
     }
 }
