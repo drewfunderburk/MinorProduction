@@ -70,6 +70,7 @@ public class GameManagerBehaviour : MonoBehaviour
 
         set
         {
+            Debug.Log("GameState");
             // Call exit events
             switch (_gameState)
             {
@@ -148,6 +149,7 @@ public class GameManagerBehaviour : MonoBehaviour
 
     private void Update()
     {
+        // Handle gamestates and timers
         switch (_gameState)
         {
             case GameStates.GAME:
@@ -155,13 +157,13 @@ public class GameManagerBehaviour : MonoBehaviour
                 _levelTimer += Time.deltaTime;
 
                 // If level timer exceeds duration
-                if (_levelTimer > _levelDuration)
+                if (_levelTimer > LevelDuration)
                 {
                     // Reset level timer
                     _levelTimer = 0;
 
                     // Progress to planet select
-                    _gameState = GameStates.PLANET_SELECT;
+                    GameState = GameStates.PLANET_SELECT;
                 }
                 break;
             case GameStates.PLANET_SELECT:
@@ -171,13 +173,13 @@ public class GameManagerBehaviour : MonoBehaviour
                 _warpTimer += Time.deltaTime;
 
                 // If warp timer exceeds duration
-                if (_warpTimer > _warpDuration)
+                if (_warpTimer > WarpDuration)
                 {
                     // Reset warp timer
                     _warpTimer = 0;
 
                     // Progress to game
-                    _gameState = GameStates.GAME;
+                    GameState = GameStates.GAME;
                 }
                 break;
         }
