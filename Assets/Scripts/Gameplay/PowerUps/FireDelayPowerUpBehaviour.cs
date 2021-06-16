@@ -17,7 +17,7 @@ public class FireDelayPowerUpBehaviour : MonoBehaviour, IPowerUp
     public bool ApplyPowerUp(GameObject obj)
     {
         // Ensure obj has a projectile spawner and get a reference to it
-        ProjectileSpawnerBehaviour spawner = obj.GetComponent<ProjectileSpawnerBehaviour>();
+        ProjectileSpawnerBehaviour spawner = obj.GetComponentInParent<ProjectileSpawnerBehaviour>();
         if (spawner == null)
             return false;
 
@@ -37,10 +37,10 @@ public class FireDelayPowerUpBehaviour : MonoBehaviour, IPowerUp
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
         // If the power up was applied, destroy this power up
-        if (ApplyPowerUp(other.gameObject))
-            Destroy(this.gameObject);
+        if (ApplyPowerUp(collision.gameObject))
+            Destroy(gameObject);
     }
 }
