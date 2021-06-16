@@ -18,7 +18,7 @@ public abstract class EnemyBehaviour : CombatActor
         if (Health <= 0)
         {
             GameManagerBehaviour.Instance.IncreaseScore(_scoreValue);
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 

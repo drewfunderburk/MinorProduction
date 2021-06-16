@@ -20,7 +20,7 @@ public class BulletHomingBehaviour : BulletBehaviour
         _rigidbody.velocity = transform.forward * Speed;
 
         // Despawn after delay
-        Destroy(this.gameObject, DespawnTime);
+        Destroy(gameObject, DespawnTime);
     }
 
     private void Update()
@@ -41,7 +41,14 @@ public class BulletHomingBehaviour : BulletBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        // Destroy this object on collision
-        Destroy(this.gameObject);
+        CombatActor actor = collider.gameObject.GetComponent<CombatActor>();
+        if (actor)
+        {
+            // Damage the actor
+            actor.TakeDamage(Damage);
+
+            // Destroy this object on collision
+            Destroy(gameObject);
+        }
     }
 }

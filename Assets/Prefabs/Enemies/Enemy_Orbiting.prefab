@@ -67,7 +67,7 @@ Transform:
   m_GameObject: {fileID: 5108428230824224134}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 5254375872409589524}
   m_Father: {fileID: 0}
@@ -143,8 +143,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 15
-  m_Acceleration: 100
+  m_Speed: 50
+  m_Acceleration: 1000
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
@@ -262,6 +262,7 @@ MonoBehaviour:
   _projectilePrefab: {fileID: 7752027011446696218, guid: 7e73afc5ad969f74ebd38113cd58007f,
     type: 3}
   _fireDelay: 1
+  _damage: 0
 --- !u!1 &5271488175432922954
 GameObject:
   m_ObjectHideFlags: 0
