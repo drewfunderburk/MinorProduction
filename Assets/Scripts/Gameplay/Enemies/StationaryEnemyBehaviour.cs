@@ -15,6 +15,15 @@ public class StationaryEnemyBehaviour : EnemyBehaviour
         SHOOT
     }
 
+    [Tooltip("Left position padding")]
+    [SerializeField] [Range(0, 1)] private float _leftPadding = 0;
+    [Tooltip("Right position padding")]
+    [SerializeField] [Range(0, 1)] private float _rightPadding = 0;
+    [Tooltip("Top position padding")]
+    [SerializeField] [Range(0, 1)] private float _topPadding = 0;
+    [Tooltip("Bottom position padding")]
+    [SerializeField] [Range(0, 1)] private float _bottomPadding = 0;
+
     [Tooltip("Median time in seconds to wait at position before finding another")]
     [SerializeField] private float _newPositionMedianDelay = 7;
 
@@ -92,14 +101,15 @@ public class StationaryEnemyBehaviour : EnemyBehaviour
         Camera cam = Camera.main;
 
         // Get x and y screen coordinates
-        float xScreenPos = Random.Range(0 , Screen.width);
-        float yScreenPos = Random.Range(0 , Screen.height);
+        float xScreenPos = Random.Range(0 + (Screen.width * _leftPadding) , Screen.width - (Screen.width * _rightPadding));
+        float yScreenPos = Random.Range(0 + (Screen.height * _bottomPadding) , Screen.height - (Screen.height * _topPadding));
 
         // Get screen position with world y of zero
         Vector3 position = new Vector3(xScreenPos, yScreenPos, cam.transform.position.y);
 
         // Convert to world position
         Vector3 screenPosition = cam.ScreenToWorldPoint(position);
+        screenPosition.y = 0;
 
         // Get position on navmesh
         NavMeshHit hit;
