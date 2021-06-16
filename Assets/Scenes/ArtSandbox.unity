@@ -29626,6 +29626,7 @@ MonoBehaviour:
   ColorClampMinMax: {x: 0.2, y: 0.8}
   f_planetSelectMode_scale: 5
   planetSelectMode: 0
+  generateOnAwake: 0
   generatedSize: 0
   planet: {fileID: 57880305}
   atmo: {fileID: 450720628}
@@ -88898,6 +88899,7 @@ MonoBehaviour:
   ColorClampMinMax: {x: 0.2, y: 0.8}
   f_planetSelectMode_scale: 5
   planetSelectMode: 0
+  generateOnAwake: 0
   generatedSize: 0
   planet: {fileID: 3903079890343635128}
   atmo: {fileID: 1691543755}
@@ -93712,6 +93714,12 @@ PrefabInstance:
       propertyPath: _spawnWidth
       value: 250
       objectReference: {fileID: 0}
+    - target: {fileID: 4640464177100752514, guid: 1dfaa824e55312244b1bbfc3a0489b9c,
+        type: 3}
+      propertyPath: _difficultyCurves
+      value: 
+      objectReference: {fileID: 11400000, guid: 7468cbe28a336a4489319e4bdf9384dd,
+        type: 2}
     - target: {fileID: 4640464177100752515, guid: 1dfaa824e55312244b1bbfc3a0489b9c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -138230,6 +138238,7 @@ MonoBehaviour:
   ColorClampMinMax: {x: 0.2, y: 0.8}
   f_planetSelectMode_scale: 5
   planetSelectMode: 0
+  generateOnAwake: 0
   generatedSize: 0
   planet: {fileID: 687962069}
   atmo: {fileID: 1840541362}
