@@ -32,7 +32,7 @@ public class ArriveAtPointBehaviour : MonoBehaviour
     private void OnDisable()
     {
         // Reset the path on disabling this script so the agent doesn't keep running after a target when it shouldn't
-        _agent.ResetPath();
+        _agent?.ResetPath();
     }
 
     void Start()

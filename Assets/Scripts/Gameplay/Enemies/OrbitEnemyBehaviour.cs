@@ -54,6 +54,7 @@ public class OrbitEnemyBehaviour : EnemyBehaviour
         if (Vector3.Distance(transform.position, Target.position) < _transitionDistance)
         {
             _pursueBehaviour.enabled = false;
+            _agent.ResetPath();
             _orbitBehaviour.enabled = true;
             _shootBehaviour.enabled = true;
             _lookAtTarget.enabled = true;
