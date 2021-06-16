@@ -29815,7 +29815,7 @@ PrefabInstance:
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
       propertyPath: OnPlanetSelectEnter.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
@@ -30110,7 +30110,7 @@ PrefabInstance:
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
       propertyPath: _levelDuration
-      value: 60
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
@@ -30381,6 +30381,36 @@ PrefabInstance:
         type: 3}
       propertyPath: layer.m_Bits
       value: 1280
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
+        type: 3}
+      propertyPath: OnPlanetSelectEnter.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
+        type: 3}
+      propertyPath: OnPlanetSelectEnter.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
+        type: 3}
+      propertyPath: OnPlanetSelectEnter.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
+        type: 3}
+      propertyPath: OnPlanetSelectEnter.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 417879238}
+    - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
+        type: 3}
+      propertyPath: OnPlanetSelectEnter.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: ClearEnemies
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
+        type: 3}
+      propertyPath: OnPlanetSelectEnter.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3297125efbb69d4fa15bf7919b05c3c, type: 3}
@@ -74221,6 +74251,31 @@ PrefabInstance:
       propertyPath: _health
       value: 
       objectReference: {fileID: 7861656018135536490}
+    - target: {fileID: 5126151426250295764, guid: 94dfcc07e88d6f24e8b5a472d6c85f33,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5126151426250295764, guid: 94dfcc07e88d6f24e8b5a472d6c85f33,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5126151426250295764, guid: 94dfcc07e88d6f24e8b5a472d6c85f33,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5126151426250295764, guid: 94dfcc07e88d6f24e8b5a472d6c85f33,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5126151426250295764, guid: 94dfcc07e88d6f24e8b5a472d6c85f33,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94dfcc07e88d6f24e8b5a472d6c85f33, type: 3}
 --- !u!1 &859718364
@@ -93716,6 +93771,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyWaveSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640464177100752517, guid: 1dfaa824e55312244b1bbfc3a0489b9c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1dfaa824e55312244b1bbfc3a0489b9c, type: 3}

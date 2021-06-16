@@ -21,8 +21,10 @@ public class ProjectileSpawnerBehaviour : MonoBehaviour
     public GameObject ProjectilePrefab { get => _projectilePrefab; set => _projectilePrefab = value; }
     public float FireDelay { get => _fireDelay; set => _fireDelay = value; }
     public float Damage { get => _damage; set => _damage = value; }
+    public List<BulletBehaviour> Bullets { get => _bullets; }
 
     private float _lastFireTime = 0;
+    private List<BulletBehaviour> _bullets = new List<BulletBehaviour>();
 
     /// <summary>
     /// Fire a projectile from each SpawnPosition
@@ -44,9 +46,20 @@ public class ProjectileSpawnerBehaviour : MonoBehaviour
         {
             BulletBehaviour projectile = Instantiate(_projectilePrefab, SpawnPositions[i].position, SpawnPositions[i].rotation).GetComponent<BulletBehaviour>();
             projectile.Damage = Damage;
+            _bullets.Add(projectile);
             projectileList.Add(projectile);
         }
 
         return projectileList;
+    }
+
+    public void ClearProjectiles()
+    {
+        foreach (BulletBehaviour bullet in _bullets)
+        {
+            Destroy(bullet.gameObject);
+        }
+
+        _bullets.Clear();
     }
 }

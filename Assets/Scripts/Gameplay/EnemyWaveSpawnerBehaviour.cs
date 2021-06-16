@@ -77,6 +77,15 @@ public class EnemyWaveSpawnerBehaviour : MonoBehaviour
     {
         foreach (EnemyBehaviour enemy in _enemies)
         {
+            // Ensure enemy is not null
+            if (enemy == null)
+                continue;
+
+            // If enemy has a projectile spawner, destroy all of it's bullets
+            ProjectileSpawnerBehaviour spawner = enemy.GetComponent<ProjectileSpawnerBehaviour>();
+            if (spawner)
+                spawner.ClearProjectiles();
+
             Destroy(enemy.gameObject);
         }
 
