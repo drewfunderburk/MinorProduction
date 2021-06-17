@@ -70,7 +70,6 @@ public class GameManagerBehaviour : MonoBehaviour
 
         set
         {
-            Debug.Log("GameState");
             // Call exit events
             switch (_gameState)
             {
@@ -122,6 +121,7 @@ public class GameManagerBehaviour : MonoBehaviour
     public int Score { get => _score; }
     public int NumberOfWarps { get => _numberOfWarps; set => _numberOfWarps = value; }
     public float LevelDuration { get => _levelDuration; set => _levelDuration = value; }
+    public float TimeLeftInLevel { get => _levelDuration - _levelTimer; }
     public int EasyPlanetLevelIncrease { get => _easyPlanetLevelIncrease; set => _easyPlanetLevelIncrease = value; }
     public int HardPlanetLevelIncrease { get => _hardPlanetLevelIncrease; set => _hardPlanetLevelIncrease = value; }
     public float WarpDuration { get => _warpDuration; set => _warpDuration = value; }

@@ -17,14 +17,43 @@ public class RamEnemyBehaviour : EnemyBehaviour
         }
     }
 
+    [Tooltip("How close the enemy must be to the player before it loses acceleration")]
+    [SerializeField] private float _accelerationReductionDistance = 5;
+
     private NavMeshAgent _agent;
     private PursueTargetBehaviour _pursueTargetBehaviour;
+    private float _initialAcceleration;
 
     private void OnEnable()
     {
         _agent = GetComponent<NavMeshAgent>();
         _pursueTargetBehaviour = GetComponent<PursueTargetBehaviour>();
         _pursueTargetBehaviour.Target = Target;
+    }
+
+    private void Start()
+    {
+        _initialAcceleration = _agent.acceleration;
+    }
+
+    private void Update()
+    {
+        // Get distance to target
+        float distance = Vector3.Distance(transform.position, Target.position);
+
+        if (distance < _accelerationReductionDistance)
+        {
+            float accellerationPercentage = distance / _accelerationReductionDistance;
+            _agent.acceleration = _initialAcceleration * accellerationPercentage;
+        }
+        else
+            _agent.acceleration = _initialAcceleration;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(Target.position, _accelerationReductionDistance);
     }
 
     protected override void OnCollisionEnter(Collision collision)

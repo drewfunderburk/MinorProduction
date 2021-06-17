@@ -35,7 +35,7 @@ Transform:
   m_GameObject: {fileID: 2669990292565552557}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 2373805457999947875}
   m_Father: {fileID: 0}
@@ -111,8 +111,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 10
-  m_Acceleration: 20
+  m_Speed: 80
+  m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84b87cc35ee05214fb31bca2329c79c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _straftPadding: 5
+  _straftPadding: 50
 --- !u!114 &2669990292565552547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,8 +174,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85756e64b65102c4790aed801be4a8c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 0
-  _damage: 0
+  _health: 1
+  _damage: 1
   _target: {fileID: 0}
   _scoreValue: 10
 --- !u!114 &4853863024099094041
@@ -209,6 +209,7 @@ MonoBehaviour:
   _projectilePrefab: {fileID: 7752027011446696218, guid: 7e73afc5ad969f74ebd38113cd58007f,
     type: 3}
   _fireDelay: 1
+  _damage: 1
 --- !u!1 &2960527778302806795
 GameObject:
   m_ObjectHideFlags: 0

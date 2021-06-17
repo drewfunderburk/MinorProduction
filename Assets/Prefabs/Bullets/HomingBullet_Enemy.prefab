@@ -14266,7 +14266,7 @@ Transform:
   m_GameObject: {fileID: 8896731816641746365}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 2404859421530179794}
   - {fileID: 495397214}
@@ -14309,9 +14309,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 10
   _despawnTime: 10
-  _collideWith:
-    serializedVersion: 2
-    m_Bits: 1280
   _target: {fileID: 0}
   _steeringForce: 1000
 --- !u!54 &8896731816641746343

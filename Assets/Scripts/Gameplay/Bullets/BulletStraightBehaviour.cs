@@ -14,12 +14,19 @@ public class BulletStraightBehaviour : BulletBehaviour
         _rigidbody.velocity = transform.forward * Speed;
 
         // Destroy this object after it's time has expired
-        Destroy(this.gameObject, DespawnTime);
+        Destroy(gameObject, DespawnTime);
     }
 
     private void OnTriggerEnter(Collider collider)
     {
-        // Destroy this object on collision
-        Destroy(this.gameObject);
+        CombatActor actor = collider.gameObject.GetComponent<CombatActor>();
+        if (actor)
+        {
+            // Damage the actor
+            actor.TakeDamage(Damage);
+
+            // Destroy this object on collision
+            Destroy(gameObject);
+        }
     }
 }

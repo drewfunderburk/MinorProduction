@@ -72,6 +72,7 @@ public class StrafeEnemyBehaviour : EnemyBehaviour
 
         // Convert to world position
         Vector3 screenPosition = cam.ScreenToWorldPoint(position);
+        screenPosition.y = 0;
 
         // Get position on navmesh
         NavMeshHit hit;
