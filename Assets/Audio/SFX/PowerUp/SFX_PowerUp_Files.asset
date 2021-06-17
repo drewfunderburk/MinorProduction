@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc75830e25c399c4b982344702c65767, type: 3}
+  m_Name: SFX_PowerUp_Files
+  m_EditorClassIdentifier: 
+  _audioClips:
+  - {fileID: 8300000, guid: 88f5a29555cc2514f8aa5876cad204d6, type: 3}
+  - {fileID: 8300000, guid: 1b43aecc1058609458ed3d85759e9a9a, type: 3}
+  - {fileID: 8300000, guid: 7562ab868cf2685459b583ed27f7033b, type: 3}
+  - {fileID: 8300000, guid: 8e6a4176aa4f98b40a9f1719f794310c, type: 3}
+  - {fileID: 8300000, guid: e92fad189bf9b7e47836d64599e5150d, type: 3}
+  - {fileID: 8300000, guid: 22449773904c6a84eac32559eb3c9a90, type: 3}
+  - {fileID: 8300000, guid: 504b3aabc26e4da48befb2809ebcf2b7, type: 3}
