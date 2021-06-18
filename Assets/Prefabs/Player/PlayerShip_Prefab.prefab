@@ -217,6 +217,10 @@ MonoBehaviour:
   _moveSpeed: 20
   _bankingSpeed: 40
   _desiredRotation: 23
+  _minPosX: -10
+  _maxPosX: 10
+  _minPosZ: -10
+  _maxPosZ: 10
 --- !u!114 &1207638587121649840
 MonoBehaviour:
   m_ObjectHideFlags: 0
