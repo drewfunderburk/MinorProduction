@@ -35,7 +35,11 @@ public class PlanetSelectionScreenBehaviour : MonoBehaviour
         {
             // Increase level based on which planet was selected
             if (_selectedPlanet == _easyPlanet)
+            {
                 GameManagerBehaviour.Instance.IncreaseLevelEasy();
+                // Set health to max
+                _player.GetComponent<PlayerHealthBehaviour>().RegenHealth(99999);
+            }
             else if (_selectedPlanet == _hardPlanet)
                 GameManagerBehaviour.Instance.IncreaseLevelHard();
 
