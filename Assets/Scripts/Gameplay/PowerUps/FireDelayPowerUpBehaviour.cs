@@ -37,10 +37,10 @@ public class FireDelayPowerUpBehaviour : MonoBehaviour, IPowerUp
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         // If the power up was applied, destroy this power up
-        if (ApplyPowerUp(collision.gameObject))
+        if (ApplyPowerUp(other.gameObject))
             Destroy(gameObject);
     }
 }

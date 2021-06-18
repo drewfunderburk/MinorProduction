@@ -21,7 +21,7 @@ public class PowerUpMovementBehaviour : MonoBehaviour
         _rigidbody.MovePosition(transform.position + (-Vector3.forward * _speed * Time.deltaTime));
 
         // Destroy this power up if it goes too far down screen
-        if (transform.position.z < -50)
+        if (transform.position.z < -100)
             Destroy(this.gameObject);
     }
 }

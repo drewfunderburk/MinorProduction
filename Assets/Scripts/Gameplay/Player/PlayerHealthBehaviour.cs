@@ -10,8 +10,6 @@ public class PlayerHealthBehaviour : CombatActor
     private float _maxHealth = 1;
     public float MaxHealth { get => _maxHealth; }
 
-    public UnityEvent OnDeath;
-
     private Rigidbody _rigidbody;
 
 
