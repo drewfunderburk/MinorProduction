@@ -14,7 +14,8 @@ public class PlanetBehavior : MonoBehaviour
     public float f_planetSelectMode_scale;
 
     public bool planetSelectMode = false;
-    
+    public bool generateOnAwake = false; 
+
     private float iniSize;
     public float generatedSize;
 
@@ -33,13 +34,18 @@ public class PlanetBehavior : MonoBehaviour
         iniSize = gameObject.transform.localScale.x;
         AtmosphereColor.a = 0.25f;
         generatedSize = iniSize;
+        if (generateOnAwake == true) { Generate(); }
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        planetSelectMode = warpManager.GetComponent<WarpManager>().inPlanetSelect;
+        if (warpManager)
+        {
+            planetSelectMode = warpManager.GetComponent<WarpManager>().inPlanetSelect;
+        }
+        else { planetSelectMode = false;}
 
         if (planetSelectMode == true)
         {
@@ -139,7 +145,10 @@ public class PlanetBehavior : MonoBehaviour
 
     void ChangeSize()
     {
-        generatedSize = Random.Range(1f, 1.25f);
+        if (!generateOnAwake)
+        {
+            generatedSize = Random.Range(1f, 1.25f);
+        }
     }
 
     public void Generate()

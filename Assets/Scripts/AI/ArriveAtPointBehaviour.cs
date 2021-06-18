@@ -32,7 +32,7 @@ public class ArriveAtPointBehaviour : MonoBehaviour
     private void OnDisable()
     {
         // Reset the path on disabling this script so the agent doesn't keep running after a target when it shouldn't
-        _agent.ResetPath();
+        _agent?.ResetPath();
     }
 
     void Start()
@@ -105,19 +105,5 @@ class ArriveAtPointBehaviourEditor : Editor
 
         // Display base inspector gui
         base.OnInspectorGUI();
-    }
-
-    private void OnSceneGUI()
-    {
-        ArriveAtPointBehaviour script = target as ArriveAtPointBehaviour;
-
-        if (!script.enabled)
-            return;
-
-        // Create position handle to allow moving TargetPosition in the scene view
-        EditorGUI.BeginChangeCheck();
-        Vector3 newPosition = Handles.PositionHandle(script.TargetPosition, Quaternion.identity);
-        if (EditorGUI.EndChangeCheck())
-            script.TargetPosition = newPosition;
     }
 }
