@@ -14,13 +14,13 @@ public class SFXBehaviour : MonoBehaviour
     [Space]
     [Tooltip("Should the pitch be randomized?")]
     [SerializeField] private bool _randomizePitch = true;
-    [SerializeField] private float _minimumPitch = 0;
-    [SerializeField] private float _maximumPitch = 2;
+    [SerializeField] private float _minimumPitch = 0.9f;
+    [SerializeField] private float _maximumPitch = 1.1f;
     
     [Space]
     [Tooltip("Should the volume be randomized?")]
     [SerializeField] private bool _randomizeVolume = true;
-    [SerializeField] private float _minimumVolume = 0;
+    [SerializeField] private float _minimumVolume = 0.9f;
     [SerializeField] private float _maximumVolume = 1;
 
     public AudioFilesScriptableObject[] AudioFiles { get => _audioFiles; }
@@ -55,9 +55,13 @@ public class SFXBehaviour : MonoBehaviour
     /// <summary>
     /// Play a random file from the selected AudioFilesScriptableObject
     /// </summary>
-    public void PlayRandomClipFromSelected(int index)
+    public void PlayClipFromSelected(int index)
     {
+        // Ensure valid index
+        if (index < 0 || index > AudioFiles[_selectedAudioFiles].AudioClips.Length - 1)
+            return;
 
+        PlayClip(AudioFiles[_selectedAudioFiles].AudioClips[index]);
     }
 
     /// <summary>

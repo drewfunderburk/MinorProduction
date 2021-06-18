@@ -154606,8 +154606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 5
-  _damage: 0
-  _maxHealth: 5
+  _damage: 1
   OnDeath:
     m_PersistentCalls:
       m_Calls:
@@ -154644,6 +154643,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _maxHealth: 5
 --- !u!65 &7861656018135536491
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -154768,6 +154768,7 @@ MonoBehaviour:
   _audioFiles:
   - {fileID: 11400000, guid: 482e57a406a84ee4ca866b9d274eb56d, type: 2}
   - {fileID: 11400000, guid: 50e8a682194ad97428361f25b6715b5e, type: 2}
+  _selectedAudioFiles: 0
   _randomizePitch: 1
   _minimumPitch: 0.9
   _maximumPitch: 1.1
