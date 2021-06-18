@@ -15,7 +15,22 @@ public class PlayerMovementBehaviour : MonoBehaviour
 
     [Tooltip("The Final Rotation the Player Will Reach During Movement in Degrees")]
     [SerializeField]
-    private float _desiredRotation;
+
+    private float _desiredRotation;[SerializeField]
+    [Tooltip("Min X Position that the player will go to")]
+    private float _minPosX = 0;
+
+    [SerializeField]
+    [Tooltip("Max X Position that the player will go to")]
+    private float _maxPosX = 0;
+
+    [SerializeField]
+    [Tooltip("Min Z Position that the player will go to")]
+    private float _minPosZ = 0;
+
+    [SerializeField]
+    [Tooltip("Max Z Position that the player will go to")]
+    private float _maxPosZ = 0;
 
     private Rigidbody _rigidbody;
     private Vector3 _velocity;
@@ -29,7 +44,25 @@ public class PlayerMovementBehaviour : MonoBehaviour
     }
     // Update is called once per frame
     void FixedUpdate()
-    {      
+    {
+        //Prevent the player from moving if the velocity plus its position would put it over and instead add what would be needed
+        if (transform.position.x + _velocity.x < _minPosX)
+        {
+            _velocity.x = _minPosX - transform.position.x;
+        }
+        else if (transform.position.x + _velocity.x > _maxPosX)
+        {
+            _velocity.x = _maxPosX - transform.position.x;
+        }
+        if (transform.position.z + _velocity.y < _minPosZ)
+        {
+            _velocity.y = _minPosZ - transform.position.z;
+        }
+        else if (transform.position.z + _velocity.y > _maxPosZ)
+        {
+            _velocity.y = _maxPosZ - transform.position.z;
+        }
+
         //swap x and y because player does not move on y axis
         _rigidbody.MovePosition(_rigidbody.position + new Vector3(_velocity.x, _velocity.z, _velocity.y));
         
