@@ -16,6 +16,7 @@ public class PlayerHealthBehaviour : CombatActor
     {
         _rigidbody = GetComponent<Rigidbody>();
     }
+
     /// <summary>
     /// Removes damage from Health, if Health <= 0, destroy this game object
     /// </summary>

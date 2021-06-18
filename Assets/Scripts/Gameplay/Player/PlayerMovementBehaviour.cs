@@ -33,7 +33,7 @@ public class PlayerMovementBehaviour : MonoBehaviour
         //swap x and y because player does not move on y axis
         _rigidbody.MovePosition(_rigidbody.position + new Vector3(_velocity.x, _velocity.z, _velocity.y));
         
-        
+        //checks to see if the current rotation plus the desired rotation is farther than the desired final rotation
         if (_rigidbody.rotation.eulerAngles.z + _rotateThisMuch > _desiredRotation && _rigidbody.rotation.eulerAngles.z < 180)
             _rotateThisMuch = _desiredRotation - _rigidbody.rotation.eulerAngles.z;
         else if (_rigidbody.rotation.eulerAngles.z + _rotateThisMuch < (360 - _desiredRotation) && _rigidbody.rotation.eulerAngles.z > 180)
@@ -63,6 +63,7 @@ public class PlayerMovementBehaviour : MonoBehaviour
                 break;
                 //If no key is pressed we should resort back to the default orientation
             case 0:
+                //checks to see what hemisphere the player is in to apply a positive or negative rotation
                 if (_rigidbody.rotation.eulerAngles.z > 0 && _rigidbody.rotation.eulerAngles.z < 180)
                     _rotateThisMuch = -Mathf.Lerp(_rigidbody.rotation.eulerAngles.z, 360, Time.deltaTime);
                 else if (360 - _rigidbody.rotation.eulerAngles.z > 0 && 360 - _rigidbody.rotation.eulerAngles.z < 180)
