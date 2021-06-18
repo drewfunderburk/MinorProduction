@@ -9,12 +9,17 @@ public class PlayerMovementBehaviour : MonoBehaviour
     private float _moveSpeed = 1;
     public float MoveSpeed { get => _moveSpeed; set => _moveSpeed = value; }
 
+    [Tooltip("The Speed at Which The Player Will Bank")]
+    [SerializeField]
+    private float _bankingSpeed = 1;
+
     [Tooltip("The Final Rotation the Player Will Reach During Movement in Degrees")]
     [SerializeField]
-    private Vector3 _desiredRotation;
+    private float _desiredRotation;
 
     private Rigidbody _rigidbody;
     private Vector3 _velocity;
+    private float _rotateThisMuch;
 
 
     // Start is called before the first frame update
@@ -24,38 +29,45 @@ public class PlayerMovementBehaviour : MonoBehaviour
     }
     // Update is called once per frame
     void FixedUpdate()
-    {                                         //swap x and y because player does not move on y axis
-        _rigidbody.MovePosition(transform.position + new Vector3(_velocity.x, _velocity.z, _velocity.y));
+    {      
+        //swap x and y because player does not move on y axis
+        _rigidbody.MovePosition(_rigidbody.position + new Vector3(_velocity.x, _velocity.z, _velocity.y));
+        
+        
+        if (_rigidbody.rotation.eulerAngles.z + _rotateThisMuch > _desiredRotation && _rigidbody.rotation.eulerAngles.z < 180)
+            _rotateThisMuch = _desiredRotation - _rigidbody.rotation.eulerAngles.z;
+        else if (_rigidbody.rotation.eulerAngles.z + _rotateThisMuch < (360 - _desiredRotation) && _rigidbody.rotation.eulerAngles.z > 180)
+            _rotateThisMuch = -_desiredRotation + 360 - _rigidbody.rotation.eulerAngles.z;
+
+        Quaternion deltaRotation = Quaternion.Euler(new Vector3(0, 0, _rotateThisMuch) * Time.fixedDeltaTime);
+        _rigidbody.MoveRotation(deltaRotation * _rigidbody.rotation);
     }
 
     public void Move(Vector3 direction)
     {
+        _rotateThisMuch = 0;
         _velocity = direction * MoveSpeed * Time.deltaTime;
 
-        //variable to hold how much this player will be rotating in this frame
-        float rotate = transform.rotation.eulerAngles.z;
-
         //depending on the input the player has provided, rotate in different directions
-        switch(direction.x)
+        switch (direction.x)
         {
             //If the D key is pressed
             case 1:
                 //Rotate the player clockwise
-                rotate -= Time.deltaTime;
+                _rotateThisMuch -= _bankingSpeed;
                 break;
                 //If the A key is pressed
             case -1:
-                //Rotate the player CounterClockwise
-                rotate += Time.deltaTime;
+                //Rotate the player counter Clockwise
+                _rotateThisMuch += _bankingSpeed;
                 break;
                 //If no key is pressed we should resort back to the default orientation
             case 0:
-                rotate = 0;
+                if (_rigidbody.rotation.eulerAngles.z > 0 && _rigidbody.rotation.eulerAngles.z < 180)
+                    _rotateThisMuch = -Mathf.Lerp(_rigidbody.rotation.eulerAngles.z, 360, Time.deltaTime);
+                else if (360 - _rigidbody.rotation.eulerAngles.z > 0 && 360 - _rigidbody.rotation.eulerAngles.z < 180)
+                    _rotateThisMuch = Mathf.Lerp(360 - _rigidbody.rotation.eulerAngles.z, 0, Time.deltaTime);
                 break;
         }
-        //Clamp to make sure the player doesnt rotate too far
-        rotate = Mathf.Clamp(rotate, -_desiredRotation.z * (Mathf.PI/180), _desiredRotation.z * (Mathf.PI / 180));
-        //Perform the actual rotation scaled by time
-        transform.rotation = new Quaternion(0, 0, Mathf.Lerp(transform.rotation.z, rotate * -direction.x, Time.deltaTime), 1);
      }
 }

@@ -28,6 +28,7 @@ public class InputDelegateBehaviour : MonoBehaviour
     {
         _playerMovement = GetComponent<PlayerMovementBehaviour>();
         _playerShootBehaviour = GetComponent<PlayerShootBehaviour>();
+        _projectileSpawnerBehaviour = GetComponent<ProjectileSpawnerBehaviour>();
         _playerControls.Ship.Fire.performed += context => _projectileSpawnerBehaviour.Fire();
     }
 
