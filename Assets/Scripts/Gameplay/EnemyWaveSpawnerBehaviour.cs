@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyWaveSpawnerBehaviour : MonoBehaviour
 {
+    [SerializeField] private DifficultyCurvesScriptableObject _difficultyCurves = null;
+
     [Tooltip("Should enemies be allowed to spawn?")]
     [SerializeField] private bool _allowSpawning = true;
     public bool AllowSpawning { get => _allowSpawning; set => _allowSpawning = value; }
@@ -172,9 +174,11 @@ public class EnemyWaveSpawnerBehaviour : MonoBehaviour
     /// </summary>
     private void EvaluateDifficultyCurves()
     {
-        _spawnDelay = GameManagerBehaviour.Instance.EnemySpawnDelay;
-        _spawnCount = GameManagerBehaviour.Instance.EnemySpawnCount;
-        _delayBetweenWaveGroups = GameManagerBehaviour.Instance.DelayBetweenWaveGroups;
-        _wavesInGroup = GameManagerBehaviour.Instance.WavesInGroup;
+        float time = (float)GameManagerBehaviour.Instance.Level / GameManagerBehaviour.Instance.MaxLevel;
+
+        _spawnDelay = _difficultyCurves.EnemySpawnDelay.Evaluate(time);
+        _spawnCount = Mathf.RoundToInt(_difficultyCurves.EnemySpawnCount.Evaluate(time));
+        _delayBetweenWaveGroups = _difficultyCurves.DelayBetweenWaveGroups.Evaluate(time);
+        _wavesInGroup = Mathf.RoundToInt(_difficultyCurves.WavesInGroup.Evaluate(time));
     }
 }

@@ -29,12 +29,6 @@ public class ArriveAtPointBehaviour : MonoBehaviour
     private NavMeshAgent _agent;
     private bool _needsPath = true;
 
-    private void OnDisable()
-    {
-        // Reset the path on disabling this script so the agent doesn't keep running after a target when it shouldn't
-        _agent?.ResetPath();
-    }
-
     void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
