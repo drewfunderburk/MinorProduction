@@ -52,6 +52,22 @@ public class PowerUpSpawnerBehaviour : MonoBehaviour
     }
 
     /// <summary>
+    /// Destroy all powerups in scene and clears the list
+    /// </summary>
+    public void ClearPowerUps()
+    {
+        foreach (GameObject powerUp in _powerUps)
+        {
+            // Ensure valid power up
+            if (powerUp == null)
+                continue;
+
+            Destroy(powerUp);
+        }
+        _powerUps.Clear();
+    }
+
+    /// <summary>
     /// Spawns a random power up at a random position
     /// </summary>
     private void SpawnRandomPowerUp()
@@ -65,6 +81,6 @@ public class PowerUpSpawnerBehaviour : MonoBehaviour
 
         // Spawn a new powerUp
         GameObject powerUp = Instantiate(_powerUpPrefabs[index], position, Quaternion.identity);
-        _powerUps.Add(Instantiate(powerUp));
+        _powerUps.Add(powerUp);
     }
 }
