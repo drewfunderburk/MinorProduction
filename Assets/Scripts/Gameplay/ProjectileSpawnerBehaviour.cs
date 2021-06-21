@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [System.Serializable]
 public class ProjectileSpawnerBehaviour : MonoBehaviour
@@ -16,6 +17,8 @@ public class ProjectileSpawnerBehaviour : MonoBehaviour
 
     [Tooltip("How much damage the projectiles will do")]
     [SerializeField] private float _damage;
+
+    public UnityEvent OnFire;
 
     public Transform[] SpawnPositions { get => _spawnPositions; set => _spawnPositions = value; }
     public GameObject ProjectilePrefab { get => _projectilePrefab; set => _projectilePrefab = value; }
@@ -49,6 +52,9 @@ public class ProjectileSpawnerBehaviour : MonoBehaviour
             _bullets.Add(projectile);
             projectileList.Add(projectile);
         }
+
+        // Invoke OnFire
+        OnFire.Invoke();
 
         return projectileList;
     }
