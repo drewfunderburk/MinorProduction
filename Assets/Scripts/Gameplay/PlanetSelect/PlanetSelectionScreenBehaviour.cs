@@ -14,6 +14,8 @@ public class PlanetSelectionScreenBehaviour : MonoBehaviour
     private RandomizePlanetBehaviour _selectedPlanet;
     private float _selectionTimer = 0;
 
+    public RandomizePlanetBehaviour SelectedPlanet { get => _selectedPlanet; private set => _selectedPlanet = value; }
+
     private void Update()
     {
         // Don't bother with anything if we aren't in planet select
@@ -24,23 +26,23 @@ public class PlanetSelectionScreenBehaviour : MonoBehaviour
         FindSelectedPlanet();
 
         // If a planet has been selected, start the timer
-        if (_selectedPlanet)
+        if (SelectedPlanet)
             _selectionTimer += Time.deltaTime;
         // Otherwise, reset it
         else
             _selectionTimer = 0;
 
         // If a planet is selected and the timer is complete, go to that planet
-        if (_selectedPlanet && _selectionTimer > _selectionDuration)
+        if (SelectedPlanet && _selectionTimer > _selectionDuration)
         {
             // Increase level based on which planet was selected
-            if (_selectedPlanet == _easyPlanet)
+            if (SelectedPlanet == _easyPlanet)
             {
                 GameManagerBehaviour.Instance.IncreaseLevelEasy();
                 // Set health to max
                 _player.GetComponent<PlayerHealthBehaviour>().RegenHealth(99999);
             }
-            else if (_selectedPlanet == _hardPlanet)
+            else if (SelectedPlanet == _hardPlanet)
                 GameManagerBehaviour.Instance.IncreaseLevelHard();
 
             // Change game state
@@ -76,19 +78,19 @@ public class PlanetSelectionScreenBehaviour : MonoBehaviour
         // Find which planet should be selected, if any
         if (distanceToEasyPlanet < _selectionRadius)
         {
-            _selectedPlanet = _easyPlanet;
+            SelectedPlanet = _easyPlanet;
             _easyPlanet.Selected = true;
             _hardPlanet.Selected = false;
         }
         else if (distanceToHardPlanet < _selectionRadius)
         {
-            _selectedPlanet = _hardPlanet;
+            SelectedPlanet = _hardPlanet;
             _hardPlanet.Selected = true;
             _easyPlanet.Selected = false;
         }
         else
         {
-            _selectedPlanet = null;
+            SelectedPlanet = null;
             _hardPlanet.Selected = false;
             _easyPlanet.Selected = false;
         }
