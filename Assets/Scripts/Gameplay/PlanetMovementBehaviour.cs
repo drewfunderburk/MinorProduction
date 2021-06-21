@@ -34,7 +34,7 @@ public class PlanetMovementBehaviour : MonoBehaviour
     private void Update()
     {
         // Get time left in level as number from 0 - 1
-        float time = GameManagerBehaviour.Instance.TimeLeftInLevel / GameManagerBehaviour.Instance.LevelDuration;
+        float time = Mathf.Clamp(GameManagerBehaviour.Instance.TimeLeftInLevel / GameManagerBehaviour.Instance.LevelDuration, 0, 1);
 
         // Lerp position
         transform.position = Vector3.Lerp(_startPosition, _endPosition, time);

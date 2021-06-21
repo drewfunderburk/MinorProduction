@@ -7,6 +7,7 @@ public class PlanetSelectionScreenBehaviour : MonoBehaviour
     [SerializeField] private bool _showDebugGizmos = true;
     [SerializeField] private RandomizePlanetBehaviour _easyPlanet;
     [SerializeField] private RandomizePlanetBehaviour _hardPlanet;
+    [SerializeField] private RandomizePlanetBehaviour _movingPlanet;
     [SerializeField] private PlayerMovementBehaviour _player;
     [SerializeField] private float _selectionRadius;
     [SerializeField] private float _selectionDuration;
@@ -94,5 +95,12 @@ public class PlanetSelectionScreenBehaviour : MonoBehaviour
             _hardPlanet.Selected = false;
             _easyPlanet.Selected = false;
         }
+    }
+
+    public void UpdateMovingPlanetToSelected()
+    {
+        _movingPlanet.GeneratedColor = _selectedPlanet.GeneratedColor;
+        _movingPlanet.MatchedColor = _selectedPlanet.MatchedColor;
+        _movingPlanet.AtmosphereColor = _selectedPlanet.AtmosphereColor;
     }
 }

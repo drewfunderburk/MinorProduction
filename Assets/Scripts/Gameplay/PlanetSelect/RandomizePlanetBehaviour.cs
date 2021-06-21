@@ -14,6 +14,10 @@ public class RandomizePlanetBehaviour : MonoBehaviour
 
     private bool _selected = false;
     public bool Selected { get => _selected; set => _selected = value; }
+    public Color GeneratedColor { get => _generatedColor; set => _generatedColor = value; }
+    public Color MatchedColor { get => _matchedColor; set => _matchedColor = value; }
+    public Color AtmosphereColor { get => _atmosphereColor; set => _atmosphereColor = value; }
+
 
     private float _initialSize;
     private float _generatedSize;
