@@ -1393,6 +1393,17 @@ MonoBehaviour:
             m_StringArgument: MouseExit
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 5196551863274294452}
+          m_MethodName: mouseOver
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 1
     callback:
       m_PersistentCalls:
@@ -1417,6 +1428,17 @@ MonoBehaviour:
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: MouseEnter
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 5196551863274294452}
+          m_MethodName: mouseExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
   - eventID: 2
@@ -3159,6 +3181,17 @@ MonoBehaviour:
             m_StringArgument: MouseExit
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 7626569514142726387}
+          m_MethodName: mouseOver
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 1
     callback:
       m_PersistentCalls:
@@ -3183,6 +3216,17 @@ MonoBehaviour:
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: MouseEnter
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 7626569514142726387}
+          m_MethodName: mouseExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!1 &1431301352
@@ -3903,6 +3947,17 @@ MonoBehaviour:
             m_StringArgument: MouseExit
             m_BoolArgument: 1
           m_CallState: 2
+        - m_Target: {fileID: 4325687607619052396}
+          m_MethodName: mouseOver
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
   - eventID: 1
     callback:
       m_PersistentCalls:
@@ -3949,6 +4004,17 @@ MonoBehaviour:
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: MouseEnter
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 4325687607619052396}
+          m_MethodName: mouseExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
 --- !u!1 &1961704246
@@ -10470,6 +10536,7 @@ GameObject:
   - component: {fileID: 7672990450461688048}
   - component: {fileID: 3497825537738063870}
   - component: {fileID: 2027267505705924952}
+  - component: {fileID: 4325687607619052396}
   m_Layer: 0
   m_Name: Quit_mesh
   m_TagString: Untagged
@@ -10477,6 +10544,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4325687607619052396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4325687607619052395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a8bf6c5ba28c82418b20c10bef74862, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iniColor: {r: 0, g: 0, b: 0, a: 0}
+  MouseOverColor: {r: 11.984314, g: 0, b: 0, a: 1}
 --- !u!1 &4332752118480791889
 GameObject:
   m_ObjectHideFlags: 0
@@ -10647,6 +10728,7 @@ GameObject:
   - component: {fileID: 2777828737398970262}
   - component: {fileID: 3818885206127415406}
   - component: {fileID: 1293340826698998503}
+  - component: {fileID: 5196551863274294452}
   m_Layer: 0
   m_Name: Play_mesh
   m_TagString: Untagged
@@ -10654,6 +10736,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5196551863274294452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5196551863274294451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a8bf6c5ba28c82418b20c10bef74862, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iniColor: {r: 0, g: 0, b: 0, a: 0}
+  MouseOverColor: {r: 0, g: 11.984314, b: 0.2509804, a: 1}
 --- !u!4 &5332616320422932564
 Transform:
   m_ObjectHideFlags: 0
@@ -24737,7 +24833,6 @@ GameObject:
   - component: {fileID: 6901201161944893482}
   - component: {fileID: 9192751946434920263}
   - component: {fileID: 7592817198332809200}
-  - component: {fileID: 7592817198332809201}
   m_Layer: 0
   m_Name: Title_mesh
   m_TagString: Untagged
@@ -24764,20 +24859,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7592817198332809201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7592817198332809199}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87216067f0f0d444cb04c050633e10f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _xPositionRange: -0.5
-  _yPositionRange: -0.5
 --- !u!1 &7626569514142726386
 GameObject:
   m_ObjectHideFlags: 0
@@ -24789,6 +24870,7 @@ GameObject:
   - component: {fileID: 6030367595443134039}
   - component: {fileID: 2554254121915597249}
   - component: {fileID: 3443442353375153429}
+  - component: {fileID: 7626569514142726387}
   m_Layer: 0
   m_Name: Options_mesh
   m_TagString: Untagged
@@ -24796,6 +24878,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7626569514142726387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7626569514142726386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a8bf6c5ba28c82418b20c10bef74862, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iniColor: {r: 0, g: 0, b: 0, a: 0}
+  MouseOverColor: {r: 11.984314, g: 3.4509804, b: 0, a: 1}
 --- !u!4 &7668865275659345126
 Transform:
   m_ObjectHideFlags: 0
