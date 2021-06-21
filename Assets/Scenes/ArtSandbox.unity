@@ -50142,7 +50142,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &737317795
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -89350,7 +89350,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1270540930
 Transform:
   m_ObjectHideFlags: 0
@@ -100312,7 +100312,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1841323901
 Transform:
   m_ObjectHideFlags: 0
@@ -112108,6 +112108,41 @@ PrefabInstance:
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1722145845}
+    - target: {fileID: 1934570049971684923, guid: 23788150feaca0545abae5fb52c86ff3,
+        type: 3}
+      propertyPath: _minPosZ
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934570049971684923, guid: 23788150feaca0545abae5fb52c86ff3,
+        type: 3}
+      propertyPath: _maxPosX
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934570049971684923, guid: 23788150feaca0545abae5fb52c86ff3,
+        type: 3}
+      propertyPath: _minPosX
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934570049971684923, guid: 23788150feaca0545abae5fb52c86ff3,
+        type: 3}
+      propertyPath: _maxPosZ
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934570049971684923, guid: 23788150feaca0545abae5fb52c86ff3,
+        type: 3}
+      propertyPath: _bankingSpeed
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934570049971684923, guid: 23788150feaca0545abae5fb52c86ff3,
+        type: 3}
+      propertyPath: _desiredRotation
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934570049971684923, guid: 23788150feaca0545abae5fb52c86ff3,
+        type: 3}
+      propertyPath: _moveSpeed
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1934570049971684927, guid: 23788150feaca0545abae5fb52c86ff3,
         type: 3}
       propertyPath: m_Name

@@ -204,7 +204,7 @@ Transform:
   - {fileID: 1774955122276530329}
   - {fileID: 6573565092868225152}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &277609522
 GameObject:
@@ -1228,7 +1228,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 871895251}
   m_LocalRotation: {x: -0.000000026542686, y: -0.3034316, z: 0.0000000016298142, w: 0.95285326}
-  m_LocalPosition: {x: 0, y: 0, z: 5.61}
+  m_LocalPosition: {x: 0, y: 0, z: 10.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1194327779}
@@ -1236,8 +1236,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: -35.328003, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -8.52, y: 1.2}
-  m_SizeDelta: {x: 6.81, y: 3.55}
+  m_AnchoredPosition: {x: -11, y: 1.27}
+  m_SizeDelta: {x: 6.06, y: 3.03}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &871895253
 MonoBehaviour:
@@ -1370,11 +1370,114 @@ MonoBehaviour:
   - eventID: 0
     callback:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 964121957}
+          m_MethodName: SetTrigger
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: MouseEnter
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 964121957}
+          m_MethodName: ResetTrigger
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: MouseExit
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 1
     callback:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 964121957}
+          m_MethodName: SetTrigger
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: MouseExit
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 964121957}
+          m_MethodName: ResetTrigger
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: MouseEnter
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1979731493}
+          m_MethodName: SetTrigger
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: MouseDown
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 964121955}
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1431301352}
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 33258319}
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 7592817198332809199}
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &903581413
 GameObject:
   m_ObjectHideFlags: 0
@@ -1596,6 +1699,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 964121956}
+  - component: {fileID: 964121957}
   m_Layer: 0
   m_Name: Play_group
   m_TagString: Untagged
@@ -1618,6 +1722,25 @@ Transform:
   m_Father: {fileID: 7668865275659345126}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &964121957
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 964121955}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2e9912d5ab27d02429088e17f24a283f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &983784344
 GameObject:
   m_ObjectHideFlags: 0
@@ -1710,7 +1833,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.2588235, g: 0.7898187, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.30516815, b: 0.2588235, a: 1}
   m_Intensity: 2
   m_Range: 10
   m_SpotAngle: 30
@@ -3003,15 +3126,52 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7763124362772922218}
-          m_MethodName: 
-          m_Mode: 1
+        - m_Target: {fileID: 1431301354}
+          m_MethodName: SetTrigger
+          m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: 
+            m_StringArgument: MouseEnter
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1431301354}
+          m_MethodName: ResetTrigger
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: MouseExit
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1431301354}
+          m_MethodName: SetTrigger
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: MouseExit
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1431301354}
+          m_MethodName: ResetTrigger
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: MouseEnter
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!1 &1431301352
@@ -3023,6 +3183,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1431301353}
+  - component: {fileID: 1431301354}
   m_Layer: 0
   m_Name: Options_group
   m_TagString: Untagged
@@ -3045,6 +3206,25 @@ Transform:
   m_Father: {fileID: 7668865275659345126}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1431301354
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431301352}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2e9912d5ab27d02429088e17f24a283f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1508943083
 GameObject:
   m_ObjectHideFlags: 0
@@ -3813,7 +3993,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 100000
-  field of view: 55
+  field of view: 50
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -3838,13 +4018,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1961704246}
-  m_LocalRotation: {x: -0.057027988, y: -0.080762215, z: -0.004628433, w: 0.9950899}
-  m_LocalPosition: {x: 0.7, y: -2.39, z: 5.45}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: -6.56, y: -9.28, z: 0}
+  m_Father: {fileID: 1979731494}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -5.78, y: -9.26, z: 0}
 --- !u!114 &1961704250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3883,13 +4063,64 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1961704246}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 87216067f0f0d444cb04c050633e10f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _xPositionRange: 2
   _yPositionRange: 1
+--- !u!1 &1979731492
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1979731494}
+  - component: {fileID: 1979731493}
+  m_Layer: 0
+  m_Name: Camera_group
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!95 &1979731493
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979731492}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fad231361ba2f2f40b689657bb8c562c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!4 &1979731494
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979731492}
+  m_LocalRotation: {x: -0.050254192, y: -0.080618106, z: -0.0040698377, w: 0.9954691}
+  m_LocalPosition: {x: 0.7, y: -2.62, z: 5.45}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1961704249}
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2022370469
 GameObject:
   m_ObjectHideFlags: 0
@@ -9646,8 +9877,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5196551863274294451}
   m_LocalRotation: {x: -0.00037407692, y: -0.17347063, z: 0.0026353819, w: 0.9848355}
-  m_LocalPosition: {x: 12.160004, y: 5.3199997, z: -11.610004}
-  m_LocalScale: {x: 0.84929, y: 0.84929, z: 0.84929}
+  m_LocalPosition: {x: 15.3, y: 5.26, z: -15.59}
+  m_LocalScale: {x: 0.7740708, y: 0.7740708, z: 0.7740708}
   m_Children: []
   m_Father: {fileID: 964121956}
   m_RootOrder: 0
@@ -10168,15 +10399,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6786057008821711096}
-  m_LocalRotation: {x: 0.059642553, y: 0.9910825, z: -0.10666095, w: 0.053121027}
-  m_LocalPosition: {x: -0.33, y: -0.33, z: -0.14}
+  m_LocalRotation: {x: 0.060197666, y: 0.99214894, z: -0.09623676, w: 0.05249112}
+  m_LocalPosition: {x: -0.32999992, y: -0.23, z: -0.12996101}
   m_LocalScale: {x: 0.84936, y: 0.84936, z: 0.84936}
   m_Children:
   - {fileID: 306335939169895617}
   - {fileID: 8460564253954364641}
   m_Father: {fileID: 1349066973}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 12.577001, y: 174.557, z: 6.288}
+  m_LocalEulerAnglesHint: {x: 11.378, y: 174.582, z: 6.4040003}
 --- !u!23 &4245853421826690722
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19721,15 +19952,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5849988920712654331}
-  m_LocalRotation: {x: 0.797898, y: -0.20099247, z: -0.31902203, w: 0.47030404}
-  m_LocalPosition: {x: 113.3, y: 20.2, z: 307}
-  m_LocalScale: {x: 33.076027, y: 33.076023, z: 33.076027}
+  m_LocalRotation: {x: 0.68796587, y: -0.2719717, z: -0.39804173, w: 0.5424917}
+  m_LocalPosition: {x: 1596.2, y: 73.4, z: 4655}
+  m_LocalScale: {x: 440.8735, y: 440.8734, z: 440.8735}
   m_Children:
   - {fileID: 4535738431564385489}
   - {fileID: 7949578283650596751}
   m_Father: {fileID: 168397305}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 141.518, y: 63.106995, z: 52.472992}
+  m_LocalEulerAnglesHint: {x: 148, y: 83.6, z: 71.9}
 --- !u!4 &6600223968441456107
 Transform:
   m_ObjectHideFlags: 0
@@ -19748,7 +19979,7 @@ Transform:
   - {fileID: 3668917849184393698}
   - {fileID: 987627479}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &6644517605398163189
 GameObject:
