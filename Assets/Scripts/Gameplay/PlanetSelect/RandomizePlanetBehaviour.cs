@@ -47,7 +47,8 @@ public class RandomizePlanetBehaviour : MonoBehaviour
         }
 
         // Set planet and atmosphere materials
-        _planetMaterial.SetInt("NoTexture", Selected ? 1 : 0);
+        _planetMaterial.SetInt("PlanetSelectMode", Selected ? 1 : 0);
+        _planetMaterial.SetInt("isSelected", Selected ? 1 : 0);
         _planetMaterial.SetColor("OceanColor", _generatedColor);
         _planetMaterial.SetColor("LandColor", _matchedColor);
         _planetMaterial.SetColor("AtmoColor", _atmosphereColor);
