@@ -38,6 +38,8 @@ public class RandomizePlanetBehaviour : MonoBehaviour
         // If we are currently in planet select
         if (GameManagerBehaviour.Instance.GameState == GameManagerBehaviour.GameStates.PLANET_SELECT)
         {
+            _planetMaterial.SetInt("PlanetSelectMode", 1);
+
             // If this planet is selected, scale it to _planetSelectModeScale
             if (Selected)
                 transform.localScale = Vector3.one * _planetSelectModeScale;
@@ -45,9 +47,11 @@ public class RandomizePlanetBehaviour : MonoBehaviour
             else
                 transform.localScale = Vector3.one * _generatedSize;
         }
+        else
+            _planetMaterial.SetInt("PlanetSelectMode", 0);
 
         // Set planet and atmosphere materials
-        _planetMaterial.SetInt("PlanetSelectMode", Selected ? 1 : 0);
+        
         _planetMaterial.SetInt("isSelected", Selected ? 1 : 0);
         _planetMaterial.SetColor("OceanColor", _generatedColor);
         _planetMaterial.SetColor("LandColor", _matchedColor);

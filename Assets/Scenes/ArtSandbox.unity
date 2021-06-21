@@ -20495,7 +20495,7 @@ PrefabInstance:
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
       propertyPath: _levelDuration
-      value: 30
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
@@ -40503,7 +40503,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &630339373
 Transform:
   m_ObjectHideFlags: 0
@@ -69630,6 +69630,7 @@ GameObject:
   m_Component:
   - component: {fileID: 909421875}
   - component: {fileID: 909421874}
+  - component: {fileID: 909421876}
   m_Layer: 0
   m_Name: Player_camera
   m_TagString: Untagged
@@ -69644,7 +69645,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 909421873}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a817f85767aab047b90f9b31fa434a4, type: 3}
   m_Name: 
@@ -69672,6 +69673,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 80, y: 0, z: 0}
+--- !u!114 &909421876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909421873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9bc29dd810704f46a5304743189d44b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetTransform: {fileID: 0}
+  _transitionDuration: 1
 --- !u!1 &922465827
 GameObject:
   m_ObjectHideFlags: 0
@@ -112220,6 +112235,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player_group
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934570049971684927, guid: 23788150feaca0545abae5fb52c86ff3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3207584299423036460, guid: 23788150feaca0545abae5fb52c86ff3,
         type: 3}
