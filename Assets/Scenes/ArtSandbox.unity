@@ -24462,7 +24462,7 @@ PrefabInstance:
     - target: {fileID: 5926125560181089826, guid: d834e87766c9c384cb8e4fa33323f3f6,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5926125560181089826, guid: d834e87766c9c384cb8e4fa33323f3f6,
         type: 3}
@@ -154675,7 +154675,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 120
-  _desiredRotation: {x: 0, y: 0, z: 22}
+  _bankingSpeed: 1
+  _desiredRotation: 0
+  _minPosX: 0
+  _maxPosX: 0
+  _minPosZ: 0
+  _maxPosZ: 0
 --- !u!114 &7861656018135536488
 MonoBehaviour:
   m_ObjectHideFlags: 0
