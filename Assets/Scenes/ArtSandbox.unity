@@ -20495,7 +20495,7 @@ PrefabInstance:
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
       propertyPath: _levelDuration
-      value: 3
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
@@ -74734,7 +74734,7 @@ PrefabInstance:
     - target: {fileID: 4640464177100752517, guid: 1dfaa824e55312244b1bbfc3a0489b9c,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1dfaa824e55312244b1bbfc3a0489b9c, type: 3}
@@ -110896,12 +110896,12 @@ PrefabInstance:
     - target: {fileID: -2722993002203633812, guid: 554d03bc4da5f0648b64d35148c69c79,
         type: 3}
       propertyPath: _minimumSpawnDelay
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -2722993002203633812, guid: 554d03bc4da5f0648b64d35148c69c79,
         type: 3}
       propertyPath: _maximumSpawnDelay
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3467771323142676114, guid: 554d03bc4da5f0648b64d35148c69c79,
         type: 3}
@@ -112176,6 +112176,16 @@ PrefabInstance:
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1722145845}
+    - target: {fileID: 1934570049971684918, guid: 23788150feaca0545abae5fb52c86ff3,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934570049971684920, guid: 23788150feaca0545abae5fb52c86ff3,
+        type: 3}
+      propertyPath: _minimumFireDelay
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 1934570049971684923, guid: 23788150feaca0545abae5fb52c86ff3,
         type: 3}
       propertyPath: _minPosX
@@ -112200,6 +112210,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _moveSpeed
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934570049971684923, guid: 23788150feaca0545abae5fb52c86ff3,
+        type: 3}
+      propertyPath: _maximumSpeed
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 1934570049971684927, guid: 23788150feaca0545abae5fb52c86ff3,
         type: 3}
