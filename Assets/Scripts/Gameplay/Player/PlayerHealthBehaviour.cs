@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerHealthBehaviour : CombatActor
 {
@@ -16,6 +17,7 @@ public class PlayerHealthBehaviour : CombatActor
     {
         _rigidbody = GetComponent<Rigidbody>();
     }
+
     /// <summary>
     /// Removes damage from Health, if Health <= 0, destroy this game object
     /// </summary>
@@ -24,7 +26,10 @@ public class PlayerHealthBehaviour : CombatActor
     {
         Health -= damage;
         if (Health <= 0)
-            _rigidbody.useGravity = true;
+        {
+            OnDeath.Invoke();
+            gameObject.SetActive(false);
+        }
     }
     /// <summary>
     /// Regens health to Health, if health >= maxhealth, cap it.

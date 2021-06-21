@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyWaveSpawnerBehaviour : MonoBehaviour
 {
+    [SerializeField] private DifficultyCurvesScriptableObject _difficultyCurves = null;
+
     [Tooltip("Should enemies be allowed to spawn?")]
     [SerializeField] private bool _allowSpawning = true;
     public bool AllowSpawning { get => _allowSpawning; set => _allowSpawning = value; }
@@ -16,6 +18,9 @@ public class EnemyWaveSpawnerBehaviour : MonoBehaviour
 
     [Tooltip("Width of spawn area")]
     [SerializeField] private float _spawnWidth = 100;
+
+    [Tooltip("Percentage of the wave over which to spawn enemies")]
+    [SerializeField] [Range(0, 1)] private float _waveSpawnPercentage = 0.5f;
 
     // How long between each individual spawn in a wave
     private float _enemySpawnDelay = 0.5f;
@@ -31,6 +36,63 @@ public class EnemyWaveSpawnerBehaviour : MonoBehaviour
     private float _spawnTimer = 0;
     private int _waveNumber = 0;
     private Vector3 _spawnLocation = new Vector3();
+
+
+    private void Start()
+    {
+        EvaluateDifficultyCurves();
+
+        _spawnTimer = _spawnDelay;
+        _enemies = new List<EnemyBehaviour>();
+    }
+
+    private void Update()
+    {
+        _spawnTimer += Time.deltaTime;
+
+        if (AllowSpawning && _spawnTimer > _spawnDelay)
+        {
+            _spawnTimer = 0;
+            EvaluateDifficultyCurves();
+
+            // If _waveNumber is nonzero and a multiple of _wavesInGroup, increase delay
+            if (_waveNumber != 0 && _waveNumber % (_wavesInGroup - 1) == 0)
+                _spawnTimer -= _delayBetweenWaveGroups;
+
+            _enemySpawnDelay = (_spawnDelay / _spawnCount) * _waveSpawnPercentage;
+            SpawnRandomIndexWave();
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        // Draw spawn width 
+        Gizmos.color = Color.green;
+        Vector3 start = new Vector3(-_spawnWidth, transform.position.y, transform.position.z);
+        Vector3 end = new Vector3(_spawnWidth, transform.position.y, transform.position.z);
+        Gizmos.DrawLine(start, end);
+    }
+    /// <summary>
+    /// Destroys all enemies in the scene and clears the list
+    /// </summary>
+    public void ClearEnemies()
+    {
+        foreach (EnemyBehaviour enemy in _enemies)
+        {
+            // Ensure enemy is not null
+            if (enemy == null)
+                continue;
+
+            // If enemy has a projectile spawner, destroy all of it's bullets
+            ProjectileSpawnerBehaviour spawner = enemy.GetComponent<ProjectileSpawnerBehaviour>();
+            if (spawner)
+                spawner.ClearProjectiles();
+
+            Destroy(enemy.gameObject);
+        }
+
+        _enemies.Clear();
+    }
 
     /// <summary>
     /// Choose a random x between -spawnWidth and spawnWidth. Set spawnLocation to that point with the same y and z as this object
@@ -112,44 +174,11 @@ public class EnemyWaveSpawnerBehaviour : MonoBehaviour
     /// </summary>
     private void EvaluateDifficultyCurves()
     {
-        _spawnDelay = GameManagerBehaviour.Instance.EnemySpawnDelay;
-        _spawnCount = GameManagerBehaviour.Instance.EnemySpawnCount;
-        _delayBetweenWaveGroups = GameManagerBehaviour.Instance.DelayBetweenWaveGroups;
-        _wavesInGroup = GameManagerBehaviour.Instance.WavesInGroup;
-    }
+        float time = (float)GameManagerBehaviour.Instance.Level / GameManagerBehaviour.Instance.MaxLevel;
 
-    private void Start()
-    {
-        EvaluateDifficultyCurves();
-
-        _spawnTimer = _spawnDelay;
-        _enemies = new List<EnemyBehaviour>();
-    }
-
-    private void Update()
-    {
-        _spawnTimer += Time.deltaTime;
-
-        if (AllowSpawning && _spawnTimer > _spawnDelay)
-        {
-            _spawnTimer = 0;
-            EvaluateDifficultyCurves();
-
-            // If _waveNumber is nonzero and a multiple of _wavesInGroup, increase delay
-            if (_waveNumber != 0 && _waveNumber % (_wavesInGroup - 1) == 0)
-                _spawnTimer -= _delayBetweenWaveGroups;
-
-            _enemySpawnDelay = (_spawnDelay / _spawnCount) / 4;
-            SpawnRandomIndexWave();
-        }
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        // Draw spawn width 
-        Gizmos.color = Color.green;
-        Vector3 start = new Vector3(-_spawnWidth, transform.position.y, transform.position.z);
-        Vector3 end = new Vector3(_spawnWidth, transform.position.y, transform.position.z);
-        Gizmos.DrawLine(start, end);
+        _spawnDelay = _difficultyCurves.EnemySpawnDelay.Evaluate(time);
+        _spawnCount = Mathf.RoundToInt(_difficultyCurves.EnemySpawnCount.Evaluate(time));
+        _delayBetweenWaveGroups = _difficultyCurves.DelayBetweenWaveGroups.Evaluate(time);
+        _wavesInGroup = Mathf.RoundToInt(_difficultyCurves.WavesInGroup.Evaluate(time));
     }
 }

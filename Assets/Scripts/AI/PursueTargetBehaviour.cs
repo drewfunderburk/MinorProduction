@@ -18,12 +18,6 @@ public class PursueTargetBehaviour : MonoBehaviour
     // Last place the target was to ensure we don't calculate a path if the target hasn't moved
     private Vector3 _previousTargetPosition;
 
-    private void OnDisable()
-    {
-        // Reset the path on disabling this script so the agent doesn't keep running after a target when it shouldn't
-        _agent?.ResetPath();
-    }
-
     private void Start()
     {
         _agent = GetComponent<NavMeshAgent>();

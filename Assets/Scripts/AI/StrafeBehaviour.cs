@@ -6,6 +6,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class StrafeBehaviour : MonoBehaviour
 {
+    [Tooltip("Padding from the sides of the screen")]
     [SerializeField] private float _straftPadding = 0;
 
     private Vector3 _leftPosition = new Vector3();
@@ -65,6 +66,9 @@ public class StrafeBehaviour : MonoBehaviour
         leftPosition.z = transform.position.z;
         rightPosition.z = transform.position.z;
 
+        // Clamp Y Position
+        leftPosition.y = 0;
+        rightPosition.y = 0;
         // Apply padding
         leftPosition.x += _straftPadding;
         rightPosition.x -= _straftPadding;

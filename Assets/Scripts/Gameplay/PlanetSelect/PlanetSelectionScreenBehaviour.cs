@@ -16,6 +16,10 @@ public class PlanetSelectionScreenBehaviour : MonoBehaviour
 
     private void Update()
     {
+        // Don't bother with anything if we aren't in planet select
+        if (GameManagerBehaviour.Instance.GameState != GameManagerBehaviour.GameStates.PLANET_SELECT)
+            return;
+
         // Check if we're close enough to a planet to select it
         FindSelectedPlanet();
 
@@ -31,7 +35,11 @@ public class PlanetSelectionScreenBehaviour : MonoBehaviour
         {
             // Increase level based on which planet was selected
             if (_selectedPlanet == _easyPlanet)
+            {
                 GameManagerBehaviour.Instance.IncreaseLevelEasy();
+                // Set health to max
+                _player.GetComponent<PlayerHealthBehaviour>().RegenHealth(99999);
+            }
             else if (_selectedPlanet == _hardPlanet)
                 GameManagerBehaviour.Instance.IncreaseLevelHard();
 
@@ -79,6 +87,10 @@ public class PlanetSelectionScreenBehaviour : MonoBehaviour
             _easyPlanet.Selected = false;
         }
         else
+        {
             _selectedPlanet = null;
+            _hardPlanet.Selected = false;
+            _easyPlanet.Selected = false;
+        }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LerpBetweenTwoValues : MonoBehaviour
 {
-    public GameObject WarpManager;
+    public GameObject WarpManager = null;
 
     public Vector2 MinMax;
     public float speed;
@@ -33,7 +33,7 @@ public class LerpBetweenTwoValues : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (WarpManager.GetComponent<WarpManager>().isWarping)
+        if (WarpManager && WarpManager.GetComponent<WarpManager>().isWarping)
         {
             isWarp = true;
         }

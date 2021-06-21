@@ -18,7 +18,7 @@ public class ShipSpeedPowerUpBehaviour : MonoBehaviour, IPowerUp
     public bool ApplyPowerUp(GameObject obj)
     {
         // Ensure obj has a player movement behaviour and get a reference to it
-        PlayerMovementBehaviour movement = obj.GetComponent<PlayerMovementBehaviour>();
+        PlayerMovementBehaviour movement = obj.GetComponentInParent<PlayerMovementBehaviour>();
         if (movement == null)
             return false;
 
@@ -37,11 +37,10 @@ public class ShipSpeedPowerUpBehaviour : MonoBehaviour, IPowerUp
                 return false;
         }
     }
-
     private void OnTriggerEnter(Collider other)
     {
         // If the power up was applied, destroy this power up
         if (ApplyPowerUp(other.gameObject))
-            Destroy(this.gameObject);
+            Destroy(gameObject);
     }
 }
