@@ -29,6 +29,8 @@ public class RandomizePlanetBehaviour : MonoBehaviour
         // Cache the planet and atmosphere materials
         _planetMaterial = _planet.GetComponent<Renderer>().material;
         _atmosphereMaterial = _atmosphere.GetComponent<Renderer>().material;
+
+        GenerateColorRandomly();
     }
 
     private void Update()
