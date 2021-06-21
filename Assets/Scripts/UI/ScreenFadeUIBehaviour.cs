@@ -21,8 +21,14 @@ public class ScreenFadeUIBehaviour : MonoBehaviour
         _image.raycastTarget = false;
     }
 
-    public void FadeOut()
+    public void FadeOut(float delay)
     {
+        StartCoroutine(FadeOutCoroutine(delay));
+    }
+
+    private IEnumerator FadeOutCoroutine(float delay)
+    {
+        yield return new WaitForSeconds(delay);
         _animator.SetTrigger("FadeOut");
     }
 }

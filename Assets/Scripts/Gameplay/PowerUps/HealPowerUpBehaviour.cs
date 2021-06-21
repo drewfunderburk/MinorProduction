@@ -11,7 +11,7 @@ public class HealPowerUpBehaviour : MonoBehaviour, IPowerUp
     public bool ApplyPowerUp(GameObject obj)
     {
         // Attempt to get a PlayerHealthBehaviour from obj
-        PlayerHealthBehaviour health = obj.GetComponent<PlayerHealthBehaviour>();
+        PlayerHealthBehaviour health = obj.GetComponentInParent<PlayerHealthBehaviour>();
 
         // If we were successful, regen health and return true
         if (health)
@@ -20,17 +20,13 @@ public class HealPowerUpBehaviour : MonoBehaviour, IPowerUp
             return true;
         }
         else
-        {
-            // Otherwise log an error and return false
-            Debug.LogError("Could not find a PlayerHealthBehaviour");
             return false;
-        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         // If the power up was applied, destroy this power up
         if (ApplyPowerUp(other.gameObject))
-            Destroy(this.gameObject);
+            Destroy(gameObject);
     }
 }

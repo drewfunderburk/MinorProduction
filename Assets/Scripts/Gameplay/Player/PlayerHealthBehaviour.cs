@@ -10,8 +10,6 @@ public class PlayerHealthBehaviour : CombatActor
     private float _maxHealth = 1;
     public float MaxHealth { get => _maxHealth; }
 
-    public UnityEvent OnDeath;
-
     private Rigidbody _rigidbody;
 
 
@@ -19,6 +17,7 @@ public class PlayerHealthBehaviour : CombatActor
     {
         _rigidbody = GetComponent<Rigidbody>();
     }
+
     /// <summary>
     /// Removes damage from Health, if Health <= 0, destroy this game object
     /// </summary>

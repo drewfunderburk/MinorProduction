@@ -93,6 +93,8 @@ GameObject:
   - component: {fileID: 7287244517507044246}
   - component: {fileID: 5081129619842093335}
   - component: {fileID: 757324257377986723}
+  - component: {fileID: -1233798972435752796}
+  - component: {fileID: 5990920553944182038}
   m_Layer: 9
   m_Name: Enemy_Stationary
   m_TagString: Untagged
@@ -238,6 +240,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 1
   _damage: 1
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5990920553944182038}
+        m_MethodName: PlayRandomClip
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _target: {fileID: 0}
   _scoreValue: 10
   _leftPadding: 0.1

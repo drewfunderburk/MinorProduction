@@ -25,9 +25,6 @@ public class GameManagerBehaviour : MonoBehaviour
     [Tooltip("The game's current level")]
     [SerializeField] private int _level = 0;
 
-    // Difficulty curves
-    [SerializeField] private DifficultyCurvesScriptableObject _difficultyCurves = null;
-
     [Space]
     [SerializeField] private int _score = 0;
 
@@ -104,20 +101,6 @@ public class GameManagerBehaviour : MonoBehaviour
     }
     public int MaxLevel { get => _maxLevel; }
     public int Level { get => _level; set => _level = value; }
-
-    // Curve getters. Returns value at current level
-    public float EnemySpawnDelay
-    { get { return _difficultyCurves.EnemySpawnDelay.Evaluate((float)_level / _maxLevel); } }
-
-    public int EnemySpawnCount
-    { get { return Mathf.RoundToInt(_difficultyCurves.EnemySpawnCount.Evaluate((float)_level / _maxLevel)); } }
-
-    public float DelayBetweenWaveGroups
-    { get { return _difficultyCurves.DelayBetweenWaveGroups.Evaluate((float)_level / _maxLevel); } }
-
-    public int WavesInGroup
-    { get { return Mathf.RoundToInt(_difficultyCurves.WavesInGroup.Evaluate((float)_level / _maxLevel)); } }
-
     public int Score { get => _score; }
     public int NumberOfWarps { get => _numberOfWarps; set => _numberOfWarps = value; }
     public float LevelDuration { get => _levelDuration; set => _levelDuration = value; }

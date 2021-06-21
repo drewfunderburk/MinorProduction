@@ -16,7 +16,8 @@ public class PlanetMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        planetEnRoute(GameManagerBehaviour.Instance.LevelDuration);
+        planetActive(GameManagerBehaviour.Instance.LevelDuration);
     }
 
     // Update is called once per frame
