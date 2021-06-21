@@ -20,11 +20,7 @@ public class HealPowerUpBehaviour : MonoBehaviour, IPowerUp
             return true;
         }
         else
-        {
-            // Otherwise log an error and return false
-            Debug.LogError("Could not find a PlayerHealthBehaviour");
             return false;
-        }
     }
 
     private void OnTriggerEnter(Collider other)
