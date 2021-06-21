@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!136 &4814637603661093657
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318237559933992506}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.8
+  m_Height: 23.19
+  m_Direction: 2
+  m_Center: {x: 0, y: -1.61, z: 0}
 --- !u!1 &6288456605519136450
 GameObject:
   m_ObjectHideFlags: 0
@@ -52,7 +66,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6288456605519136450}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -106,7 +120,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 6288456605519136450}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 2.19
   m_Speed: 80
   m_Acceleration: 200
   avoidancePriority: 50
@@ -233,6 +247,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b69841cf52cd0242a70047cdec23e21, type: 3}
+--- !u!1 &318237559933992506 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3355336208158925058, guid: 2b69841cf52cd0242a70047cdec23e21,
+    type: 3}
+  m_PrefabInstance: {fileID: 3096813940036656952}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3616885860925672489 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1786756259350270737, guid: 2b69841cf52cd0242a70047cdec23e21,
