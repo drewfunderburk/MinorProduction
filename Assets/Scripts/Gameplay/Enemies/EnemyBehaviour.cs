@@ -29,16 +29,12 @@ public abstract class EnemyBehaviour : CombatActor
     /// </summary>
     protected virtual void Die()
     {
-        // Get mesh renderer and colliders
-        MeshRenderer renderer = GetComponent<MeshRenderer>();
+        // Get colliders and gun
         Collider[] colliders = GetComponents<Collider>();
         AIShootBehaviour shoot = GetComponent<AIShootBehaviour>();
 
         // Disable this script
         enabled = false;
-
-        // Disable renderer
-        if (renderer) renderer.enabled = false;
 
         // Disable colliders
         if (colliders.Length > 0)

@@ -181,6 +181,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7947796946714308064}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _target: {fileID: 0}
   _scoreValue: 10
 --- !u!114 &4853863024099094041
@@ -505,6 +516,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f1b21e229926a243a6961c40017fe55, type: 3}
+--- !u!1 &7947796946714308064 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3201665012797913122, guid: 1f1b21e229926a243a6961c40017fe55,
+    type: 3}
+  m_PrefabInstance: {fileID: 4765554334375777730}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6347655373603856371 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1888627297792772657, guid: 1f1b21e229926a243a6961c40017fe55,
