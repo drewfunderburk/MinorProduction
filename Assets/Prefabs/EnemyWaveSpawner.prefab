@@ -43,12 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6388d68c0b871a9499c7445222ab2fb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _difficultyCurves: {fileID: 0}
   _allowSpawning: 1
   _enemyPrefabs:
-  - {fileID: 5108428230824224134, guid: d6ba03e5a3a029b4fafbb41573993ef7, type: 3}
   - {fileID: 6288456605519136450, guid: b72c75ad392f3064685d002cef6cbff9, type: 3}
-  - {fileID: 7287244517507044247, guid: 6e325fd6c1481c54bbcf509e8f4f0df0, type: 3}
   - {fileID: 2669990292565552557, guid: 5baddbef3b2afed419b84e06242f0c7f, type: 3}
+  - {fileID: 7287244517507044247, guid: 6e325fd6c1481c54bbcf509e8f4f0df0, type: 3}
   _target: {fileID: 0}
   _spawnWidth: 200
   _waveSpawnPercentage: 0.5

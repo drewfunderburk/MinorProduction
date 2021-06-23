@@ -108,6 +108,7 @@ public class GameManagerBehaviour : MonoBehaviour
     public int EasyPlanetLevelIncrease { get => _easyPlanetLevelIncrease; set => _easyPlanetLevelIncrease = value; }
     public int HardPlanetLevelIncrease { get => _hardPlanetLevelIncrease; set => _hardPlanetLevelIncrease = value; }
     public float WarpDuration { get => _warpDuration; set => _warpDuration = value; }
+    //public float TimeLeftInWarp { get => _warpDuration - -_warpTimer; }
 
     #endregion
 

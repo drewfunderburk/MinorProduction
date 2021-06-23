@@ -7,7 +7,9 @@ public class PlayerMovementBehaviour : MonoBehaviour
     [Tooltip("The Speed at Which The Player Will Move")]
     [SerializeField]
     private float _moveSpeed = 40;
-    public float MoveSpeed { get => _moveSpeed; set => _moveSpeed = value; }
+
+    [Tooltip("Maximum movespeed")]
+    [SerializeField] private float _maximumSpeed;
 
     [Tooltip("The Speed at Which The Player Will Bank")]
     [SerializeField]
@@ -17,10 +19,15 @@ public class PlayerMovementBehaviour : MonoBehaviour
     [SerializeField]
     private float _desiredRotation = 45;
 
+    [Tooltip("The Boundaries That the Player can Fly (x,y)")]
+    [SerializeField]
+    private Vector2 _boundaries = new Vector2(300,160);
+
+    public float MoveSpeed { get => _moveSpeed; set => _moveSpeed = Mathf.Clamp(value, 0, _maximumSpeed); }
+
     private Rigidbody _rigidbody;
     private Vector3 _velocity;
     private float _rotateThisMuch;
-    private Vector2 _screenDimensions;
 
 
     // Start is called before the first frame update
@@ -32,21 +39,21 @@ public class PlayerMovementBehaviour : MonoBehaviour
     void FixedUpdate()
     {
         //Prevent the player from moving if the velocity plus its position would put it over and instead add what would be needed
-        if (transform.position.x + _velocity.x < -Screen.safeArea.width / 16)
+        if (transform.position.x + _velocity.x < -_boundaries.x / 2)
         {
-            _velocity.x = -Screen.safeArea.width / 16 - transform.position.x;
+            _velocity.x = -_boundaries.x / 2 - transform.position.x;
         }
-        else if (transform.position.x + _velocity.x > Screen.safeArea.width / 16)
+        else if (transform.position.x + _velocity.x > _boundaries.x / 2)
         {
-            _velocity.x = Screen.safeArea.width / 16 - transform.position.x;
+            _velocity.x = _boundaries.x / 2 - transform.position.x;
         }
-        if (transform.position.z + _velocity.y < -Screen.safeArea.height / 16)
+        if (transform.position.z + _velocity.y < -_boundaries.y / 2)
         {
-            _velocity.y = -Screen.safeArea.height / 16 - transform.position.z;
+            _velocity.y = -_boundaries.y / 2 - transform.position.z;
         }
-        else if (transform.position.z + _velocity.y > Screen.safeArea.height / 16)
+        else if (transform.position.z + _velocity.y > _boundaries.y / 2)
         {
-            _velocity.y = Screen.safeArea.height / 16 - transform.position.z;
+            _velocity.y = _boundaries.y / 2 - transform.position.z;
         }
 
         //swap x and y because player does not move on y axis
@@ -91,14 +98,9 @@ public class PlayerMovementBehaviour : MonoBehaviour
         }
      }
 
-    private void Awake()
-    {
-        _screenDimensions.x = Screen.safeArea.width;
-        _screenDimensions.y = Screen.safeArea.height;
-    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawWireCube(new Vector3(), new Vector3(_screenDimensions.x / 8, 0, _screenDimensions.y / 8));
+        Gizmos.DrawWireCube(new Vector3(), new Vector3(_boundaries.x, 0, _boundaries.y));
     }
 }
