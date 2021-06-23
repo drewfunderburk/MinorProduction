@@ -3006,6 +3006,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1349066973}
   - component: {fileID: 1349066972}
+  - component: {fileID: 1349066974}
   m_Layer: 0
   m_Name: Ship_group
   m_TagString: Untagged
