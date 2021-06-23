@@ -13,11 +13,13 @@ public class PlanetMovement : MonoBehaviour
     public bool levelStatus = false;
     public bool isEnRoute = false;
 
+    public float warpDurationNormal;
+    public float levelDurationNormal;
+
     // Start is called before the first frame update
     void Start()
     {
-        planetEnRoute(GameManagerBehaviour.Instance.LevelDuration);
-        planetActive(GameManagerBehaviour.Instance.LevelDuration);
+
     }
 
     // Update is called once per frame
@@ -28,6 +30,10 @@ public class PlanetMovement : MonoBehaviour
             gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
             gameObject.transform.position = new Vector3(0f, 0f, 0f);
         }
+
+         //warpDurationNormal = Mathf.Clamp01(GameManagerBehaviour.Instance.TimeLeftInWarp / GameManagerBehaviour.Instance.WarpDuration);
+         warpDurationNormal = Mathf.Clamp01(GameManagerBehaviour.Instance.TimeLeftInLevel / GameManagerBehaviour.Instance.LevelDuration);
+
     }
 
     public void planetEnRoute(float travelTime)
