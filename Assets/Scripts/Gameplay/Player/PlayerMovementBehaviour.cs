@@ -7,7 +7,9 @@ public class PlayerMovementBehaviour : MonoBehaviour
     [Tooltip("The Speed at Which The Player Will Move")]
     [SerializeField]
     private float _moveSpeed = 40;
-    public float MoveSpeed { get => _moveSpeed; set => _moveSpeed = value; }
+
+    [Tooltip("Maximum movespeed")]
+    [SerializeField] private float _maximumSpeed;
 
     [Tooltip("The Speed at Which The Player Will Bank")]
     [SerializeField]
@@ -16,6 +18,8 @@ public class PlayerMovementBehaviour : MonoBehaviour
     [Tooltip("The Final Rotation the Player Will Reach During Movement in Degrees")]
     [SerializeField]
     private float _desiredRotation = 45;
+
+    public float MoveSpeed { get => _moveSpeed; set => _moveSpeed = Mathf.Clamp(value, 0, _maximumSpeed); }
 
     private Rigidbody _rigidbody;
     private Vector3 _velocity;

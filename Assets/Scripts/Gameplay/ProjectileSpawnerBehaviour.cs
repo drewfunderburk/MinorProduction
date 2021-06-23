@@ -15,6 +15,9 @@ public class ProjectileSpawnerBehaviour : MonoBehaviour
     [Tooltip("Time in seconds to delay between shots")]
     [SerializeField] private float _fireDelay = 1;
 
+    [Tooltip("Minimum delay between shots")]
+    [SerializeField] private float _minimumFireDelay = 0.1f;
+
     [Tooltip("How much damage the projectiles will do")]
     [SerializeField] private float _damage;
 
@@ -35,6 +38,10 @@ public class ProjectileSpawnerBehaviour : MonoBehaviour
     /// <returns>A list of projectiles fired</returns>
     public virtual List<BulletBehaviour> Fire()
     {
+        // Clamp _fireDelay to _minimumFireDelay
+        if (_fireDelay < _minimumFireDelay)
+            _fireDelay = _minimumFireDelay;
+
         // Ensure adequate time has passed to fire a shot
         if (Time.time <= _lastFireTime + FireDelay)
             return null;
@@ -63,6 +70,10 @@ public class ProjectileSpawnerBehaviour : MonoBehaviour
     {
         foreach (BulletBehaviour bullet in _bullets)
         {
+            // Ensure bullet is valid
+            if (bullet.gameObject == null)
+                continue;
+
             Destroy(bullet.gameObject);
         }
 

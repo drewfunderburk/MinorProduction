@@ -165,12 +165,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 20
+  _maximumSpeed: 0
   _bankingSpeed: 40
   _desiredRotation: 23
-  _minPosX: -10
-  _maxPosX: 10
-  _minPosZ: -10
-  _maxPosZ: 10
 --- !u!114 &1934570049971684922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,6 +210,7 @@ MonoBehaviour:
   _projectilePrefab: {fileID: 7752027011446696218, guid: d7d57f52abccb0248a0b29b305a8fed4,
     type: 3}
   _fireDelay: 0.2
+  _minimumFireDelay: 0.1
   _damage: 1
   OnFire:
     m_PersistentCalls:
@@ -296,8 +294,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 50e8a682194ad97428361f25b6715b5e, type: 2}
   _selectedAudioFiles: 0
   _randomizePitch: 1
-  _minimumPitch: 0.9
-  _maximumPitch: 1.1
+  _minimumPitch: 1
+  _maximumPitch: 1.2
   _randomizeVolume: 1
   _minimumVolume: 0.9
   _maximumVolume: 1

@@ -301,10 +301,22 @@ MonoBehaviour:
   _projectilePrefab: {fileID: 7752027011446696218, guid: 7e73afc5ad969f74ebd38113cd58007f,
     type: 3}
   _fireDelay: 1
+  _minimumFireDelay: 0.1
   _damage: 1
   OnFire:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5990920553944182038}
+        m_MethodName: PlayRandomClip
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!82 &-1233798972435752796
 AudioSource:
   m_ObjectHideFlags: 0
@@ -419,11 +431,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 482e57a406a84ee4ca866b9d274eb56d, type: 2}
   _selectedAudioFiles: 2
   _randomizePitch: 1
-  _minimumPitch: 0.9
-  _maximumPitch: 1.1
+  _minimumPitch: 0.7
+  _maximumPitch: 0.8
   _randomizeVolume: 1
-  _minimumVolume: 0.9
-  _maximumVolume: 1
+  _minimumVolume: 0.7
+  _maximumVolume: 0.8
 --- !u!1001 &3388059739006836317
 PrefabInstance:
   m_ObjectHideFlags: 0
