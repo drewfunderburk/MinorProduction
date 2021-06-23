@@ -8,9 +8,9 @@ public abstract class EnemyBehaviour : CombatActor
     [SerializeField] private Transform _target;
     public virtual Transform Target { get => _target; set => _target = value; }
 
-    [SerializeField] private int _scoreValue = 10;
-    public int ScoreValue { get => _scoreValue; }
-
+    [Tooltip("Score value for this enemy. Scales with level")]
+    [SerializeField] private int _scoreValue = 3;
+    public virtual int ScoreValue { get => _scoreValue * GameManagerBehaviour.Instance.Level; }
 
     public override void TakeDamage(float damage)
     {
