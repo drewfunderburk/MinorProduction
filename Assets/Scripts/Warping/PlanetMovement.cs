@@ -10,11 +10,18 @@ public class PlanetMovement : MonoBehaviour
     public float nearScale = 2f;
     public Vector3 startPos;
     public Vector3 endPos;
-    public bool levelStatus = false;
-    public bool isEnRoute = false;
+    public bool inLevel = false;
+    public bool inWarp = false;
+    public GameObject EasyPlanet;
+    public GameObject HardPlanet;
+    public Transform planetWarpPos;
 
-    public float warpDurationNormal;
-    public float levelDurationNormal;
+    public PlanetSelectionScreenBehaviour planetSelectScript;
+
+    public float warpDurationNormal = 0f;
+    public float levelDurationNormal = 0f;
+
+    private GameObject SelectedPlanet;
 
     // Start is called before the first frame update
     void Start()
@@ -25,28 +32,67 @@ public class PlanetMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(levelStatus == false && isEnRoute == false)
+        if (planetSelectScript.easyPlanetSelected)
+        {
+            SelectedPlanet = EasyPlanet;
+        }
+        else { SelectedPlanet = HardPlanet; }
+
+        if (inLevel == false && inWarp == false)
         {
             gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
             gameObject.transform.position = new Vector3(0f, 0f, 0f);
+            SelectedPlanet = null;
+        }
+        else
+        {
+            if (inLevel)
+            {
+                planetActive();
+            }
+            else
+            {
+                if (inWarp)
+                {
+                    planetEnRoute();
+                }
+            }
+
+            SelectedPlanet.transform.position = planetWarpPos.position;
+            SelectedPlanet.transform.rotation = planetWarpPos.rotation;
+            SelectedPlanet.transform.localScale = planetWarpPos.localScale;
+
         }
 
-         //warpDurationNormal = Mathf.Clamp01(GameManagerBehaviour.Instance.TimeLeftInWarp / GameManagerBehaviour.Instance.WarpDuration);
-         warpDurationNormal = Mathf.Clamp01(GameManagerBehaviour.Instance.TimeLeftInLevel / GameManagerBehaviour.Instance.LevelDuration);
+            warpDurationNormal = Mathf.Clamp01(GameManagerBehaviour.Instance.TimeLeftInWarp / GameManagerBehaviour.Instance.WarpDuration);
+
+            levelDurationNormal = Mathf.Clamp01(GameManagerBehaviour.Instance.TimeLeftInLevel / GameManagerBehaviour.Instance.LevelDuration);
+
+        if(GameManagerBehaviour.Instance.TimeLeftInLevel > 0 && GameManagerBehaviour.Instance.TimeLeftInLevel < GameManagerBehaviour.Instance.LevelDuration)
+        {
+            inLevel = true;
+        }
+        else { inLevel = false; }
+
+        if (GameManagerBehaviour.Instance.TimeLeftInWarp > 0 && GameManagerBehaviour.Instance.TimeLeftInWarp < GameManagerBehaviour.Instance.WarpDuration)
+        {
+            inWarp = true;
+        }
+        else { inWarp = false; }
 
     }
 
-    public void planetEnRoute(float travelTime)
+    public void planetEnRoute()
     {
-        gameObject.transform.position = new Vector3(Mathf.SmoothStep(farPos.x, nearPos.x, travelTime), Mathf.SmoothStep(farPos.y, nearPos.y, travelTime), Mathf.SmoothStep(farPos.z, nearPos.z, travelTime));
-        gameObject.transform.localScale = new Vector3(Mathf.SmoothStep(farScale, nearScale, travelTime), Mathf.SmoothStep(farScale, nearScale, travelTime), Mathf.SmoothStep(farScale, nearScale, travelTime));
-        isEnRoute = true;
+        gameObject.transform.position = new Vector3(Mathf.SmoothStep(nearPos.x, farPos.x, warpDurationNormal), Mathf.SmoothStep(nearPos.y, farPos.y, warpDurationNormal), Mathf.SmoothStep(nearPos.z, farPos.z, warpDurationNormal));
+        gameObject.transform.localScale = new Vector3(Mathf.SmoothStep(nearScale, farScale, warpDurationNormal), Mathf.SmoothStep(nearScale, farScale, warpDurationNormal), Mathf.SmoothStep(nearScale, farScale, warpDurationNormal));
+        
     }
 
-    public void planetActive(float levelTime)
+    public void planetActive()
     {
-        gameObject.transform.position = new Vector3(Mathf.SmoothStep(startPos.x, endPos.x, levelTime), Mathf.SmoothStep(startPos.y, endPos.y, levelTime), Mathf.SmoothStep(startPos.z, endPos.z, levelTime));
-        isEnRoute = false;
+        gameObject.transform.position = new Vector3(Mathf.SmoothStep(endPos.x, startPos.x, levelDurationNormal), Mathf.SmoothStep(endPos.y, startPos.y, levelDurationNormal), Mathf.SmoothStep(endPos.z, startPos.z, levelDurationNormal));
+        
     }
 
 }

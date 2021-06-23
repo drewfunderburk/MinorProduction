@@ -165,13 +165,13 @@ public class WarpManager : MonoBehaviour
             warpTimerNormalized = 0f; 
             warpTimer = 0f;
             CameraGroup.GetComponent<CameraMovement>().ToggleWarp();
-            PlanetGroup.GetComponent<PlanetMovement>().levelStatus = true;
+            //PlanetGroup.GetComponent<PlanetMovement>().levelStatus = true;
             warpCounter += 1;
 
         }
         if (warpTimerNormalized > 0)
         {
-            PlanetGroup.GetComponent<PlanetMovement>().planetEnRoute(warpTimerNormalized);
+            PlanetGroup.GetComponent<PlanetMovement>().planetEnRoute();
         }
 
         SelectedPlanet.transform.localPosition = ActivePlanet_Offset.transform.localPosition;
@@ -197,12 +197,12 @@ public class WarpManager : MonoBehaviour
             isWarping = false;
             inLevel = false; 
             GENERATE_NEW_PLANETS = true;
-            PlanetGroup.GetComponent<PlanetMovement>().levelStatus = false;
-            PlanetGroup.GetComponent<PlanetMovement>().planetActive(0f);
-            PlanetGroup.GetComponent<PlanetMovement>().planetEnRoute(0f);
+            //PlanetGroup.GetComponent<PlanetMovement>().levelStatus = false;
+            //PlanetGroup.GetComponent<PlanetMovement>().planetActive(0f);
+            //PlanetGroup.GetComponent<PlanetMovement>().planetEnRoute(0f);
         }
 
-        PlanetGroup.GetComponent<PlanetMovement>().planetActive(warpTimerNormalized);
+        //PlanetGroup.GetComponent<PlanetMovement>().planetActive(warpTimerNormalized);
 
     }
     //>--------------------------------------------------->>ENDWARP<<<---------------------------------------------------------------------------<

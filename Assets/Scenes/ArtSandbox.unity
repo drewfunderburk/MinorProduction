@@ -26022,10 +26022,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0d62c8b8725be64d99191221d290a39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  easyPlanetSelected: 0
   _showDebugGizmos: 1
   _easyPlanet: {fileID: 1833653642}
   _hardPlanet: {fileID: 1015858602}
-  _movingPlanet: {fileID: 864130493}
+  _movingPlanet: {fileID: 0}
   _player: {fileID: 7861656018135536487}
   _selectionRadius: 28.4
   _selectionDuration: 1
@@ -45386,7 +45387,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 645575441}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8dff65c70374e34c9b2e4e6197d4681, type: 3}
   m_Name: 
@@ -45397,8 +45398,12 @@ MonoBehaviour:
   nearScale: 1.5
   startPos: {x: 1000, y: -1000, z: 8000}
   endPos: {x: 1000, y: -1000, z: -4000}
-  levelStatus: 0
-  isEnRoute: 0
+  inLevel: 0
+  inWarp: 0
+  EasyPlanet: {fileID: 0}
+  HardPlanet: {fileID: 0}
+  planetWarpPos: {fileID: 0}
+  planetSelectScript: {fileID: 0}
   warpDurationNormal: 0
   levelDurationNormal: 0
 --- !u!1 &653260035
@@ -60240,74 +60245,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1213053885781436177, guid: 56dec742cba096b45940b7251ac1d65f,
         type: 2}
+    - target: {fileID: 7555383227749735271, guid: 94dfcc07e88d6f24e8b5a472d6c85f33,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94dfcc07e88d6f24e8b5a472d6c85f33, type: 3}
---- !u!1 &864130492
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 864130494}
-  - component: {fileID: 864130493}
-  - component: {fileID: 864130495}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &864130493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 864130492}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ca5f0908846d8b418d0d18f26be2042, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _planet: {fileID: 0}
-  _atmosphere: {fileID: 0}
-  _generatedColor: {r: 0, g: 0, b: 0, a: 0}
-  _matchedColor: {r: 0, g: 0, b: 0, a: 0}
-  _atmosphereColor: {r: 0, g: 0, b: 0, a: 0}
-  _colorClampMinMax: {x: 0, y: 0}
-  _planetSelectModeScale: 0
---- !u!4 &864130494
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 864130492}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.8706558, y: -0.8315202, z: 32.214073}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 15
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &864130495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 864130492}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b49c06311e91ee4a8658e974ab5d45a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _xScreenOffset: -50
-  _bottomScreenOffset: -50
-  _topScreenOffset: 50
 --- !u!1 &870244094
 GameObject:
   m_ObjectHideFlags: 0
@@ -102682,6 +102626,11 @@ PrefabInstance:
         type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934570049971684918, guid: 23788150feaca0545abae5fb52c86ff3,
+        type: 3}
+      propertyPath: _health
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 1934570049971684920, guid: 23788150feaca0545abae5fb52c86ff3,
         type: 3}
