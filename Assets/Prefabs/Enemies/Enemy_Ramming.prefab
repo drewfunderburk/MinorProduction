@@ -1,19 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!136 &4814637603661093657
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 318237559933992506}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 2.8
-  m_Height: 23.19
-  m_Direction: 2
-  m_Center: {x: 0, y: -1.61, z: 0}
 --- !u!1 &6288456605519136450
 GameObject:
   m_ObjectHideFlags: 0
@@ -25,12 +11,10 @@ GameObject:
   - component: {fileID: 8236466028795541953}
   - component: {fileID: 1547940603051343101}
   - component: {fileID: 7991392338907512017}
-  - component: {fileID: 4284916589110638568}
   - component: {fileID: 2713719621592488782}
   - component: {fileID: 3662730439224095016}
   - component: {fileID: 6682958572011785947}
-  - component: {fileID: -5944941375963831068}
-  - component: {fileID: -8628963730725047475}
+  - component: {fileID: 4526517809240245799}
   m_Layer: 9
   m_Name: Enemy_Ramming
   m_TagString: Untagged
@@ -47,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 6288456605519136450}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3616885860925672489}
   m_Father: {fileID: 0}
@@ -100,19 +84,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &4284916589110638568
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6288456605519136450}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &2713719621592488782
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -165,7 +136,7 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -8628963730725047475}
+      - m_Target: {fileID: 0}
         m_MethodName: PlayRandomClip
         m_Mode: 3
         m_Arguments:
@@ -179,6 +150,19 @@ MonoBehaviour:
   _target: {fileID: 0}
   _scoreValue: 10
   _accelerationReductionDistance: 50
+--- !u!65 &4526517809240245799
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6288456605519136450}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.49, y: 20, z: 4.54}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &3096813940036656952
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -244,17 +228,17 @@ PrefabInstance:
     - target: {fileID: 1786756259350270737, guid: 2b69841cf52cd0242a70047cdec23e21,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.19192542
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1786756259350270737, guid: 2b69841cf52cd0242a70047cdec23e21,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.19192542
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1786756259350270737, guid: 2b69841cf52cd0242a70047cdec23e21,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.19192542
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3355336208158925058, guid: 2b69841cf52cd0242a70047cdec23e21,
         type: 3}
@@ -263,12 +247,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b69841cf52cd0242a70047cdec23e21, type: 3}
---- !u!1 &318237559933992506 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3355336208158925058, guid: 2b69841cf52cd0242a70047cdec23e21,
-    type: 3}
-  m_PrefabInstance: {fileID: 3096813940036656952}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3616885860925672489 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1786756259350270737, guid: 2b69841cf52cd0242a70047cdec23e21,
