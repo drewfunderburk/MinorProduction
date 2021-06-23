@@ -106,7 +106,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 52
   m_CollisionDetection: 0
 --- !u!65 &1934570049971684919
 BoxCollider:
@@ -164,9 +164,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcf565fba54e7f24c8950cfa4b8c3909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 20
-  _bankingSpeed: 40
-  _desiredRotation: 23
+  _moveSpeed: 100
+  _bankingSpeed: 2000
+  _desiredRotation: 45
 --- !u!114 &1934570049971684922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,7 +208,7 @@ MonoBehaviour:
   - {fileID: 8629687758377296814}
   _projectilePrefab: {fileID: 7752027011446696218, guid: d7d57f52abccb0248a0b29b305a8fed4,
     type: 3}
-  _fireDelay: 0.2
+  _fireDelay: 0.17
   _damage: 1
   OnFire:
     m_PersistentCalls:
@@ -5140,13 +5140,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8629687757139682424}
-  m_LocalRotation: {x: 0.021651236, y: 0.005567554, z: 0.07907252, w: 0.99661815}
-  m_LocalPosition: {x: 1.43, y: 2.25, z: -31.65}
+  m_LocalRotation: {x: 0.022145702, y: 0.0030564077, z: 0.19246425, w: 0.9810493}
+  m_LocalPosition: {x: 1.41, y: 2.85, z: -15.76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8629687757527194078}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 2.423, y: 0.83300006, z: 9.09}
+  m_LocalEulerAnglesHint: {x: 2.423, y: 0.83300006, z: 22.216002}
 --- !u!1 &8629687757451461410
 GameObject:
   m_ObjectHideFlags: 0
@@ -5171,7 +5171,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8629687757451461410}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5, y: 0, z: 7.23}
+  m_LocalPosition: {x: -1, y: 0, z: 4.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8629687757098992024}
@@ -5186,7 +5186,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8629687757527194078}
-  - component: {fileID: 8629687757527194079}
   - component: {fileID: 8629687757527194072}
   m_Layer: 8
   m_Name: PlayerShip_group
@@ -5215,23 +5214,6 @@ Transform:
   m_Father: {fileID: 3207584299423036460}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8629687757527194079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8629687757527194077}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 618b0e3f6c65dd247a4a016150006c57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_LookSpeedController: 100
-  m_LookSpeedMouse: 0
-  m_MoveSpeed: 100
-  m_MoveSpeedIncrement: 2.5
-  m_Turbo: 2
 --- !u!114 &8629687757527194072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5246,9 +5228,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WarpManager: {fileID: 0}
   MinMax: {x: -2, y: 1}
-  speed: 2
+  speed: 1
   timerX: 0
-  alwaysActive: 0
+  alwaysActive: 1
   position: 1
   rotation: 1
 --- !u!1 &8629687757540576172
@@ -33714,7 +33696,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8629687758377296813}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.5, y: 0, z: 7.23}
+  m_LocalPosition: {x: 1, y: 0, z: 4.6600003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8629687757098992024}

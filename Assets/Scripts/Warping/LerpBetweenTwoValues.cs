@@ -60,25 +60,27 @@ public class LerpBetweenTwoValues : MonoBehaviour
         }
         else 
         {
-            if(timerX > 1f)
+            if (alwaysActive == false)
             {
-                timerX = 1f;
-            }
-
-            if (timerX > 0)
-            {
-                if (position)
+                if (timerX > 1f)
                 {
-                    gameObject.transform.localPosition = new Vector3(Mathf.SmoothStep(iniPos.x, lastPos.x, timerX), Mathf.SmoothStep(iniPos.y, lastPos.y, timerX), 0);
-                }
-                if (rotation)
-                {
-                    gameObject.transform.localRotation = new Quaternion(0, 0, Mathf.SmoothStep(iniRot.z, lastRot.z, timerX), gameObject.transform.localRotation.w);
+                    timerX = 1f;
                 }
 
-                timerX -= speed * 2f * Time.deltaTime;
+                if (timerX > 0)
+                {
+                    if (position)
+                    {
+                        gameObject.transform.localPosition = new Vector3(Mathf.SmoothStep(iniPos.x, lastPos.x, timerX), Mathf.SmoothStep(iniPos.y, lastPos.y, timerX), 0);
+                    }
+                    if (rotation)
+                    {
+                        gameObject.transform.localRotation = new Quaternion(0, 0, Mathf.SmoothStep(iniRot.z, lastRot.z, timerX), gameObject.transform.localRotation.w);
+                    }
+
+                    timerX -= speed * 2f * Time.deltaTime;
+                }
             }
-            
             
         }
     }
