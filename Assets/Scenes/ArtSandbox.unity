@@ -59883,6 +59883,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4883371099698648516, guid: 94dfcc07e88d6f24e8b5a472d6c85f33,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 44.61
+      objectReference: {fileID: 0}
     - target: {fileID: 4883371099698648519, guid: 94dfcc07e88d6f24e8b5a472d6c85f33,
         type: 3}
       propertyPath: _health
@@ -59901,7 +59906,52 @@ PrefabInstance:
     - target: {fileID: 4883371099698648519, guid: 94dfcc07e88d6f24e8b5a472d6c85f33,
         type: 3}
       propertyPath: _healthGradient.ctime1
-      value: 32382
+      value: 42791
+      objectReference: {fileID: 0}
+    - target: {fileID: 4883371099698648519, guid: 94dfcc07e88d6f24e8b5a472d6c85f33,
+        type: 3}
+      propertyPath: _healthGradient.key2.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4883371099698648519, guid: 94dfcc07e88d6f24e8b5a472d6c85f33,
+        type: 3}
+      propertyPath: _healthGradient.key2.g
+      value: 0.9813695
+      objectReference: {fileID: 0}
+    - target: {fileID: 4883371099698648519, guid: 94dfcc07e88d6f24e8b5a472d6c85f33,
+        type: 3}
+      propertyPath: _healthGradient.key2.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4883371099698648519, guid: 94dfcc07e88d6f24e8b5a472d6c85f33,
+        type: 3}
+      propertyPath: _healthGradient.key1.r
+      value: 0.8207547
+      objectReference: {fileID: 0}
+    - target: {fileID: 4883371099698648519, guid: 94dfcc07e88d6f24e8b5a472d6c85f33,
+        type: 3}
+      propertyPath: _healthGradient.key1.g
+      value: 0.6935378
+      objectReference: {fileID: 0}
+    - target: {fileID: 4883371099698648519, guid: 94dfcc07e88d6f24e8b5a472d6c85f33,
+        type: 3}
+      propertyPath: _healthGradient.key1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4883371099698648519, guid: 94dfcc07e88d6f24e8b5a472d6c85f33,
+        type: 3}
+      propertyPath: _healthGradient.key0.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4883371099698648519, guid: 94dfcc07e88d6f24e8b5a472d6c85f33,
+        type: 3}
+      propertyPath: _healthGradient.key0.b
+      value: 0.044056512
+      objectReference: {fileID: 0}
+    - target: {fileID: 4883371099698648519, guid: 94dfcc07e88d6f24e8b5a472d6c85f33,
+        type: 3}
+      propertyPath: _healthGradient.key0.r
+      value: 0.735849
       objectReference: {fileID: 0}
     - target: {fileID: 5126151426250295764, guid: 94dfcc07e88d6f24e8b5a472d6c85f33,
         type: 3}
