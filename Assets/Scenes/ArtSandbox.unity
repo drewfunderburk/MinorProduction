@@ -20308,7 +20308,7 @@ PrefabInstance:
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
       propertyPath: OnWarpEnter.m_PersistentCalls.m_Calls.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
@@ -20763,7 +20763,7 @@ PrefabInstance:
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
       propertyPath: OnWarpEnter.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
@@ -20774,16 +20774,16 @@ PrefabInstance:
         type: 3}
       propertyPath: OnWarpEnter.m_PersistentCalls.m_Calls.Array.data[5].m_Target
       value: 
-      objectReference: {fileID: 7861656018135536485}
+      objectReference: {fileID: 0}
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
       propertyPath: OnWarpEnter.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
-      value: set_enabled
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
       propertyPath: OnWarpEnter.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1953046195226844431, guid: b3297125efbb69d4fa15bf7919b05c3c,
         type: 3}
@@ -21147,7 +21147,7 @@ RectTransform:
   m_GameObject: {fileID: 418847898}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.3, z: 0.25}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children: []
   m_Father: {fileID: 1727032845}
   m_RootOrder: 0
@@ -21176,7 +21176,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 70ea29bda0c895743a1d6d9752f14ea8, type: 3}
+    m_Font: {fileID: 12800000, guid: b15d535ea0302434daa121904d36cdbe, type: 3}
     m_FontSize: 41
     m_FontStyle: 0
     m_BestFit: 0
@@ -40648,7 +40648,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &630339373
 Transform:
   m_ObjectHideFlags: 0
@@ -65298,7 +65298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetTransform: {fileID: 137556261}
-  _transitionDuration: 0.8
+  _transitionDuration: 1.25
 --- !u!1 &922465827
 GameObject:
   m_ObjectHideFlags: 0
@@ -94848,7 +94848,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 70ea29bda0c895743a1d6d9752f14ea8, type: 3}
+    m_Font: {fileID: 12800000, guid: fd57b832ce342bb439789a0cc0a914b8, type: 3}
     m_FontSize: 31
     m_FontStyle: 0
     m_BestFit: 0
@@ -95680,7 +95680,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 70ea29bda0c895743a1d6d9752f14ea8, type: 3}
+    m_Font: {fileID: 12800000, guid: fd57b832ce342bb439789a0cc0a914b8, type: 3}
     m_FontSize: 31
     m_FontStyle: 0
     m_BestFit: 0
@@ -102811,12 +102811,12 @@ PrefabInstance:
     - target: {fileID: 8629687757527194072, guid: 23788150feaca0545abae5fb52c86ff3,
         type: 3}
       propertyPath: MinMax.y
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8629687757527194072, guid: 23788150feaca0545abae5fb52c86ff3,
         type: 3}
       propertyPath: MinMax.x
-      value: -1.5
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8629687757527194072, guid: 23788150feaca0545abae5fb52c86ff3,
         type: 3}
