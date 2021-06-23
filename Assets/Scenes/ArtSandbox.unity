@@ -59998,6 +59998,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1213053885781436177, guid: 56dec742cba096b45940b7251ac1d65f,
         type: 2}
+    - target: {fileID: 4883371098861946148, guid: 94dfcc07e88d6f24e8b5a472d6c85f33,
+        type: 3}
+      propertyPath: _lerpFactor
+      value: 0.001
+      objectReference: {fileID: 0}
     - target: {fileID: 4883371099497531119, guid: 94dfcc07e88d6f24e8b5a472d6c85f33,
         type: 3}
       propertyPath: m_Name

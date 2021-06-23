@@ -1,10 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
 public class UIScoreBehaviour : MonoBehaviour
 {
+    [SerializeField] private float _lerpFactor = 0.1f;
     private TextMeshProUGUI _scoreText;
 
     private void Start()
@@ -14,6 +16,9 @@ public class UIScoreBehaviour : MonoBehaviour
 
     private void Update()
     {
-        _scoreText.text = GameManagerBehaviour.Instance.Score.ToString();
+        int score;
+        Int32.TryParse(_scoreText.text, out score);
+
+        _scoreText.text = Mathf.RoundToInt(Mathf.Lerp(score, GameManagerBehaviour.Instance.Score, _lerpFactor)).ToString();
     }
 }
