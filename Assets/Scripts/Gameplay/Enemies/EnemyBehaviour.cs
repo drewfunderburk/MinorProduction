@@ -18,8 +18,35 @@ public abstract class EnemyBehaviour : CombatActor
         if (Health <= 0)
         {
             GameManagerBehaviour.Instance.IncreaseScore(_scoreValue);
-            Destroy(gameObject);
+            OnDeath.Invoke();
+            Die();
+            Destroy(gameObject, 3);
         }
+    }
+
+    /// <summary>
+    /// Default things to do on death
+    /// </summary>
+    protected virtual void Die()
+    {
+        // Get mesh renderer and colliders
+        MeshRenderer renderer = GetComponent<MeshRenderer>();
+        Collider[] colliders = GetComponents<Collider>();
+        AIShootBehaviour shoot = GetComponent<AIShootBehaviour>();
+
+        // Disable this script
+        enabled = false;
+
+        // Disable renderer
+        if (renderer) renderer.enabled = false;
+
+        // Disable colliders
+        if (colliders.Length > 0)
+            foreach (Collider collider in colliders)
+                collider.enabled = false;
+
+        // Disable the gun
+        if (shoot) shoot.enabled = false;
     }
 
     protected virtual void OnCollisionEnter(Collision collision)

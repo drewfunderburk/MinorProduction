@@ -47,7 +47,8 @@ public class PlayerHealthBehaviour : CombatActor
     public void Kill()
     {
         Health = 0;
-        _rigidbody.useGravity = true;
+        OnDeath.Invoke();
+        gameObject.SetActive(false);
     }
     /// <summary>
     /// Hard sets the players health to be a specific float value, if the health >= maxhealth, cap it
@@ -67,5 +68,14 @@ public class PlayerHealthBehaviour : CombatActor
 
         if (actor)
             actor.TakeDamage(Damage);
+        TakeDamage(actor.Damage);
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        CombatActor actor = other.gameObject.GetComponent<CombatActor>();
+
+        if (actor)
+            actor.TakeDamage(Damage);
+        TakeDamage(actor.Damage);
     }
 }
