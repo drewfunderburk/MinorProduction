@@ -23,10 +23,18 @@ public class PlanetMovement : MonoBehaviour
 
     private GameObject SelectedPlanet;
 
+    private Vector3 EasyPlanet_iniPos;
+    private Vector3 HardPlanet_iniPos;
+    private Quaternion EasyPlanet_iniRot;
+    private Quaternion HardPlanet_iniRot;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        EasyPlanet_iniPos = EasyPlanet.transform.position;
+        HardPlanet_iniPos = HardPlanet.transform.position;
+        EasyPlanet_iniRot = EasyPlanet.transform.rotation;
+        HardPlanet_iniRot = HardPlanet.transform.rotation;
     }
 
     // Update is called once per frame
@@ -43,6 +51,16 @@ public class PlanetMovement : MonoBehaviour
             gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
             gameObject.transform.position = new Vector3(0f, 0f, 0f);
             SelectedPlanet = null;
+
+
+            EasyPlanet.transform.position = EasyPlanet_iniPos;
+            EasyPlanet.transform.rotation = EasyPlanet_iniRot;
+            EasyPlanet.transform.localScale = new Vector3(5,5,5);
+
+            HardPlanet.transform.position = HardPlanet_iniPos;
+            HardPlanet.transform.rotation = HardPlanet_iniRot;
+            HardPlanet.transform.localScale = new Vector3(5, 5, 5);
+
         }
         else
         {
