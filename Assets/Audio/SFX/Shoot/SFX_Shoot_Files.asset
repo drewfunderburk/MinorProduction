@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: SFX_Shoot_Files
   m_EditorClassIdentifier: 
   _audioClips:
-  - {fileID: 8300000, guid: f79209e2fa7e9e64faf057bbc00fcddd, type: 3}
-  - {fileID: 8300000, guid: ce1a2bd2ecc388c4ca149d8847b26afd, type: 3}
-  - {fileID: 8300000, guid: c012ea1f820ef184b88ae267ce42dc6c, type: 3}
-  - {fileID: 8300000, guid: b384f009898794741868063595b6230e, type: 3}
+  - {fileID: 8300000, guid: 9beaea3f7c84b0e428530d1a7df1fe75, type: 3}
+  - {fileID: 8300000, guid: 16f7f588e4a4b77419bd6481cf7620af, type: 3}
+  - {fileID: 8300000, guid: c9401693b7236db458a26c5acd60aebd, type: 3}
+  - {fileID: 8300000, guid: beef037cd685fde40a1e0a69de5781f2, type: 3}
+  - {fileID: 8300000, guid: 03ac48d8a272a814f80a3ea46960c820, type: 3}
+  - {fileID: 8300000, guid: 8d3868ef824b8a44e80ad00ff18bf9e4, type: 3}

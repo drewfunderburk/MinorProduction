@@ -71,7 +71,7 @@ public class ProjectileSpawnerBehaviour : MonoBehaviour
         foreach (BulletBehaviour bullet in _bullets)
         {
             // Ensure bullet is valid
-            if (bullet.gameObject == null)
+            if (bullet == null)
                 continue;
 
             Destroy(bullet.gameObject);

@@ -10,9 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc75830e25c399c4b982344702c65767, type: 3}
-  m_Name: SFX_Explosion_Files
+  m_Name: SFX_Hit_Files
   m_EditorClassIdentifier: 
   _audioClips:
-  - {fileID: 8300000, guid: 14ae3301863b99f428bb90b453d06e94, type: 3}
-  - {fileID: 8300000, guid: 52365a24f64c2d54c8fed0afd382809b, type: 3}
-  - {fileID: 8300000, guid: d9cc20d4fdec6f14dad3a47027119023, type: 3}
+  - {fileID: 8300000, guid: a6ceab72355b701408e112c389286db1, type: 3}
