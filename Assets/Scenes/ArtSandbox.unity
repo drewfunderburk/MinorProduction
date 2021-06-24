@@ -9675,7 +9675,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c030253337d9a44439b1e375272f92e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: {x: 0, y: 1, z: 0}
+  rotationSpeed: {x: 0, y: 0.8, z: 0}
   HueShiftSpeed: 0.025
 --- !u!23 &36374559
 MeshRenderer:
@@ -19420,32 +19420,32 @@ PrefabInstance:
     - target: {fileID: 722535837971316578, guid: d834e87766c9c384cb8e4fa33323f3f6,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 722535837971316578, guid: d834e87766c9c384cb8e4fa33323f3f6,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 722535837971316578, guid: d834e87766c9c384cb8e4fa33323f3f6,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 119.7
       objectReference: {fileID: 0}
     - target: {fileID: 722535837971316578, guid: d834e87766c9c384cb8e4fa33323f3f6,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -111.50001
       objectReference: {fileID: 0}
     - target: {fileID: 722535837971316578, guid: d834e87766c9c384cb8e4fa33323f3f6,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 199.4
       objectReference: {fileID: 0}
     - target: {fileID: 722535837971316578, guid: d834e87766c9c384cb8e4fa33323f3f6,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 47.666668
       objectReference: {fileID: 0}
     - target: {fileID: 1682857444326418042, guid: d834e87766c9c384cb8e4fa33323f3f6,
         type: 3}
@@ -19455,37 +19455,37 @@ PrefabInstance:
     - target: {fileID: 1682857444326418042, guid: d834e87766c9c384cb8e4fa33323f3f6,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1688885142532725934, guid: d834e87766c9c384cb8e4fa33323f3f6,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1688885142532725934, guid: d834e87766c9c384cb8e4fa33323f3f6,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1688885142532725934, guid: d834e87766c9c384cb8e4fa33323f3f6,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 119.7
       objectReference: {fileID: 0}
     - target: {fileID: 1688885142532725934, guid: d834e87766c9c384cb8e4fa33323f3f6,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -43.833336
       objectReference: {fileID: 0}
     - target: {fileID: 1688885142532725934, guid: d834e87766c9c384cb8e4fa33323f3f6,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 199.4
       objectReference: {fileID: 0}
     - target: {fileID: 1688885142532725934, guid: d834e87766c9c384cb8e4fa33323f3f6,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 47.666668
       objectReference: {fileID: 0}
     - target: {fileID: 2799501995519464991, guid: d834e87766c9c384cb8e4fa33323f3f6,
         type: 3}
@@ -19620,32 +19620,32 @@ PrefabInstance:
     - target: {fileID: 5099201521304002331, guid: d834e87766c9c384cb8e4fa33323f3f6,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5099201521304002331, guid: d834e87766c9c384cb8e4fa33323f3f6,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5099201521304002331, guid: d834e87766c9c384cb8e4fa33323f3f6,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 119.7
       objectReference: {fileID: 0}
     - target: {fileID: 5099201521304002331, guid: d834e87766c9c384cb8e4fa33323f3f6,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -179.16667
       objectReference: {fileID: 0}
     - target: {fileID: 5099201521304002331, guid: d834e87766c9c384cb8e4fa33323f3f6,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 199.4
       objectReference: {fileID: 0}
     - target: {fileID: 5099201521304002331, guid: d834e87766c9c384cb8e4fa33323f3f6,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 47.666668
       objectReference: {fileID: 0}
     - target: {fileID: 5926125560181089826, guid: d834e87766c9c384cb8e4fa33323f3f6,
         type: 3}
@@ -20030,7 +20030,7 @@ RectTransform:
   m_GameObject: {fileID: 334408715}
   m_LocalRotation: {x: -0.13524497, y: -0.8235592, z: 0.5047406, w: 0.22067195}
   m_LocalPosition: {x: 0, y: 0, z: -14.32}
-  m_LocalScale: {x: 0.08333332, y: 0.06666666, z: 0.08333334}
+  m_LocalScale: {x: 0.08, y: 0.08, z: 0.08}
   m_Children:
   - {fileID: 1737454833}
   m_Father: {fileID: 1964887614}
@@ -21150,7 +21150,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b15d535ea0302434daa121904d36cdbe, type: 3}
+    m_Font: {fileID: 12800000, guid: 28c8b14e9fcebd44496cfe140823142d, type: 3}
     m_FontSize: 41
     m_FontStyle: 0
     m_BestFit: 0
@@ -35617,7 +35617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c030253337d9a44439b1e375272f92e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: {x: 0, y: 1, z: 0}
+  rotationSpeed: {x: 0, y: 0.8, z: 0}
   HueShiftSpeed: 0.025
 --- !u!23 &526441775
 MeshRenderer:
@@ -35711,7 +35711,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c030253337d9a44439b1e375272f92e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: {x: 0, y: 1, z: 0}
+  rotationSpeed: {x: 0, y: 0.8, z: 0}
   HueShiftSpeed: 0.025
 --- !u!23 &555803293
 MeshRenderer:
@@ -55101,7 +55101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c030253337d9a44439b1e375272f92e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: {x: 0, y: 1, z: 0}
+  rotationSpeed: {x: 0, y: 0.8, z: 0}
   HueShiftSpeed: 0.025
 --- !u!23 &816596992
 MeshRenderer:
@@ -70575,7 +70575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c030253337d9a44439b1e375272f92e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: {x: 0, y: -3, z: 0}
+  rotationSpeed: {x: 0, y: 3, z: 0}
   HueShiftSpeed: 0.025
 --- !u!23 &1136738007
 MeshRenderer:
@@ -84913,7 +84913,7 @@ RectTransform:
   m_GameObject: {fileID: 1213461594}
   m_LocalRotation: {x: 0.13524497, y: -0.8235592, z: 0.5047406, w: -0.22067195}
   m_LocalPosition: {x: 0, y: 0, z: -14.32}
-  m_LocalScale: {x: 0.0833333, y: 0.06666664, z: 0.08333329}
+  m_LocalScale: {x: 0.08, y: 0.08, z: 0.08}
   m_Children:
   - {fileID: 1456052300}
   m_Father: {fileID: 1093337439}
@@ -89946,7 +89946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c030253337d9a44439b1e375272f92e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: {x: 0, y: 3, z: 0}
+  rotationSpeed: {x: 0, y: 0.8, z: 0}
   HueShiftSpeed: 0.025
 --- !u!23 &1401230921
 MeshRenderer:
@@ -94805,7 +94805,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: fd57b832ce342bb439789a0cc0a914b8, type: 3}
+    m_Font: {fileID: 12800000, guid: 28c8b14e9fcebd44496cfe140823142d, type: 3}
     m_FontSize: 31
     m_FontStyle: 0
     m_BestFit: 0
@@ -95643,7 +95643,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: fd57b832ce342bb439789a0cc0a914b8, type: 3}
+    m_Font: {fileID: 12800000, guid: 28c8b14e9fcebd44496cfe140823142d, type: 3}
     m_FontSize: 31
     m_FontStyle: 0
     m_BestFit: 0
@@ -95655,7 +95655,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: +25% Score
+  m_Text: +3 Levels
 --- !u!222 &1737454835
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -95884,7 +95884,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c030253337d9a44439b1e375272f92e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: {x: 0, y: 1, z: 0}
+  rotationSpeed: {x: 0, y: 0.8, z: 0}
   HueShiftSpeed: 0.025
 --- !u!23 &1802391561
 MeshRenderer:
@@ -101232,7 +101232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c030253337d9a44439b1e375272f92e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: {x: 0, y: 3, z: 0}
+  rotationSpeed: {x: 0, y: 0.8, z: 0}
   HueShiftSpeed: 0.025
 --- !u!23 &1966822213
 MeshRenderer:
@@ -101521,7 +101521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c030253337d9a44439b1e375272f92e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: {x: 0, y: -3, z: 0}
+  rotationSpeed: {x: 0, y: 3, z: 0}
   HueShiftSpeed: 0.025
 --- !u!23 &2084466899
 MeshRenderer:
