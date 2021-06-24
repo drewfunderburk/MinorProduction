@@ -68,7 +68,6 @@ public class PlayerHealthBehaviour : CombatActor
 
         if (actor)
             actor.TakeDamage(Damage);
-        TakeDamage(actor.Damage);
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -76,6 +75,5 @@ public class PlayerHealthBehaviour : CombatActor
 
         if (actor)
             actor.TakeDamage(Damage);
-        TakeDamage(actor.Damage);
     }
 }
