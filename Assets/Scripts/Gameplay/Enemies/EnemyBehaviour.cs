@@ -15,6 +15,9 @@ public abstract class EnemyBehaviour : CombatActor
     public override void TakeDamage(float damage)
     {
         Health -= damage;
+
+        OnTakeDamage.Invoke();
+
         if (Health <= 0)
         {
             GameManagerBehaviour.Instance.IncreaseScore(_scoreValue);
@@ -22,6 +25,7 @@ public abstract class EnemyBehaviour : CombatActor
             Die();
             Destroy(gameObject, 3);
         }
+
     }
 
     /// <summary>

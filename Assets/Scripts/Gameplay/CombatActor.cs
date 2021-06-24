@@ -15,6 +15,7 @@ public abstract class CombatActor : MonoBehaviour
     public virtual float Damage { get => _damage; set => _damage = value; }
 
     public UnityEvent OnDeath;
+    public UnityEvent OnTakeDamage;
 
     /// <summary>
     /// Cause this object to take damage
