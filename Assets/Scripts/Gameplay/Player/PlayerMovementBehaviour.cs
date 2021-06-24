@@ -22,13 +22,16 @@ public class PlayerMovementBehaviour : MonoBehaviour
     [Tooltip("The Boundaries That the Player can Fly (x,y)")]
     [SerializeField]
     private Vector2 _boundaries = new Vector2(300,160);
+    
+    [Tooltip("Speed multiplier when the player is shooting")]
+    public float _SpeedReductionMultiplier = 0.8f;
 
     public float MoveSpeed { get => _moveSpeed; set => _moveSpeed = Mathf.Clamp(value, 0, _maximumSpeed); }
 
     private Rigidbody _rigidbody;
     private Vector3 _velocity;
     private float _rotateThisMuch;
-
+    private float _currentSpeedReductionMultiplier;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +41,8 @@ public class PlayerMovementBehaviour : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        
+
         //Prevent the player from moving if the velocity plus its position would put it over and instead add what would be needed
         if (transform.position.x + _velocity.x < -_boundaries.x / 2)
         {

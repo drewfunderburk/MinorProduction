@@ -16,7 +16,7 @@ public class PlanetMovementBehaviour : MonoBehaviour
     {
         // Cache original position
         _originalPosition = transform.position;
-
+        
         // Cache camera
         Camera cam = Camera.main;
 

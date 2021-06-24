@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PlanetSelectionScreenBehaviour : MonoBehaviour
 {
+    public bool easyPlanetSelected = false;
+
     [SerializeField] private bool _showDebugGizmos = true;
     [SerializeField] private RandomizePlanetBehaviour _easyPlanet;
     [SerializeField] private RandomizePlanetBehaviour _hardPlanet;
-    [SerializeField] private RandomizePlanetBehaviour _movingPlanet;
+    [SerializeField] private RandomizePlanetBehaviour _movingPlanet = null;
     [SerializeField] private PlayerMovementBehaviour _player;
     [SerializeField] private float _selectionRadius;
     [SerializeField] private float _selectionDuration;
@@ -19,6 +21,12 @@ public class PlanetSelectionScreenBehaviour : MonoBehaviour
 
     private void Update()
     {
+        if(SelectedPlanet == _hardPlanet)
+        {
+            easyPlanetSelected = false;
+        }
+        else { easyPlanetSelected = true; }
+
         // Don't bother with anything if we aren't in planet select
         if (GameManagerBehaviour.Instance.GameState != GameManagerBehaviour.GameStates.PLANET_SELECT)
             return;
@@ -99,8 +107,11 @@ public class PlanetSelectionScreenBehaviour : MonoBehaviour
 
     public void UpdateMovingPlanetToSelected()
     {
-        _movingPlanet.GeneratedColor = _selectedPlanet.GeneratedColor;
-        _movingPlanet.MatchedColor = _selectedPlanet.MatchedColor;
-        _movingPlanet.AtmosphereColor = _selectedPlanet.AtmosphereColor;
+        if (_movingPlanet)
+        {
+            _movingPlanet.GeneratedColor = _selectedPlanet.GeneratedColor;
+            _movingPlanet.MatchedColor = _selectedPlanet.MatchedColor;
+            _movingPlanet.AtmosphereColor = _selectedPlanet.AtmosphereColor;
+        }
     }
 }
