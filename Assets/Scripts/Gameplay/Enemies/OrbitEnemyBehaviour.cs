@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
@@ -70,6 +72,7 @@ public class OrbitEnemyBehaviour : EnemyBehaviour
     }
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(OrbitEnemyBehaviour))]
 class OrbitEnemyBehaviourEditor : Editor
 {
@@ -97,3 +100,4 @@ class OrbitEnemyBehaviourEditor : Editor
         base.OnInspectorGUI();
     }
 }
+#endif

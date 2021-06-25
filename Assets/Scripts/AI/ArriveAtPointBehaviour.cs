@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class ArriveAtPointBehaviour : MonoBehaviour
@@ -47,6 +49,7 @@ public class ArriveAtPointBehaviour : MonoBehaviour
         }
     }
 
+#if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
         if (!enabled)
@@ -72,8 +75,10 @@ public class ArriveAtPointBehaviour : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(TargetPosition, 0.5f);
     }
+#endif
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(ArriveAtPointBehaviour))]
 class ArriveAtPointBehaviourEditor : Editor
 {
@@ -101,3 +106,4 @@ class ArriveAtPointBehaviourEditor : Editor
         base.OnInspectorGUI();
     }
 }
+#endif

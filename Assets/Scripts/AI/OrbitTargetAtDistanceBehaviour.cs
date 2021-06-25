@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 [RequireComponent(typeof(Rigidbody))]
 public class OrbitTargetAtDistanceBehaviour : MonoBehaviour
@@ -145,6 +147,7 @@ public class OrbitTargetAtDistanceBehaviour : MonoBehaviour
     }
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(OrbitTargetAtDistanceBehaviour))]
 class OrbitTargetAtDistanceBehaviourEditor : Editor
 {
@@ -172,3 +175,4 @@ class OrbitTargetAtDistanceBehaviourEditor : Editor
         base.OnInspectorGUI();
     }
 }
+#endif

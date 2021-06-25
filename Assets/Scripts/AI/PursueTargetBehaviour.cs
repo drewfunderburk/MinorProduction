@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class PursueTargetBehaviour : MonoBehaviour
@@ -64,7 +66,7 @@ public class PursueTargetBehaviour : MonoBehaviour
     }
 }
 
-
+#if UNITY_EDITOR
 [CustomEditor(typeof(PursueTargetBehaviour))]
 class PursueTargetBehaviourEditor : Editor
 {
@@ -92,3 +94,4 @@ class PursueTargetBehaviourEditor : Editor
         base.OnInspectorGUI();
     }
 }
+#endif
