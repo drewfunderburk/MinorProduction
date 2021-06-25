@@ -72,6 +72,12 @@ public class EnemyWaveSpawnerBehaviour : MonoBehaviour
         Vector3 end = new Vector3(_spawnWidth, transform.position.y, transform.position.z);
         Gizmos.DrawLine(start, end);
     }
+
+    public void ResetTimer()
+    {
+        _spawnTimer = _spawnDelay;
+    }
+
     /// <summary>
     /// Destroys all enemies in the scene and clears the list
     /// </summary>
