@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 [RequireComponent(typeof(PursueTargetBehaviour))]
 public class RamEnemyBehaviour : EnemyBehaviour
@@ -63,6 +65,7 @@ public class RamEnemyBehaviour : EnemyBehaviour
     }
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(RamEnemyBehaviour))]
 class RamEnemyBehaviourEditor : Editor
 {
@@ -90,3 +93,4 @@ class RamEnemyBehaviourEditor : Editor
         base.OnInspectorGUI();
     }
 }
+#endif

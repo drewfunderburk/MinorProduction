@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 [CreateAssetMenu(fileName = "New Audio Files", menuName = "ScriptableObjects/Audio Files")]
 public class AudioFilesScriptableObject : ScriptableObject
@@ -23,6 +25,7 @@ public class AudioFilesScriptableObject : ScriptableObject
     }
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(AudioFilesScriptableObject))]
 class AudioFilesScriptableObjectEditor : Editor
 {
@@ -50,3 +53,4 @@ class AudioFilesScriptableObjectEditor : Editor
         base.OnInspectorGUI();
     }
 }
+#endif
