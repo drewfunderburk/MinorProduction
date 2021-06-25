@@ -13,6 +13,4 @@ MonoBehaviour:
   m_Name: SFX_Explosion_Files
   m_EditorClassIdentifier: 
   _audioClips:
-  - {fileID: 8300000, guid: 14ae3301863b99f428bb90b453d06e94, type: 3}
-  - {fileID: 8300000, guid: 52365a24f64c2d54c8fed0afd382809b, type: 3}
   - {fileID: 8300000, guid: d9cc20d4fdec6f14dad3a47027119023, type: 3}

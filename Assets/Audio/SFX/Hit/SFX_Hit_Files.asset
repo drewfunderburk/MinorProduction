@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: SFX_Hit_Files
   m_EditorClassIdentifier: 
   _audioClips:
-  - {fileID: 8300000, guid: a6ceab72355b701408e112c389286db1, type: 3}
+  - {fileID: 8300000, guid: 49179dfb97d3db347a1229a687d20cb6, type: 3}
+  - {fileID: 8300000, guid: b556a47e16d1c27468865c7dc76e9a1c, type: 3}
