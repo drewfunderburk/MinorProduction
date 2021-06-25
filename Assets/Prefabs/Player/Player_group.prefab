@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 1934570049971684918}
   - component: {fileID: 1934570049971684913}
   - component: {fileID: 1934570049971684912}
+  - component: {fileID: 7908314349776098952}
   m_Layer: 8
   m_Name: Player_group
   m_TagString: Untagged
@@ -169,6 +170,7 @@ MonoBehaviour:
   _bankingSpeed: 40
   _desiredRotation: 23
   _boundaries: {x: 320, y: 160}
+  _SpeedReductionMultiplier: 0.8
 --- !u!114 &1934570049971684922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,12 +219,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1934570049971684913}
-        m_MethodName: PlayRandomClip
+        m_MethodName: set_SelectedAudioFiles
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1934570049971684913}
+        m_MethodName: PlayClipFromSelected
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -244,25 +257,25 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: RestartScene
+      - m_Target: {fileID: 1934570049971684913}
+        m_MethodName: set_MinimumVolume
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 1
+          m_FloatArgument: 0.7
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: FadeOut
+      - m_Target: {fileID: 1934570049971684913}
+        m_MethodName: set_MaximumVolume
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0
+          m_FloatArgument: 0.8
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -273,6 +286,42 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1934570049971684913}
+        m_MethodName: set_MinimumVolume
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.25
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1934570049971684913}
+        m_MethodName: set_MaximumVolume
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.25
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1934570049971684913}
+        m_MethodName: PlayRandomClip
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -293,9 +342,10 @@ MonoBehaviour:
   _audioFiles:
   - {fileID: 11400000, guid: 482e57a406a84ee4ca866b9d274eb56d, type: 2}
   - {fileID: 11400000, guid: 50e8a682194ad97428361f25b6715b5e, type: 2}
+  - {fileID: 11400000, guid: 45bf40f7d74b4544c92606d54003905d, type: 2}
   _selectedAudioFiles: 0
   _randomizePitch: 1
-  _minimumPitch: 1
+  _minimumPitch: 0.8
   _maximumPitch: 1.2
   _randomizeVolume: 1
   _minimumVolume: 0.9
@@ -397,6 +447,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!165 &7908314349776098952
+AudioHighPassFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934570049971684927}
+  m_Enabled: 1
+  m_CutoffFrequency: 100
+  m_HighpassResonanceQ: 1
 --- !u!1 &8629687757098992031
 GameObject:
   m_ObjectHideFlags: 0

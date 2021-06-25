@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 [CreateAssetMenu(fileName = "New Difficulty Curves", menuName = "ScriptableObjects/Difficulty Curves")]
 public class DifficultyCurvesScriptableObject : ScriptableObject
@@ -23,6 +25,7 @@ public class DifficultyCurvesScriptableObject : ScriptableObject
     public AnimationCurve WavesInGroup { get => _wavesInGroup; }
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(DifficultyCurvesScriptableObject))]
 class DifficultyCurvesScriptableObjectEditor : Editor
 {
@@ -52,3 +55,4 @@ class DifficultyCurvesScriptableObjectEditor : Editor
         base.OnInspectorGUI();
     }
 }
+#endif

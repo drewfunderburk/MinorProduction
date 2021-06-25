@@ -9,6 +9,7 @@ public class HealthBarBehaviour : MonoBehaviour
     [SerializeField] private PlayerHealthBehaviour _health;
     [SerializeField] private Image _fill;
     [SerializeField] private Gradient _healthGradient;
+    [SerializeField] [Range(0, 1)] private float _lerpFactor = 0.1f;
 
     private Slider _slider;
 
@@ -21,7 +22,7 @@ public class HealthBarBehaviour : MonoBehaviour
 
     void Update()
     {
-        _slider.value = _health.Health;
+        _slider.value = Mathf.Lerp(_slider.value, _health.Health, _lerpFactor);
         _fill.color = _healthGradient.Evaluate(_slider.value / _slider.maxValue);
     }
 }

@@ -25,12 +25,37 @@ public class PlayerHealthBehaviour : CombatActor
     public override void TakeDamage(float damage)
     {
         Health -= damage;
+
+        OnTakeDamage.Invoke();
+
         if (Health <= 0)
         {
             OnDeath.Invoke();
-            gameObject.SetActive(false);
+            Die();
         }
     }
+
+    /// <summary>
+    /// Default things to do on death
+    /// </summary>
+    protected virtual void Die()
+    {
+        // Get colliders and gun
+        Collider[] colliders = GetComponents<Collider>();
+        PlayerShootBehaviour shoot = GetComponent<PlayerShootBehaviour>();
+
+        // Disable this script
+        enabled = false;
+
+        // Disable colliders
+        if (colliders.Length > 0)
+            foreach (Collider collider in colliders)
+                collider.enabled = false;
+
+        // Disable the gun
+        if (shoot) shoot.enabled = false;
+    }
+
     /// <summary>
     /// Regens health to Health, if health >= maxhealth, cap it.
     /// </summary>
@@ -68,7 +93,6 @@ public class PlayerHealthBehaviour : CombatActor
 
         if (actor)
             actor.TakeDamage(Damage);
-        TakeDamage(actor.Damage);
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -76,6 +100,5 @@ public class PlayerHealthBehaviour : CombatActor
 
         if (actor)
             actor.TakeDamage(Damage);
-        TakeDamage(actor.Damage);
     }
 }

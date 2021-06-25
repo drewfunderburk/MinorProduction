@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEditor;
+#if UNITY_EDITOR
+    using UnityEditor;
+#endif
 
 /// <summary>
 /// This exists as a utility to make testing in scene easier
@@ -12,6 +14,7 @@ public class UtilityButtonPushBehaviour : MonoBehaviour
     public UnityEvent ButtonPush;
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(UtilityButtonPushBehaviour))]
 class UtilityButtonPushBehaviourEditor : Editor
 {
@@ -27,3 +30,4 @@ class UtilityButtonPushBehaviourEditor : Editor
             script.ButtonPush.Invoke();
     }
 }
+#endif
