@@ -4,3 +4,5 @@ Inspired heavily by the arcade games Galaga and 1942, Proximo One is a fast-pace
 Controls:
 - WASD to move
 - Space to Fire
+
+To play, download the release [here](https://github.com/drewfunderburk/Proximo-One/releases/tag/v1.3)
